@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **UploadId** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **VersionId** | Pointer to **string** |  | [optional] 
+**AppBundleId** | Pointer to **string** | Only returned when appBuildType is &#39;app-bundle&#39; | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetVersionId sets VersionId field to given value.
 `func (o *InitiateAppVersionUpload200Response) HasVersionId() bool`
 
 HasVersionId returns a boolean if a field has been set.
+
+### GetAppBundleId
+
+`func (o *InitiateAppVersionUpload200Response) GetAppBundleId() string`
+
+GetAppBundleId returns the AppBundleId field if non-nil, zero value otherwise.
+
+### GetAppBundleIdOk
+
+`func (o *InitiateAppVersionUpload200Response) GetAppBundleIdOk() (*string, bool)`
+
+GetAppBundleIdOk returns a tuple with the AppBundleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppBundleId
+
+`func (o *InitiateAppVersionUpload200Response) SetAppBundleId(v string)`
+
+SetAppBundleId sets AppBundleId field to given value.
+
+### HasAppBundleId
+
+`func (o *InitiateAppVersionUpload200Response) HasAppBundleId() bool`
+
+HasAppBundleId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

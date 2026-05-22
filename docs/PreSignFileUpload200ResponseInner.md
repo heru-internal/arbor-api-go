@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PartNumber** | Pointer to **int32** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
+**PresignedUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -51,30 +51,30 @@ SetPartNumber sets PartNumber field to given value.
 
 HasPartNumber returns a boolean if a field has been set.
 
-### GetUrl
+### GetPresignedUrl
 
-`func (o *PreSignFileUpload200ResponseInner) GetUrl() string`
+`func (o *PreSignFileUpload200ResponseInner) GetPresignedUrl() string`
 
-GetUrl returns the Url field if non-nil, zero value otherwise.
+GetPresignedUrl returns the PresignedUrl field if non-nil, zero value otherwise.
 
-### GetUrlOk
+### GetPresignedUrlOk
 
-`func (o *PreSignFileUpload200ResponseInner) GetUrlOk() (*string, bool)`
+`func (o *PreSignFileUpload200ResponseInner) GetPresignedUrlOk() (*string, bool)`
 
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+GetPresignedUrlOk returns a tuple with the PresignedUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUrl
+### SetPresignedUrl
 
-`func (o *PreSignFileUpload200ResponseInner) SetUrl(v string)`
+`func (o *PreSignFileUpload200ResponseInner) SetPresignedUrl(v string)`
 
-SetUrl sets Url field to given value.
+SetPresignedUrl sets PresignedUrl field to given value.
 
-### HasUrl
+### HasPresignedUrl
 
-`func (o *PreSignFileUpload200ResponseInner) HasUrl() bool`
+`func (o *PreSignFileUpload200ResponseInner) HasPresignedUrl() bool`
 
-HasUrl returns a boolean if a field has been set.
+HasPresignedUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

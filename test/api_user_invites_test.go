@@ -1,5 +1,5 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
 Testing UserInvitesAPIService
 
@@ -27,17 +27,6 @@ func Test_arborapi_UserInvitesAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.UserInvitesAPI.CreateUserInvite(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test UserInvitesAPIService InviteUser", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.UserInvitesAPI.InviteUser(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

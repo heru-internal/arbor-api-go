@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -24,27 +24,33 @@ import (
 // RolesAPIService RolesAPI service
 type RolesAPIService service
 
-type ApiGetGroupRoleRequest struct {
+type ApiGetRoleRequest struct {
 	ctx context.Context
 	ApiService *RolesAPIService
+	accept *string
 	roleId string
 }
 
-func (r ApiGetGroupRoleRequest) Execute() (*GetUsers200ResponseDataInnerOrganizationRole, *http.Response, error) {
-	return r.ApiService.GetGroupRoleExecute(r)
+func (r ApiGetRoleRequest) Accept(accept string) ApiGetRoleRequest {
+	r.accept = &accept
+	return r
+}
+
+func (r ApiGetRoleRequest) Execute() (*GetCurrentUser200ResponseAccessControlsInnerRole, *http.Response, error) {
+	return r.ApiService.GetRoleExecute(r)
 }
 
 /*
-GetGroupRole Method for GetGroupRole
+GetRole Method for GetRole
 
-Get a single group role.
+Get a single role.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param roleId The ID of a role.
- @return ApiGetGroupRoleRequest
+ @return ApiGetRoleRequest
 */
-func (a *RolesAPIService) GetGroupRole(ctx context.Context, roleId string) ApiGetGroupRoleRequest {
-	return ApiGetGroupRoleRequest{
+func (a *RolesAPIService) GetRole(ctx context.Context, roleId string) ApiGetRoleRequest {
+	return ApiGetRoleRequest{
 		ApiService: a,
 		ctx: ctx,
 		roleId: roleId,
@@ -52,26 +58,29 @@ func (a *RolesAPIService) GetGroupRole(ctx context.Context, roleId string) ApiGe
 }
 
 // Execute executes the request
-//  @return GetUsers200ResponseDataInnerOrganizationRole
-func (a *RolesAPIService) GetGroupRoleExecute(r ApiGetGroupRoleRequest) (*GetUsers200ResponseDataInnerOrganizationRole, *http.Response, error) {
+//  @return GetCurrentUser200ResponseAccessControlsInnerRole
+func (a *RolesAPIService) GetRoleExecute(r ApiGetRoleRequest) (*GetCurrentUser200ResponseAccessControlsInnerRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetUsers200ResponseDataInnerOrganizationRole
+		localVarReturnValue  *GetCurrentUser200ResponseAccessControlsInnerRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetGroupRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/group-roles/{roleId}"
+	localVarPath := localBasePath + "/roles/{roleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(parameterValueToString(r.roleId, "roleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.accept == nil {
+		return localVarReturnValue, nil, reportError("accept is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -90,6 +99,7 @@ func (a *RolesAPIService) GetGroupRoleExecute(r ApiGetGroupRoleRequest) (*GetUse
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -111,6 +121,17 @@ func (a *RolesAPIService) GetGroupRoleExecute(r ApiGetGroupRoleRequest) (*GetUse
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v map[string]interface{}
@@ -143,6 +164,28 @@ func (a *RolesAPIService) GetGroupRoleExecute(r ApiGetGroupRoleRequest) (*GetUse
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v map[string]interface{}
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -159,75 +202,86 @@ func (a *RolesAPIService) GetGroupRoleExecute(r ApiGetGroupRoleRequest) (*GetUse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetGroupRolesRequest struct {
+type ApiGetRolesRequest struct {
 	ctx context.Context
 	ApiService *RolesAPIService
+	accept *string
 	perPage *int32
 	page *int32
 }
 
+func (r ApiGetRolesRequest) Accept(accept string) ApiGetRolesRequest {
+	r.accept = &accept
+	return r
+}
+
 // The number of items to return per page.
-func (r ApiGetGroupRolesRequest) PerPage(perPage int32) ApiGetGroupRolesRequest {
+func (r ApiGetRolesRequest) PerPage(perPage int32) ApiGetRolesRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The page number to return.
-func (r ApiGetGroupRolesRequest) Page(page int32) ApiGetGroupRolesRequest {
+func (r ApiGetRolesRequest) Page(page int32) ApiGetRolesRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiGetGroupRolesRequest) Execute() (*GetGroupRoles200Response, *http.Response, error) {
-	return r.ApiService.GetGroupRolesExecute(r)
+func (r ApiGetRolesRequest) Execute() (*GetRoles200Response, *http.Response, error) {
+	return r.ApiService.GetRolesExecute(r)
 }
 
 /*
-GetGroupRoles Method for GetGroupRoles
+GetRoles Method for GetRoles
 
-Get a list of group roles.
+Get a list of roles. Results are ordered by `created_at` (descending) and `id` (ascending) to ensure stable pagination.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGroupRolesRequest
+ @return ApiGetRolesRequest
 */
-func (a *RolesAPIService) GetGroupRoles(ctx context.Context) ApiGetGroupRolesRequest {
-	return ApiGetGroupRolesRequest{
+func (a *RolesAPIService) GetRoles(ctx context.Context) ApiGetRolesRequest {
+	return ApiGetRolesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GetGroupRoles200Response
-func (a *RolesAPIService) GetGroupRolesExecute(r ApiGetGroupRolesRequest) (*GetGroupRoles200Response, *http.Response, error) {
+//  @return GetRoles200Response
+func (a *RolesAPIService) GetRolesExecute(r ApiGetRolesRequest) (*GetRoles200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetGroupRoles200Response
+		localVarReturnValue  *GetRoles200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetGroupRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/group-roles"
+	localVarPath := localBasePath + "/roles"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.accept == nil {
+		return localVarReturnValue, nil, reportError("accept is required and must be specified")
+	}
 
 	if r.perPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
 	} else {
 		var defaultValue int32 = 10
+		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", defaultValue, "form", "")
 		r.perPage = &defaultValue
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
 		var defaultValue int32 = 1
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
 		r.page = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -247,6 +301,7 @@ func (a *RolesAPIService) GetGroupRolesExecute(r ApiGetGroupRolesRequest) (*GetG
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -269,7 +324,7 @@ func (a *RolesAPIService) GetGroupRolesExecute(r ApiGetGroupRolesRequest) (*GetG
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 401 {
+		if localVarHTTPResponse.StatusCode == 400 {
 			var v map[string]interface{}
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -279,119 +334,6 @@ func (a *RolesAPIService) GetGroupRolesExecute(r ApiGetGroupRolesRequest) (*GetG
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v map[string]interface{}
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetOrganizationRoleRequest struct {
-	ctx context.Context
-	ApiService *RolesAPIService
-	roleId string
-}
-
-func (r ApiGetOrganizationRoleRequest) Execute() (*GetUsers200ResponseDataInnerOrganizationRole, *http.Response, error) {
-	return r.ApiService.GetOrganizationRoleExecute(r)
-}
-
-/*
-GetOrganizationRole Method for GetOrganizationRole
-
-Get a single organization role.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param roleId The ID of a role.
- @return ApiGetOrganizationRoleRequest
-*/
-func (a *RolesAPIService) GetOrganizationRole(ctx context.Context, roleId string) ApiGetOrganizationRoleRequest {
-	return ApiGetOrganizationRoleRequest{
-		ApiService: a,
-		ctx: ctx,
-		roleId: roleId,
-	}
-}
-
-// Execute executes the request
-//  @return GetUsers200ResponseDataInnerOrganizationRole
-func (a *RolesAPIService) GetOrganizationRoleExecute(r ApiGetOrganizationRoleRequest) (*GetUsers200ResponseDataInnerOrganizationRole, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetUsers200ResponseDataInnerOrganizationRole
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetOrganizationRole")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/organization-roles/{roleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(parameterValueToString(r.roleId, "roleId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v map[string]interface{}
@@ -424,133 +366,9 @@ func (a *RolesAPIService) GetOrganizationRoleExecute(r ApiGetOrganizationRoleReq
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetOrganizationRolesRequest struct {
-	ctx context.Context
-	ApiService *RolesAPIService
-	perPage *int32
-	page *int32
-}
-
-// The number of items to return per page.
-func (r ApiGetOrganizationRolesRequest) PerPage(perPage int32) ApiGetOrganizationRolesRequest {
-	r.perPage = &perPage
-	return r
-}
-
-// The page number to return.
-func (r ApiGetOrganizationRolesRequest) Page(page int32) ApiGetOrganizationRolesRequest {
-	r.page = &page
-	return r
-}
-
-func (r ApiGetOrganizationRolesRequest) Execute() (*GetOrganizationRoles200Response, *http.Response, error) {
-	return r.ApiService.GetOrganizationRolesExecute(r)
-}
-
-/*
-GetOrganizationRoles Method for GetOrganizationRoles
-
-Get a list of organization roles.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetOrganizationRolesRequest
-*/
-func (a *RolesAPIService) GetOrganizationRoles(ctx context.Context) ApiGetOrganizationRolesRequest {
-	return ApiGetOrganizationRolesRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return GetOrganizationRoles200Response
-func (a *RolesAPIService) GetOrganizationRolesExecute(r ApiGetOrganizationRolesRequest) (*GetOrganizationRoles200Response, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetOrganizationRoles200Response
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetOrganizationRoles")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/organization-roles"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.perPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "per_page", r.perPage, "form", "")
-	} else {
-		var defaultValue int32 = 10
-		r.perPage = &defaultValue
-	}
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
-	} else {
-		var defaultValue int32 = 1
-		r.page = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
+		if localVarHTTPResponse.StatusCode == 422 {
 			var v map[string]interface{}
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -561,7 +379,7 @@ func (a *RolesAPIService) GetOrganizationRolesExecute(r ApiGetOrganizationRolesR
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode == 500 {
 			var v map[string]interface{}
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

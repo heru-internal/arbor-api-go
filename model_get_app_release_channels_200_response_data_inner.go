@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -22,7 +22,14 @@ var _ MappedNullable = &GetAppReleaseChannels200ResponseDataInner{}
 type GetAppReleaseChannels200ResponseDataInner struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Version *GetAppVersions200ResponseDataInner `json:"version,omitempty"`
+	App *GetApps200ResponseDataInner `json:"app,omitempty"`
+	Version *CreateAppBundle201ResponseAppBuild `json:"version,omitempty"`
+	Bundle *CreateAppBundle201Response `json:"bundle,omitempty"`
+	// Deprecated. Use the GET /apps/{appId}/release-channels/{releaseChannelId}/device-statuses endpoint instead.
+	// Deprecated
+	DeviceStatuses []GetAppReleaseChannels200ResponseDataInnerDeviceStatusesInner `json:"deviceStatuses,omitempty"`
+	CreatedAt *Time `json:"createdAt,omitempty"`
+	UpdatedAt *Time `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,10 +116,42 @@ func (o *GetAppReleaseChannels200ResponseDataInner) SetName(v string) {
 	o.Name = &v
 }
 
+// GetApp returns the App field value if set, zero value otherwise.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetApp() GetApps200ResponseDataInner {
+	if o == nil || IsNil(o.App) {
+		var ret GetApps200ResponseDataInner
+		return ret
+	}
+	return *o.App
+}
+
+// GetAppOk returns a tuple with the App field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetAppOk() (*GetApps200ResponseDataInner, bool) {
+	if o == nil || IsNil(o.App) {
+		return nil, false
+	}
+	return o.App, true
+}
+
+// HasApp returns a boolean if a field has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) HasApp() bool {
+	if o != nil && !IsNil(o.App) {
+		return true
+	}
+
+	return false
+}
+
+// SetApp gets a reference to the given GetApps200ResponseDataInner and assigns it to the App field.
+func (o *GetAppReleaseChannels200ResponseDataInner) SetApp(v GetApps200ResponseDataInner) {
+	o.App = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *GetAppReleaseChannels200ResponseDataInner) GetVersion() GetAppVersions200ResponseDataInner {
+func (o *GetAppReleaseChannels200ResponseDataInner) GetVersion() CreateAppBundle201ResponseAppBuild {
 	if o == nil || IsNil(o.Version) {
-		var ret GetAppVersions200ResponseDataInner
+		var ret CreateAppBundle201ResponseAppBuild
 		return ret
 	}
 	return *o.Version
@@ -120,7 +159,7 @@ func (o *GetAppReleaseChannels200ResponseDataInner) GetVersion() GetAppVersions2
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetAppReleaseChannels200ResponseDataInner) GetVersionOk() (*GetAppVersions200ResponseDataInner, bool) {
+func (o *GetAppReleaseChannels200ResponseDataInner) GetVersionOk() (*CreateAppBundle201ResponseAppBuild, bool) {
 	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
@@ -136,9 +175,140 @@ func (o *GetAppReleaseChannels200ResponseDataInner) HasVersion() bool {
 	return false
 }
 
-// SetVersion gets a reference to the given GetAppVersions200ResponseDataInner and assigns it to the Version field.
-func (o *GetAppReleaseChannels200ResponseDataInner) SetVersion(v GetAppVersions200ResponseDataInner) {
+// SetVersion gets a reference to the given CreateAppBundle201ResponseAppBuild and assigns it to the Version field.
+func (o *GetAppReleaseChannels200ResponseDataInner) SetVersion(v CreateAppBundle201ResponseAppBuild) {
 	o.Version = &v
+}
+
+// GetBundle returns the Bundle field value if set, zero value otherwise.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetBundle() CreateAppBundle201Response {
+	if o == nil || IsNil(o.Bundle) {
+		var ret CreateAppBundle201Response
+		return ret
+	}
+	return *o.Bundle
+}
+
+// GetBundleOk returns a tuple with the Bundle field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetBundleOk() (*CreateAppBundle201Response, bool) {
+	if o == nil || IsNil(o.Bundle) {
+		return nil, false
+	}
+	return o.Bundle, true
+}
+
+// HasBundle returns a boolean if a field has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) HasBundle() bool {
+	if o != nil && !IsNil(o.Bundle) {
+		return true
+	}
+
+	return false
+}
+
+// SetBundle gets a reference to the given CreateAppBundle201Response and assigns it to the Bundle field.
+func (o *GetAppReleaseChannels200ResponseDataInner) SetBundle(v CreateAppBundle201Response) {
+	o.Bundle = &v
+}
+
+// GetDeviceStatuses returns the DeviceStatuses field value if set, zero value otherwise.
+// Deprecated
+func (o *GetAppReleaseChannels200ResponseDataInner) GetDeviceStatuses() []GetAppReleaseChannels200ResponseDataInnerDeviceStatusesInner {
+	if o == nil || IsNil(o.DeviceStatuses) {
+		var ret []GetAppReleaseChannels200ResponseDataInnerDeviceStatusesInner
+		return ret
+	}
+	return o.DeviceStatuses
+}
+
+// GetDeviceStatusesOk returns a tuple with the DeviceStatuses field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *GetAppReleaseChannels200ResponseDataInner) GetDeviceStatusesOk() ([]GetAppReleaseChannels200ResponseDataInnerDeviceStatusesInner, bool) {
+	if o == nil || IsNil(o.DeviceStatuses) {
+		return nil, false
+	}
+	return o.DeviceStatuses, true
+}
+
+// HasDeviceStatuses returns a boolean if a field has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) HasDeviceStatuses() bool {
+	if o != nil && !IsNil(o.DeviceStatuses) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceStatuses gets a reference to the given []GetAppReleaseChannels200ResponseDataInnerDeviceStatusesInner and assigns it to the DeviceStatuses field.
+// Deprecated
+func (o *GetAppReleaseChannels200ResponseDataInner) SetDeviceStatuses(v []GetAppReleaseChannels200ResponseDataInnerDeviceStatusesInner) {
+	o.DeviceStatuses = v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetCreatedAt() Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetCreatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given Time and assigns it to the CreatedAt field.
+func (o *GetAppReleaseChannels200ResponseDataInner) SetCreatedAt(v Time) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetUpdatedAt() Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) GetUpdatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *GetAppReleaseChannels200ResponseDataInner) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given Time and assigns it to the UpdatedAt field.
+func (o *GetAppReleaseChannels200ResponseDataInner) SetUpdatedAt(v Time) {
+	o.UpdatedAt = &v
 }
 
 func (o GetAppReleaseChannels200ResponseDataInner) MarshalJSON() ([]byte, error) {
@@ -157,8 +327,23 @@ func (o GetAppReleaseChannels200ResponseDataInner) ToMap() (map[string]interface
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if !IsNil(o.App) {
+		toSerialize["app"] = o.App
+	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Bundle) {
+		toSerialize["bundle"] = o.Bundle
+	}
+	if !IsNil(o.DeviceStatuses) {
+		toSerialize["deviceStatuses"] = o.DeviceStatuses
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -184,7 +369,12 @@ func (o *GetAppReleaseChannels200ResponseDataInner) UnmarshalJSON(data []byte) (
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "app")
 		delete(additionalProperties, "version")
+		delete(additionalProperties, "bundle")
+		delete(additionalProperties, "deviceStatuses")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
 		o.AdditionalProperties = additionalProperties
 	}
 

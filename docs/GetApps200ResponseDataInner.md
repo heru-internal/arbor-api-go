@@ -5,14 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Title** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 **DeviceModels** | Pointer to [**[]GetApps200ResponseDataInnerDeviceModelsInner**](GetApps200ResponseDataInnerDeviceModelsInner.md) |  | [optional] 
 **PackageName** | Pointer to **NullableString** |  | [optional] 
+**InstalledDeviceCount** | Pointer to **int32** |  | [optional] 
 **Icon** | Pointer to [**NullableGetApps200ResponseDataInnerIcon**](GetApps200ResponseDataInnerIcon.md) |  | [optional] 
 **LatestAvailableVersion** | Pointer to **NullableString** |  | [optional] 
-**OwnerOrganization** | Pointer to [**GetApps200ResponseDataInnerOwnerOrganization**](GetApps200ResponseDataInnerOwnerOrganization.md) |  | [optional] 
+**OwnerOrganization** | Pointer to [**GetCurrentOrganization200Response**](GetCurrentOrganization200Response.md) |  | [optional] 
+**CreatedAt** | Pointer to **Time** |  | [optional] 
+**UpdatedAt** | Pointer to **Time** |  | [optional] 
 
 ## Methods
 
@@ -58,30 +61,30 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetTitle
+### GetName
 
-`func (o *GetApps200ResponseDataInner) GetTitle() string`
+`func (o *GetApps200ResponseDataInner) GetName() string`
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetTitleOk
+### GetNameOk
 
-`func (o *GetApps200ResponseDataInner) GetTitleOk() (*string, bool)`
+`func (o *GetApps200ResponseDataInner) GetNameOk() (*string, bool)`
 
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetName
 
-`func (o *GetApps200ResponseDataInner) SetTitle(v string)`
+`func (o *GetApps200ResponseDataInner) SetName(v string)`
 
-SetTitle sets Title field to given value.
+SetName sets Name field to given value.
 
-### HasTitle
+### HasName
 
-`func (o *GetApps200ResponseDataInner) HasTitle() bool`
+`func (o *GetApps200ResponseDataInner) HasName() bool`
 
-HasTitle returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -203,6 +206,31 @@ HasPackageName returns a boolean if a field has been set.
 `func (o *GetApps200ResponseDataInner) UnsetPackageName()`
 
 UnsetPackageName ensures that no value is present for PackageName, not even an explicit nil
+### GetInstalledDeviceCount
+
+`func (o *GetApps200ResponseDataInner) GetInstalledDeviceCount() int32`
+
+GetInstalledDeviceCount returns the InstalledDeviceCount field if non-nil, zero value otherwise.
+
+### GetInstalledDeviceCountOk
+
+`func (o *GetApps200ResponseDataInner) GetInstalledDeviceCountOk() (*int32, bool)`
+
+GetInstalledDeviceCountOk returns a tuple with the InstalledDeviceCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstalledDeviceCount
+
+`func (o *GetApps200ResponseDataInner) SetInstalledDeviceCount(v int32)`
+
+SetInstalledDeviceCount sets InstalledDeviceCount field to given value.
+
+### HasInstalledDeviceCount
+
+`func (o *GetApps200ResponseDataInner) HasInstalledDeviceCount() bool`
+
+HasInstalledDeviceCount returns a boolean if a field has been set.
+
 ### GetIcon
 
 `func (o *GetApps200ResponseDataInner) GetIcon() GetApps200ResponseDataInnerIcon`
@@ -275,20 +303,20 @@ HasLatestAvailableVersion returns a boolean if a field has been set.
 UnsetLatestAvailableVersion ensures that no value is present for LatestAvailableVersion, not even an explicit nil
 ### GetOwnerOrganization
 
-`func (o *GetApps200ResponseDataInner) GetOwnerOrganization() GetApps200ResponseDataInnerOwnerOrganization`
+`func (o *GetApps200ResponseDataInner) GetOwnerOrganization() GetCurrentOrganization200Response`
 
 GetOwnerOrganization returns the OwnerOrganization field if non-nil, zero value otherwise.
 
 ### GetOwnerOrganizationOk
 
-`func (o *GetApps200ResponseDataInner) GetOwnerOrganizationOk() (*GetApps200ResponseDataInnerOwnerOrganization, bool)`
+`func (o *GetApps200ResponseDataInner) GetOwnerOrganizationOk() (*GetCurrentOrganization200Response, bool)`
 
 GetOwnerOrganizationOk returns a tuple with the OwnerOrganization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerOrganization
 
-`func (o *GetApps200ResponseDataInner) SetOwnerOrganization(v GetApps200ResponseDataInnerOwnerOrganization)`
+`func (o *GetApps200ResponseDataInner) SetOwnerOrganization(v GetCurrentOrganization200Response)`
 
 SetOwnerOrganization sets OwnerOrganization field to given value.
 
@@ -297,6 +325,56 @@ SetOwnerOrganization sets OwnerOrganization field to given value.
 `func (o *GetApps200ResponseDataInner) HasOwnerOrganization() bool`
 
 HasOwnerOrganization returns a boolean if a field has been set.
+
+### GetCreatedAt
+
+`func (o *GetApps200ResponseDataInner) GetCreatedAt() Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *GetApps200ResponseDataInner) GetCreatedAtOk() (*Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *GetApps200ResponseDataInner) SetCreatedAt(v Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *GetApps200ResponseDataInner) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *GetApps200ResponseDataInner) GetUpdatedAt() Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *GetApps200ResponseDataInner) GetUpdatedAtOk() (*Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *GetApps200ResponseDataInner) SetUpdatedAt(v Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *GetApps200ResponseDataInner) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &GetFiles200Response{}
 
 // GetFiles200Response Get a paginated list of files.
 type GetFiles200Response struct {
-	Data []GetFiles200ResponseDataInner `json:"data,omitempty"`
+	Data []GetAppFiles200ResponseDataInner `json:"data,omitempty"`
 	Links *GetFiles200ResponseLinks `json:"links,omitempty"`
 	Meta *GetFiles200ResponseMeta `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,9 +46,9 @@ func NewGetFiles200ResponseWithDefaults() *GetFiles200Response {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *GetFiles200Response) GetData() []GetFiles200ResponseDataInner {
+func (o *GetFiles200Response) GetData() []GetAppFiles200ResponseDataInner {
 	if o == nil || IsNil(o.Data) {
-		var ret []GetFiles200ResponseDataInner
+		var ret []GetAppFiles200ResponseDataInner
 		return ret
 	}
 	return o.Data
@@ -56,7 +56,7 @@ func (o *GetFiles200Response) GetData() []GetFiles200ResponseDataInner {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetFiles200Response) GetDataOk() ([]GetFiles200ResponseDataInner, bool) {
+func (o *GetFiles200Response) GetDataOk() ([]GetAppFiles200ResponseDataInner, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *GetFiles200Response) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []GetFiles200ResponseDataInner and assigns it to the Data field.
-func (o *GetFiles200Response) SetData(v []GetFiles200ResponseDataInner) {
+// SetData gets a reference to the given []GetAppFiles200ResponseDataInner and assigns it to the Data field.
+func (o *GetFiles200Response) SetData(v []GetAppFiles200ResponseDataInner) {
 	o.Data = v
 }
 

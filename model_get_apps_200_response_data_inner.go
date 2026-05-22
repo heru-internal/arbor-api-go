@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -21,14 +21,17 @@ var _ MappedNullable = &GetApps200ResponseDataInner{}
 // GetApps200ResponseDataInner struct for GetApps200ResponseDataInner
 type GetApps200ResponseDataInner struct {
 	Id *string `json:"id,omitempty"`
-	Title *string `json:"title,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	Tags []string `json:"tags,omitempty"`
 	DeviceModels []GetApps200ResponseDataInnerDeviceModelsInner `json:"deviceModels,omitempty"`
 	PackageName NullableString `json:"packageName,omitempty"`
+	InstalledDeviceCount *int32 `json:"installedDeviceCount,omitempty"`
 	Icon NullableGetApps200ResponseDataInnerIcon `json:"icon,omitempty"`
 	LatestAvailableVersion NullableString `json:"latestAvailableVersion,omitempty"`
-	OwnerOrganization *GetApps200ResponseDataInnerOwnerOrganization `json:"ownerOrganization,omitempty"`
+	OwnerOrganization *GetCurrentOrganization200Response `json:"ownerOrganization,omitempty"`
+	CreatedAt *Time `json:"createdAt,omitempty"`
+	UpdatedAt *Time `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,36 +86,36 @@ func (o *GetApps200ResponseDataInner) SetId(v string) {
 	o.Id = &v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *GetApps200ResponseDataInner) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInner) GetName() string {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetApps200ResponseDataInner) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+func (o *GetApps200ResponseDataInner) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Name, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *GetApps200ResponseDataInner) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+// HasName returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInner) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *GetApps200ResponseDataInner) SetTitle(v string) {
-	o.Title = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *GetApps200ResponseDataInner) SetName(v string) {
+	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -263,6 +266,38 @@ func (o *GetApps200ResponseDataInner) UnsetPackageName() {
 	o.PackageName.Unset()
 }
 
+// GetInstalledDeviceCount returns the InstalledDeviceCount field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInner) GetInstalledDeviceCount() int32 {
+	if o == nil || IsNil(o.InstalledDeviceCount) {
+		var ret int32
+		return ret
+	}
+	return *o.InstalledDeviceCount
+}
+
+// GetInstalledDeviceCountOk returns a tuple with the InstalledDeviceCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInner) GetInstalledDeviceCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.InstalledDeviceCount) {
+		return nil, false
+	}
+	return o.InstalledDeviceCount, true
+}
+
+// HasInstalledDeviceCount returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInner) HasInstalledDeviceCount() bool {
+	if o != nil && !IsNil(o.InstalledDeviceCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstalledDeviceCount gets a reference to the given int32 and assigns it to the InstalledDeviceCount field.
+func (o *GetApps200ResponseDataInner) SetInstalledDeviceCount(v int32) {
+	o.InstalledDeviceCount = &v
+}
+
 // GetIcon returns the Icon field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetApps200ResponseDataInner) GetIcon() GetApps200ResponseDataInnerIcon {
 	if o == nil || IsNil(o.Icon.Get()) {
@@ -348,9 +383,9 @@ func (o *GetApps200ResponseDataInner) UnsetLatestAvailableVersion() {
 }
 
 // GetOwnerOrganization returns the OwnerOrganization field value if set, zero value otherwise.
-func (o *GetApps200ResponseDataInner) GetOwnerOrganization() GetApps200ResponseDataInnerOwnerOrganization {
+func (o *GetApps200ResponseDataInner) GetOwnerOrganization() GetCurrentOrganization200Response {
 	if o == nil || IsNil(o.OwnerOrganization) {
-		var ret GetApps200ResponseDataInnerOwnerOrganization
+		var ret GetCurrentOrganization200Response
 		return ret
 	}
 	return *o.OwnerOrganization
@@ -358,7 +393,7 @@ func (o *GetApps200ResponseDataInner) GetOwnerOrganization() GetApps200ResponseD
 
 // GetOwnerOrganizationOk returns a tuple with the OwnerOrganization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetApps200ResponseDataInner) GetOwnerOrganizationOk() (*GetApps200ResponseDataInnerOwnerOrganization, bool) {
+func (o *GetApps200ResponseDataInner) GetOwnerOrganizationOk() (*GetCurrentOrganization200Response, bool) {
 	if o == nil || IsNil(o.OwnerOrganization) {
 		return nil, false
 	}
@@ -374,9 +409,73 @@ func (o *GetApps200ResponseDataInner) HasOwnerOrganization() bool {
 	return false
 }
 
-// SetOwnerOrganization gets a reference to the given GetApps200ResponseDataInnerOwnerOrganization and assigns it to the OwnerOrganization field.
-func (o *GetApps200ResponseDataInner) SetOwnerOrganization(v GetApps200ResponseDataInnerOwnerOrganization) {
+// SetOwnerOrganization gets a reference to the given GetCurrentOrganization200Response and assigns it to the OwnerOrganization field.
+func (o *GetApps200ResponseDataInner) SetOwnerOrganization(v GetCurrentOrganization200Response) {
 	o.OwnerOrganization = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInner) GetCreatedAt() Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInner) GetCreatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInner) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given Time and assigns it to the CreatedAt field.
+func (o *GetApps200ResponseDataInner) SetCreatedAt(v Time) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInner) GetUpdatedAt() Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInner) GetUpdatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInner) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given Time and assigns it to the UpdatedAt field.
+func (o *GetApps200ResponseDataInner) SetUpdatedAt(v Time) {
+	o.UpdatedAt = &v
 }
 
 func (o GetApps200ResponseDataInner) MarshalJSON() ([]byte, error) {
@@ -392,8 +491,8 @@ func (o GetApps200ResponseDataInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
@@ -407,6 +506,9 @@ func (o GetApps200ResponseDataInner) ToMap() (map[string]interface{}, error) {
 	if o.PackageName.IsSet() {
 		toSerialize["packageName"] = o.PackageName.Get()
 	}
+	if !IsNil(o.InstalledDeviceCount) {
+		toSerialize["installedDeviceCount"] = o.InstalledDeviceCount
+	}
 	if o.Icon.IsSet() {
 		toSerialize["icon"] = o.Icon.Get()
 	}
@@ -415,6 +517,12 @@ func (o GetApps200ResponseDataInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OwnerOrganization) {
 		toSerialize["ownerOrganization"] = o.OwnerOrganization
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -439,14 +547,17 @@ func (o *GetApps200ResponseDataInner) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "title")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "tags")
 		delete(additionalProperties, "deviceModels")
 		delete(additionalProperties, "packageName")
+		delete(additionalProperties, "installedDeviceCount")
 		delete(additionalProperties, "icon")
 		delete(additionalProperties, "latestAvailableVersion")
 		delete(additionalProperties, "ownerOrganization")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the ArborXR Public API API vv2
+// APIClient manages communication with the ArborXR MDM API API vv3
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -52,7 +52,17 @@ type APIClient struct {
 
 	APIInfoAPI *APIInfoAPIService
 
+	AnalyticsAPI *AnalyticsAPIService
+
+	AppBundlesAPI *AppBundlesAPIService
+
 	AppsAPI *AppsAPIService
+
+	AuditLogsAPI *AuditLogsAPIService
+
+	Custom3DEnvironmentsAPI *Custom3DEnvironmentsAPIService
+
+	DeviceExperienceAPI *DeviceExperienceAPIService
 
 	DeviceModelsAPI *DeviceModelsAPIService
 
@@ -62,11 +72,27 @@ type APIClient struct {
 
 	GroupsAPI *GroupsAPIService
 
+	HeadsetExperienceAPI *HeadsetExperienceAPIService
+
+	ImagesAPI *ImagesAPIService
+
+	InsightsAPI *InsightsAPIService
+
+	OrganizationsAPI *OrganizationsAPIService
+
 	RolesAPI *RolesAPIService
+
+	StatusesAPI *StatusesAPIService
+
+	TagsAPI *TagsAPIService
+
+	ThemesAPI *ThemesAPIService
 
 	UserInvitesAPI *UserInvitesAPIService
 
 	UsersAPI *UsersAPIService
+
+	VideosAPI *VideosAPIService
 }
 
 type service struct {
@@ -86,14 +112,27 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.APIInfoAPI = (*APIInfoAPIService)(&c.common)
+	c.AnalyticsAPI = (*AnalyticsAPIService)(&c.common)
+	c.AppBundlesAPI = (*AppBundlesAPIService)(&c.common)
 	c.AppsAPI = (*AppsAPIService)(&c.common)
+	c.AuditLogsAPI = (*AuditLogsAPIService)(&c.common)
+	c.Custom3DEnvironmentsAPI = (*Custom3DEnvironmentsAPIService)(&c.common)
+	c.DeviceExperienceAPI = (*DeviceExperienceAPIService)(&c.common)
 	c.DeviceModelsAPI = (*DeviceModelsAPIService)(&c.common)
 	c.DevicesAPI = (*DevicesAPIService)(&c.common)
 	c.FilesAPI = (*FilesAPIService)(&c.common)
 	c.GroupsAPI = (*GroupsAPIService)(&c.common)
+	c.HeadsetExperienceAPI = (*HeadsetExperienceAPIService)(&c.common)
+	c.ImagesAPI = (*ImagesAPIService)(&c.common)
+	c.InsightsAPI = (*InsightsAPIService)(&c.common)
+	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
 	c.RolesAPI = (*RolesAPIService)(&c.common)
+	c.StatusesAPI = (*StatusesAPIService)(&c.common)
+	c.TagsAPI = (*TagsAPIService)(&c.common)
+	c.ThemesAPI = (*ThemesAPIService)(&c.common)
 	c.UserInvitesAPI = (*UserInvitesAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
+	c.VideosAPI = (*VideosAPIService)(&c.common)
 
 	return c
 }

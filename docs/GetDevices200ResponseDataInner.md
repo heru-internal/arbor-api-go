@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Title** | Pointer to **string** |  | [optional] 
-**SerialNumber** | Pointer to **string** |  | [optional] 
-**DeviceGroup** | Pointer to **NullableString** |  | [optional] 
-**Group** | Pointer to [**GetDeviceGroups200ResponseDataInner**](GetDeviceGroups200ResponseDataInner.md) |  | [optional] 
-**Model** | Pointer to **string** |  | [optional] 
-**Tags** | Pointer to **[]string** |  | [optional] 
-**LastCommunicatedAt** | Pointer to **NullableString** |  | [optional] 
-**IsOnline** | Pointer to **NullableBool** |  | [optional] 
+**Id** | **string** |  | 
+**Organization** | Pointer to [**GetCurrentOrganization200Response**](GetCurrentOrganization200Response.md) |  | [optional] 
+**Name** | **string** |  | 
+**SerialNumber** | **string** |  | 
+**Group** | Pointer to [**GetDevices200ResponseDataInnerGroup**](GetDevices200ResponseDataInnerGroup.md) |  | [optional] 
+**DeviceModel** | [**GetApps200ResponseDataInnerDeviceModelsInner**](GetApps200ResponseDataInnerDeviceModelsInner.md) |  | 
+**Tags** | **[]string** |  | 
+**LastCommunicatedAt** | Pointer to **NullableTime** |  | [optional] 
+**IsOnline** | **bool** |  | 
 **ClientVersion** | Pointer to **NullableString** |  | [optional] 
 **LauncherVersion** | Pointer to **NullableString** |  | [optional] 
-**EnrollmentDate** | Pointer to **NullableString** |  | [optional] 
+**EnrollmentDate** | **NullableTime** |  | 
 **SystemVersion** | Pointer to **NullableString** |  | [optional] 
 **OsVersion** | Pointer to **NullableString** |  | [optional] 
 **Ssid** | Pointer to **NullableString** |  | [optional] 
 **MacAddress** | Pointer to **NullableString** |  | [optional] 
 **RandomizedMacAddress** | Pointer to **NullableString** |  | [optional] 
-**StorageSpaceFreeGb** | Pointer to **NullableFloat32** |  | [optional] 
-**StorageSpaceTotalGb** | Pointer to **NullableFloat32** |  | [optional] 
+**StorageSpaceFreeBytes** | Pointer to **NullableInt64** | Free storage space in bytes | [optional] 
+**StorageSpaceTotalBytes** | Pointer to **NullableInt64** | Total storage space in bytes | [optional] 
 **BatteryHealth** | Pointer to **NullableString** |  | [optional] 
 **BatteryCharging** | Pointer to **NullableBool** |  | [optional] 
 **BatteryPercentage** | Pointer to **NullableInt32** |  | [optional] 
@@ -33,13 +33,19 @@ Name | Type | Description | Notes
 **LinkSpeedMbps** | Pointer to **NullableInt32** |  | [optional] 
 **LastLocationLatitude** | Pointer to **NullableFloat32** |  | [optional] 
 **LastLocationLongitude** | Pointer to **NullableFloat32** |  | [optional] 
-**LastLocationAt** | Pointer to **NullableString** |  | [optional] 
+**LastLocationAt** | Pointer to **NullableTime** |  | [optional] 
+**RunningApp** | Pointer to [**NullableGetDevices200ResponseDataInnerRunningApp**](GetDevices200ResponseDataInnerRunningApp.md) |  | [optional] 
+**CustomFields** | [**[]GetDevices200ResponseDataInnerCustomFieldsInner**](GetDevices200ResponseDataInnerCustomFieldsInner.md) |  | 
+**ComplianceStatus** | **string** |  | 
+**Controllers** | [**[]GetDevices200ResponseDataInnerControllersInner**](GetDevices200ResponseDataInnerControllersInner.md) | Currently, only PICO &amp; Meta Hms devices report this data. | 
+**CreatedAt** | **Time** |  | 
+**UpdatedAt** | **Time** |  | 
 
 ## Methods
 
 ### NewGetDevices200ResponseDataInner
 
-`func NewGetDevices200ResponseDataInner() *GetDevices200ResponseDataInner`
+`func NewGetDevices200ResponseDataInner(id string, name string, serialNumber string, deviceModel GetApps200ResponseDataInnerDeviceModelsInner, tags []string, isOnline bool, enrollmentDate NullableTime, customFields []GetDevices200ResponseDataInnerCustomFieldsInner, complianceStatus string, controllers []GetDevices200ResponseDataInnerControllersInner, createdAt Time, updatedAt Time, ) *GetDevices200ResponseDataInner`
 
 NewGetDevices200ResponseDataInner instantiates a new GetDevices200ResponseDataInner object
 This constructor will assign default values to properties that have it defined,
@@ -73,36 +79,51 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
 
-`func (o *GetDevices200ResponseDataInner) HasId() bool`
+### GetOrganization
 
-HasId returns a boolean if a field has been set.
+`func (o *GetDevices200ResponseDataInner) GetOrganization() GetCurrentOrganization200Response`
 
-### GetTitle
+GetOrganization returns the Organization field if non-nil, zero value otherwise.
 
-`func (o *GetDevices200ResponseDataInner) GetTitle() string`
+### GetOrganizationOk
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+`func (o *GetDevices200ResponseDataInner) GetOrganizationOk() (*GetCurrentOrganization200Response, bool)`
 
-### GetTitleOk
-
-`func (o *GetDevices200ResponseDataInner) GetTitleOk() (*string, bool)`
-
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetOrganization
 
-`func (o *GetDevices200ResponseDataInner) SetTitle(v string)`
+`func (o *GetDevices200ResponseDataInner) SetOrganization(v GetCurrentOrganization200Response)`
 
-SetTitle sets Title field to given value.
+SetOrganization sets Organization field to given value.
 
-### HasTitle
+### HasOrganization
 
-`func (o *GetDevices200ResponseDataInner) HasTitle() bool`
+`func (o *GetDevices200ResponseDataInner) HasOrganization() bool`
 
-HasTitle returns a boolean if a field has been set.
+HasOrganization returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *GetDevices200ResponseDataInner) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *GetDevices200ResponseDataInner) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *GetDevices200ResponseDataInner) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetSerialNumber
 
@@ -123,63 +144,23 @@ and a boolean to check if the value has been set.
 
 SetSerialNumber sets SerialNumber field to given value.
 
-### HasSerialNumber
 
-`func (o *GetDevices200ResponseDataInner) HasSerialNumber() bool`
-
-HasSerialNumber returns a boolean if a field has been set.
-
-### GetDeviceGroup
-
-`func (o *GetDevices200ResponseDataInner) GetDeviceGroup() string`
-
-GetDeviceGroup returns the DeviceGroup field if non-nil, zero value otherwise.
-
-### GetDeviceGroupOk
-
-`func (o *GetDevices200ResponseDataInner) GetDeviceGroupOk() (*string, bool)`
-
-GetDeviceGroupOk returns a tuple with the DeviceGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeviceGroup
-
-`func (o *GetDevices200ResponseDataInner) SetDeviceGroup(v string)`
-
-SetDeviceGroup sets DeviceGroup field to given value.
-
-### HasDeviceGroup
-
-`func (o *GetDevices200ResponseDataInner) HasDeviceGroup() bool`
-
-HasDeviceGroup returns a boolean if a field has been set.
-
-### SetDeviceGroupNil
-
-`func (o *GetDevices200ResponseDataInner) SetDeviceGroupNil(b bool)`
-
- SetDeviceGroupNil sets the value for DeviceGroup to be an explicit nil
-
-### UnsetDeviceGroup
-`func (o *GetDevices200ResponseDataInner) UnsetDeviceGroup()`
-
-UnsetDeviceGroup ensures that no value is present for DeviceGroup, not even an explicit nil
 ### GetGroup
 
-`func (o *GetDevices200ResponseDataInner) GetGroup() GetDeviceGroups200ResponseDataInner`
+`func (o *GetDevices200ResponseDataInner) GetGroup() GetDevices200ResponseDataInnerGroup`
 
 GetGroup returns the Group field if non-nil, zero value otherwise.
 
 ### GetGroupOk
 
-`func (o *GetDevices200ResponseDataInner) GetGroupOk() (*GetDeviceGroups200ResponseDataInner, bool)`
+`func (o *GetDevices200ResponseDataInner) GetGroupOk() (*GetDevices200ResponseDataInnerGroup, bool)`
 
 GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroup
 
-`func (o *GetDevices200ResponseDataInner) SetGroup(v GetDeviceGroups200ResponseDataInner)`
+`func (o *GetDevices200ResponseDataInner) SetGroup(v GetDevices200ResponseDataInnerGroup)`
 
 SetGroup sets Group field to given value.
 
@@ -189,30 +170,25 @@ SetGroup sets Group field to given value.
 
 HasGroup returns a boolean if a field has been set.
 
-### GetModel
+### GetDeviceModel
 
-`func (o *GetDevices200ResponseDataInner) GetModel() string`
+`func (o *GetDevices200ResponseDataInner) GetDeviceModel() GetApps200ResponseDataInnerDeviceModelsInner`
 
-GetModel returns the Model field if non-nil, zero value otherwise.
+GetDeviceModel returns the DeviceModel field if non-nil, zero value otherwise.
 
-### GetModelOk
+### GetDeviceModelOk
 
-`func (o *GetDevices200ResponseDataInner) GetModelOk() (*string, bool)`
+`func (o *GetDevices200ResponseDataInner) GetDeviceModelOk() (*GetApps200ResponseDataInnerDeviceModelsInner, bool)`
 
-GetModelOk returns a tuple with the Model field if it's non-nil, zero value otherwise
+GetDeviceModelOk returns a tuple with the DeviceModel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetModel
+### SetDeviceModel
 
-`func (o *GetDevices200ResponseDataInner) SetModel(v string)`
+`func (o *GetDevices200ResponseDataInner) SetDeviceModel(v GetApps200ResponseDataInnerDeviceModelsInner)`
 
-SetModel sets Model field to given value.
+SetDeviceModel sets DeviceModel field to given value.
 
-### HasModel
-
-`func (o *GetDevices200ResponseDataInner) HasModel() bool`
-
-HasModel returns a boolean if a field has been set.
 
 ### GetTags
 
@@ -233,28 +209,23 @@ and a boolean to check if the value has been set.
 
 SetTags sets Tags field to given value.
 
-### HasTags
-
-`func (o *GetDevices200ResponseDataInner) HasTags() bool`
-
-HasTags returns a boolean if a field has been set.
 
 ### GetLastCommunicatedAt
 
-`func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAt() string`
+`func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAt() Time`
 
 GetLastCommunicatedAt returns the LastCommunicatedAt field if non-nil, zero value otherwise.
 
 ### GetLastCommunicatedAtOk
 
-`func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAtOk() (*string, bool)`
+`func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAtOk() (*Time, bool)`
 
 GetLastCommunicatedAtOk returns a tuple with the LastCommunicatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastCommunicatedAt
 
-`func (o *GetDevices200ResponseDataInner) SetLastCommunicatedAt(v string)`
+`func (o *GetDevices200ResponseDataInner) SetLastCommunicatedAt(v Time)`
 
 SetLastCommunicatedAt sets LastCommunicatedAt field to given value.
 
@@ -293,22 +264,7 @@ and a boolean to check if the value has been set.
 
 SetIsOnline sets IsOnline field to given value.
 
-### HasIsOnline
 
-`func (o *GetDevices200ResponseDataInner) HasIsOnline() bool`
-
-HasIsOnline returns a boolean if a field has been set.
-
-### SetIsOnlineNil
-
-`func (o *GetDevices200ResponseDataInner) SetIsOnlineNil(b bool)`
-
- SetIsOnlineNil sets the value for IsOnline to be an explicit nil
-
-### UnsetIsOnline
-`func (o *GetDevices200ResponseDataInner) UnsetIsOnline()`
-
-UnsetIsOnline ensures that no value is present for IsOnline, not even an explicit nil
 ### GetClientVersion
 
 `func (o *GetDevices200ResponseDataInner) GetClientVersion() string`
@@ -381,28 +337,23 @@ HasLauncherVersion returns a boolean if a field has been set.
 UnsetLauncherVersion ensures that no value is present for LauncherVersion, not even an explicit nil
 ### GetEnrollmentDate
 
-`func (o *GetDevices200ResponseDataInner) GetEnrollmentDate() string`
+`func (o *GetDevices200ResponseDataInner) GetEnrollmentDate() Time`
 
 GetEnrollmentDate returns the EnrollmentDate field if non-nil, zero value otherwise.
 
 ### GetEnrollmentDateOk
 
-`func (o *GetDevices200ResponseDataInner) GetEnrollmentDateOk() (*string, bool)`
+`func (o *GetDevices200ResponseDataInner) GetEnrollmentDateOk() (*Time, bool)`
 
 GetEnrollmentDateOk returns a tuple with the EnrollmentDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnrollmentDate
 
-`func (o *GetDevices200ResponseDataInner) SetEnrollmentDate(v string)`
+`func (o *GetDevices200ResponseDataInner) SetEnrollmentDate(v Time)`
 
 SetEnrollmentDate sets EnrollmentDate field to given value.
 
-### HasEnrollmentDate
-
-`func (o *GetDevices200ResponseDataInner) HasEnrollmentDate() bool`
-
-HasEnrollmentDate returns a boolean if a field has been set.
 
 ### SetEnrollmentDateNil
 
@@ -589,76 +540,76 @@ HasRandomizedMacAddress returns a boolean if a field has been set.
 `func (o *GetDevices200ResponseDataInner) UnsetRandomizedMacAddress()`
 
 UnsetRandomizedMacAddress ensures that no value is present for RandomizedMacAddress, not even an explicit nil
-### GetStorageSpaceFreeGb
+### GetStorageSpaceFreeBytes
 
-`func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeGb() float32`
+`func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeBytes() int64`
 
-GetStorageSpaceFreeGb returns the StorageSpaceFreeGb field if non-nil, zero value otherwise.
+GetStorageSpaceFreeBytes returns the StorageSpaceFreeBytes field if non-nil, zero value otherwise.
 
-### GetStorageSpaceFreeGbOk
+### GetStorageSpaceFreeBytesOk
 
-`func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeGbOk() (*float32, bool)`
+`func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeBytesOk() (*int64, bool)`
 
-GetStorageSpaceFreeGbOk returns a tuple with the StorageSpaceFreeGb field if it's non-nil, zero value otherwise
+GetStorageSpaceFreeBytesOk returns a tuple with the StorageSpaceFreeBytes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStorageSpaceFreeGb
+### SetStorageSpaceFreeBytes
 
-`func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeGb(v float32)`
+`func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeBytes(v int64)`
 
-SetStorageSpaceFreeGb sets StorageSpaceFreeGb field to given value.
+SetStorageSpaceFreeBytes sets StorageSpaceFreeBytes field to given value.
 
-### HasStorageSpaceFreeGb
+### HasStorageSpaceFreeBytes
 
-`func (o *GetDevices200ResponseDataInner) HasStorageSpaceFreeGb() bool`
+`func (o *GetDevices200ResponseDataInner) HasStorageSpaceFreeBytes() bool`
 
-HasStorageSpaceFreeGb returns a boolean if a field has been set.
+HasStorageSpaceFreeBytes returns a boolean if a field has been set.
 
-### SetStorageSpaceFreeGbNil
+### SetStorageSpaceFreeBytesNil
 
-`func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeGbNil(b bool)`
+`func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeBytesNil(b bool)`
 
- SetStorageSpaceFreeGbNil sets the value for StorageSpaceFreeGb to be an explicit nil
+ SetStorageSpaceFreeBytesNil sets the value for StorageSpaceFreeBytes to be an explicit nil
 
-### UnsetStorageSpaceFreeGb
-`func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceFreeGb()`
+### UnsetStorageSpaceFreeBytes
+`func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceFreeBytes()`
 
-UnsetStorageSpaceFreeGb ensures that no value is present for StorageSpaceFreeGb, not even an explicit nil
-### GetStorageSpaceTotalGb
+UnsetStorageSpaceFreeBytes ensures that no value is present for StorageSpaceFreeBytes, not even an explicit nil
+### GetStorageSpaceTotalBytes
 
-`func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalGb() float32`
+`func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalBytes() int64`
 
-GetStorageSpaceTotalGb returns the StorageSpaceTotalGb field if non-nil, zero value otherwise.
+GetStorageSpaceTotalBytes returns the StorageSpaceTotalBytes field if non-nil, zero value otherwise.
 
-### GetStorageSpaceTotalGbOk
+### GetStorageSpaceTotalBytesOk
 
-`func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalGbOk() (*float32, bool)`
+`func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalBytesOk() (*int64, bool)`
 
-GetStorageSpaceTotalGbOk returns a tuple with the StorageSpaceTotalGb field if it's non-nil, zero value otherwise
+GetStorageSpaceTotalBytesOk returns a tuple with the StorageSpaceTotalBytes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStorageSpaceTotalGb
+### SetStorageSpaceTotalBytes
 
-`func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalGb(v float32)`
+`func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalBytes(v int64)`
 
-SetStorageSpaceTotalGb sets StorageSpaceTotalGb field to given value.
+SetStorageSpaceTotalBytes sets StorageSpaceTotalBytes field to given value.
 
-### HasStorageSpaceTotalGb
+### HasStorageSpaceTotalBytes
 
-`func (o *GetDevices200ResponseDataInner) HasStorageSpaceTotalGb() bool`
+`func (o *GetDevices200ResponseDataInner) HasStorageSpaceTotalBytes() bool`
 
-HasStorageSpaceTotalGb returns a boolean if a field has been set.
+HasStorageSpaceTotalBytes returns a boolean if a field has been set.
 
-### SetStorageSpaceTotalGbNil
+### SetStorageSpaceTotalBytesNil
 
-`func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalGbNil(b bool)`
+`func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalBytesNil(b bool)`
 
- SetStorageSpaceTotalGbNil sets the value for StorageSpaceTotalGb to be an explicit nil
+ SetStorageSpaceTotalBytesNil sets the value for StorageSpaceTotalBytes to be an explicit nil
 
-### UnsetStorageSpaceTotalGb
-`func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceTotalGb()`
+### UnsetStorageSpaceTotalBytes
+`func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceTotalBytes()`
 
-UnsetStorageSpaceTotalGb ensures that no value is present for StorageSpaceTotalGb, not even an explicit nil
+UnsetStorageSpaceTotalBytes ensures that no value is present for StorageSpaceTotalBytes, not even an explicit nil
 ### GetBatteryHealth
 
 `func (o *GetDevices200ResponseDataInner) GetBatteryHealth() string`
@@ -1011,20 +962,20 @@ HasLastLocationLongitude returns a boolean if a field has been set.
 UnsetLastLocationLongitude ensures that no value is present for LastLocationLongitude, not even an explicit nil
 ### GetLastLocationAt
 
-`func (o *GetDevices200ResponseDataInner) GetLastLocationAt() string`
+`func (o *GetDevices200ResponseDataInner) GetLastLocationAt() Time`
 
 GetLastLocationAt returns the LastLocationAt field if non-nil, zero value otherwise.
 
 ### GetLastLocationAtOk
 
-`func (o *GetDevices200ResponseDataInner) GetLastLocationAtOk() (*string, bool)`
+`func (o *GetDevices200ResponseDataInner) GetLastLocationAtOk() (*Time, bool)`
 
 GetLastLocationAtOk returns a tuple with the LastLocationAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastLocationAt
 
-`func (o *GetDevices200ResponseDataInner) SetLastLocationAt(v string)`
+`func (o *GetDevices200ResponseDataInner) SetLastLocationAt(v Time)`
 
 SetLastLocationAt sets LastLocationAt field to given value.
 
@@ -1044,6 +995,141 @@ HasLastLocationAt returns a boolean if a field has been set.
 `func (o *GetDevices200ResponseDataInner) UnsetLastLocationAt()`
 
 UnsetLastLocationAt ensures that no value is present for LastLocationAt, not even an explicit nil
+### GetRunningApp
+
+`func (o *GetDevices200ResponseDataInner) GetRunningApp() GetDevices200ResponseDataInnerRunningApp`
+
+GetRunningApp returns the RunningApp field if non-nil, zero value otherwise.
+
+### GetRunningAppOk
+
+`func (o *GetDevices200ResponseDataInner) GetRunningAppOk() (*GetDevices200ResponseDataInnerRunningApp, bool)`
+
+GetRunningAppOk returns a tuple with the RunningApp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRunningApp
+
+`func (o *GetDevices200ResponseDataInner) SetRunningApp(v GetDevices200ResponseDataInnerRunningApp)`
+
+SetRunningApp sets RunningApp field to given value.
+
+### HasRunningApp
+
+`func (o *GetDevices200ResponseDataInner) HasRunningApp() bool`
+
+HasRunningApp returns a boolean if a field has been set.
+
+### SetRunningAppNil
+
+`func (o *GetDevices200ResponseDataInner) SetRunningAppNil(b bool)`
+
+ SetRunningAppNil sets the value for RunningApp to be an explicit nil
+
+### UnsetRunningApp
+`func (o *GetDevices200ResponseDataInner) UnsetRunningApp()`
+
+UnsetRunningApp ensures that no value is present for RunningApp, not even an explicit nil
+### GetCustomFields
+
+`func (o *GetDevices200ResponseDataInner) GetCustomFields() []GetDevices200ResponseDataInnerCustomFieldsInner`
+
+GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
+
+### GetCustomFieldsOk
+
+`func (o *GetDevices200ResponseDataInner) GetCustomFieldsOk() (*[]GetDevices200ResponseDataInnerCustomFieldsInner, bool)`
+
+GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomFields
+
+`func (o *GetDevices200ResponseDataInner) SetCustomFields(v []GetDevices200ResponseDataInnerCustomFieldsInner)`
+
+SetCustomFields sets CustomFields field to given value.
+
+
+### GetComplianceStatus
+
+`func (o *GetDevices200ResponseDataInner) GetComplianceStatus() string`
+
+GetComplianceStatus returns the ComplianceStatus field if non-nil, zero value otherwise.
+
+### GetComplianceStatusOk
+
+`func (o *GetDevices200ResponseDataInner) GetComplianceStatusOk() (*string, bool)`
+
+GetComplianceStatusOk returns a tuple with the ComplianceStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComplianceStatus
+
+`func (o *GetDevices200ResponseDataInner) SetComplianceStatus(v string)`
+
+SetComplianceStatus sets ComplianceStatus field to given value.
+
+
+### GetControllers
+
+`func (o *GetDevices200ResponseDataInner) GetControllers() []GetDevices200ResponseDataInnerControllersInner`
+
+GetControllers returns the Controllers field if non-nil, zero value otherwise.
+
+### GetControllersOk
+
+`func (o *GetDevices200ResponseDataInner) GetControllersOk() (*[]GetDevices200ResponseDataInnerControllersInner, bool)`
+
+GetControllersOk returns a tuple with the Controllers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetControllers
+
+`func (o *GetDevices200ResponseDataInner) SetControllers(v []GetDevices200ResponseDataInnerControllersInner)`
+
+SetControllers sets Controllers field to given value.
+
+
+### GetCreatedAt
+
+`func (o *GetDevices200ResponseDataInner) GetCreatedAt() Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *GetDevices200ResponseDataInner) GetCreatedAtOk() (*Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *GetDevices200ResponseDataInner) SetCreatedAt(v Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *GetDevices200ResponseDataInner) GetUpdatedAt() Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *GetDevices200ResponseDataInner) GetUpdatedAtOk() (*Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *GetDevices200ResponseDataInner) SetUpdatedAt(v Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

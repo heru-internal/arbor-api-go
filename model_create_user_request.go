@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -24,12 +24,10 @@ type CreateUserRequest struct {
 	FirstName string `json:"firstName"`
 	LastName string `json:"lastName"`
 	Email string `json:"email"`
-	// Required when `groupRoleId` & `groupIds` are not provided.
-	OrganizationRoleId *string `json:"organizationRoleId,omitempty"`
-	// Required when `organizationRoleId` is not provided.
-	GroupRoleId *string `json:"groupRoleId,omitempty"`
-	// Required when `organizationRoleId` is not provided.
-	GroupIds []string `json:"groupIds,omitempty"`
+	// The default role assigned to the user. Can be an organization role or a group role.
+	DefaultRoleId string `json:"defaultRoleId"`
+	// Optional group roles to assign to the user upon creation.
+	GroupRoles []CreateUserRequestGroupRolesInner `json:"groupRoles,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -39,11 +37,12 @@ type _CreateUserRequest CreateUserRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateUserRequest(firstName string, lastName string, email string) *CreateUserRequest {
+func NewCreateUserRequest(firstName string, lastName string, email string, defaultRoleId string) *CreateUserRequest {
 	this := CreateUserRequest{}
 	this.FirstName = firstName
 	this.LastName = lastName
 	this.Email = email
+	this.DefaultRoleId = defaultRoleId
 	return &this
 }
 
@@ -127,100 +126,60 @@ func (o *CreateUserRequest) SetEmail(v string) {
 	o.Email = v
 }
 
-// GetOrganizationRoleId returns the OrganizationRoleId field value if set, zero value otherwise.
-func (o *CreateUserRequest) GetOrganizationRoleId() string {
-	if o == nil || IsNil(o.OrganizationRoleId) {
+// GetDefaultRoleId returns the DefaultRoleId field value
+func (o *CreateUserRequest) GetDefaultRoleId() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationRoleId
+
+	return o.DefaultRoleId
 }
 
-// GetOrganizationRoleIdOk returns a tuple with the OrganizationRoleId field value if set, nil otherwise
+// GetDefaultRoleIdOk returns a tuple with the DefaultRoleId field value
 // and a boolean to check if the value has been set.
-func (o *CreateUserRequest) GetOrganizationRoleIdOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationRoleId) {
+func (o *CreateUserRequest) GetDefaultRoleIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationRoleId, true
+	return &o.DefaultRoleId, true
 }
 
-// HasOrganizationRoleId returns a boolean if a field has been set.
-func (o *CreateUserRequest) HasOrganizationRoleId() bool {
-	if o != nil && !IsNil(o.OrganizationRoleId) {
-		return true
-	}
-
-	return false
+// SetDefaultRoleId sets field value
+func (o *CreateUserRequest) SetDefaultRoleId(v string) {
+	o.DefaultRoleId = v
 }
 
-// SetOrganizationRoleId gets a reference to the given string and assigns it to the OrganizationRoleId field.
-func (o *CreateUserRequest) SetOrganizationRoleId(v string) {
-	o.OrganizationRoleId = &v
-}
-
-// GetGroupRoleId returns the GroupRoleId field value if set, zero value otherwise.
-func (o *CreateUserRequest) GetGroupRoleId() string {
-	if o == nil || IsNil(o.GroupRoleId) {
-		var ret string
+// GetGroupRoles returns the GroupRoles field value if set, zero value otherwise.
+func (o *CreateUserRequest) GetGroupRoles() []CreateUserRequestGroupRolesInner {
+	if o == nil || IsNil(o.GroupRoles) {
+		var ret []CreateUserRequestGroupRolesInner
 		return ret
 	}
-	return *o.GroupRoleId
+	return o.GroupRoles
 }
 
-// GetGroupRoleIdOk returns a tuple with the GroupRoleId field value if set, nil otherwise
+// GetGroupRolesOk returns a tuple with the GroupRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateUserRequest) GetGroupRoleIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GroupRoleId) {
+func (o *CreateUserRequest) GetGroupRolesOk() ([]CreateUserRequestGroupRolesInner, bool) {
+	if o == nil || IsNil(o.GroupRoles) {
 		return nil, false
 	}
-	return o.GroupRoleId, true
+	return o.GroupRoles, true
 }
 
-// HasGroupRoleId returns a boolean if a field has been set.
-func (o *CreateUserRequest) HasGroupRoleId() bool {
-	if o != nil && !IsNil(o.GroupRoleId) {
+// HasGroupRoles returns a boolean if a field has been set.
+func (o *CreateUserRequest) HasGroupRoles() bool {
+	if o != nil && !IsNil(o.GroupRoles) {
 		return true
 	}
 
 	return false
 }
 
-// SetGroupRoleId gets a reference to the given string and assigns it to the GroupRoleId field.
-func (o *CreateUserRequest) SetGroupRoleId(v string) {
-	o.GroupRoleId = &v
-}
-
-// GetGroupIds returns the GroupIds field value if set, zero value otherwise.
-func (o *CreateUserRequest) GetGroupIds() []string {
-	if o == nil || IsNil(o.GroupIds) {
-		var ret []string
-		return ret
-	}
-	return o.GroupIds
-}
-
-// GetGroupIdsOk returns a tuple with the GroupIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateUserRequest) GetGroupIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.GroupIds) {
-		return nil, false
-	}
-	return o.GroupIds, true
-}
-
-// HasGroupIds returns a boolean if a field has been set.
-func (o *CreateUserRequest) HasGroupIds() bool {
-	if o != nil && !IsNil(o.GroupIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupIds gets a reference to the given []string and assigns it to the GroupIds field.
-func (o *CreateUserRequest) SetGroupIds(v []string) {
-	o.GroupIds = v
+// SetGroupRoles gets a reference to the given []CreateUserRequestGroupRolesInner and assigns it to the GroupRoles field.
+func (o *CreateUserRequest) SetGroupRoles(v []CreateUserRequestGroupRolesInner) {
+	o.GroupRoles = v
 }
 
 func (o CreateUserRequest) MarshalJSON() ([]byte, error) {
@@ -236,14 +195,9 @@ func (o CreateUserRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["firstName"] = o.FirstName
 	toSerialize["lastName"] = o.LastName
 	toSerialize["email"] = o.Email
-	if !IsNil(o.OrganizationRoleId) {
-		toSerialize["organizationRoleId"] = o.OrganizationRoleId
-	}
-	if !IsNil(o.GroupRoleId) {
-		toSerialize["groupRoleId"] = o.GroupRoleId
-	}
-	if !IsNil(o.GroupIds) {
-		toSerialize["groupIds"] = o.GroupIds
+	toSerialize["defaultRoleId"] = o.DefaultRoleId
+	if !IsNil(o.GroupRoles) {
+		toSerialize["groupRoles"] = o.GroupRoles
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -261,6 +215,7 @@ func (o *CreateUserRequest) UnmarshalJSON(data []byte) (err error) {
 		"firstName",
 		"lastName",
 		"email",
+		"defaultRoleId",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -293,9 +248,8 @@ func (o *CreateUserRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "firstName")
 		delete(additionalProperties, "lastName")
 		delete(additionalProperties, "email")
-		delete(additionalProperties, "organizationRoleId")
-		delete(additionalProperties, "groupRoleId")
-		delete(additionalProperties, "groupIds")
+		delete(additionalProperties, "defaultRoleId")
+		delete(additionalProperties, "groupRoles")
 		o.AdditionalProperties = additionalProperties
 	}
 

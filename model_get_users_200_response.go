@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &GetUsers200Response{}
 
 // GetUsers200Response Get a paginated list of users.
 type GetUsers200Response struct {
-	Data []GetUsers200ResponseDataInner `json:"data,omitempty"`
+	Data []GetCurrentUser200Response `json:"data,omitempty"`
 	Links *GetUsers200ResponseLinks `json:"links,omitempty"`
 	Meta *GetUsers200ResponseMeta `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,9 +46,9 @@ func NewGetUsers200ResponseWithDefaults() *GetUsers200Response {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *GetUsers200Response) GetData() []GetUsers200ResponseDataInner {
+func (o *GetUsers200Response) GetData() []GetCurrentUser200Response {
 	if o == nil || IsNil(o.Data) {
-		var ret []GetUsers200ResponseDataInner
+		var ret []GetCurrentUser200Response
 		return ret
 	}
 	return o.Data
@@ -56,7 +56,7 @@ func (o *GetUsers200Response) GetData() []GetUsers200ResponseDataInner {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetUsers200Response) GetDataOk() ([]GetUsers200ResponseDataInner, bool) {
+func (o *GetUsers200Response) GetDataOk() ([]GetCurrentUser200Response, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *GetUsers200Response) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []GetUsers200ResponseDataInner and assigns it to the Data field.
-func (o *GetUsers200Response) SetData(v []GetUsers200ResponseDataInner) {
+// SetData gets a reference to the given []GetCurrentUser200Response and assigns it to the Data field.
+func (o *GetUsers200Response) SetData(v []GetCurrentUser200Response) {
 	o.Data = v
 }
 

@@ -1,27 +1,33 @@
 # \AppsAPI
 
-All URIs are relative to *https://api.xrdm.app/api/v2*
+All URIs are relative to *https://api.xrdm.app/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AttachTagsToApp**](AppsAPI.md#AttachTagsToApp) | **Patch** /apps/{appId}/tags/attach | 
 [**CompleteAppVersionUpload**](AppsAPI.md#CompleteAppVersionUpload) | **Post** /apps/{appId}/versions/{versionId}/complete | 
+[**CreateApp**](AppsAPI.md#CreateApp) | **Post** /apps | 
+[**DetachTagsFromApp**](AppsAPI.md#DetachTagsFromApp) | **Patch** /apps/{appId}/tags/detach | 
 [**GetApp**](AppsAPI.md#GetApp) | **Get** /apps/{appId} | 
+[**GetAppBundles**](AppsAPI.md#GetAppBundles) | **Get** /apps/{appId}/app-bundles | 
+[**GetAppFiles**](AppsAPI.md#GetAppFiles) | **Get** /apps/{appId}/files | 
 [**GetAppReleaseChannel**](AppsAPI.md#GetAppReleaseChannel) | **Get** /apps/{appId}/release-channels/{releaseChannelId} | 
 [**GetAppReleaseChannels**](AppsAPI.md#GetAppReleaseChannels) | **Get** /apps/{appId}/release-channels | 
 [**GetAppVersions**](AppsAPI.md#GetAppVersions) | **Get** /apps/{appId}/versions | 
 [**GetApps**](AppsAPI.md#GetApps) | **Get** /apps | 
+[**GetReleaseChannelDeviceStatuses**](AppsAPI.md#GetReleaseChannelDeviceStatuses) | **Get** /apps/{appId}/release-channels/{releaseChannelId}/device-statuses | 
 [**InitiateAppVersionUpload**](AppsAPI.md#InitiateAppVersionUpload) | **Post** /apps/{appId}/versions | 
 [**PreSignAppVersionUpload**](AppsAPI.md#PreSignAppVersionUpload) | **Post** /apps/{appId}/versions/{versionId}/pre-sign | 
 [**ShareReleaseChannel**](AppsAPI.md#ShareReleaseChannel) | **Post** /apps/{appId}/release-channels/{releaseChannelId}/share | 
-[**UnshareReleaseChannel**](AppsAPI.md#UnshareReleaseChannel) | **Delete** /apps/{appId}/release-channels/{releaseChannelId}/share | 
+[**UnshareReleaseChannel**](AppsAPI.md#UnshareReleaseChannel) | **Post** /apps/{appId}/release-channels/{releaseChannelId}/unshare | 
 [**UpdateApp**](AppsAPI.md#UpdateApp) | **Put** /apps/{appId} | 
 [**UpdateReleaseChannel**](AppsAPI.md#UpdateReleaseChannel) | **Put** /apps/{appId}/release-channels/{releaseChannelId} | 
 
 
 
-## CompleteAppVersionUpload
+## AttachTagsToApp
 
-> GetAppVersions200ResponseDataInner CompleteAppVersionUpload(ctx, appId, versionId).CompleteAppVersionUploadRequest(completeAppVersionUploadRequest).Execute()
+> AttachTagsToApp(ctx, appId).Accept(accept).AttachTagsToAppRequest(attachTagsToAppRequest).Execute()
 
 
 
@@ -40,18 +46,91 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
+	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
+	attachTagsToAppRequest := *openapiclient.NewAttachTagsToAppRequest([]string{"Tags_example"}) // AttachTagsToAppRequest | The tags to attach or detach. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AppsAPI.AttachTagsToApp(context.Background(), appId).Accept(accept).AttachTagsToAppRequest(attachTagsToAppRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.AttachTagsToApp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appId** | **string** | The ID of an app. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAttachTagsToAppRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
+
+ **attachTagsToAppRequest** | [**AttachTagsToAppRequest**](AttachTagsToAppRequest.md) | The tags to attach or detach. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CompleteAppVersionUpload
+
+> CreateAppBundle201ResponseAppBuild CompleteAppVersionUpload(ctx, appId, versionId).Accept(accept).CompleteAppVersionUploadRequest(completeAppVersionUploadRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/heru-inc/arbor-api-go"
+)
+
+func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	versionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app version.
 	completeAppVersionUploadRequest := *openapiclient.NewCompleteAppVersionUploadRequest("xrdm-016da47e-4c49-48ad-9c61-94904e06a226/apps/2f5d24ec-be98-49d3-ac42-cdecbeea40f0/f40d390d-94fc-47a9-952c-8b7321f3eefc/my-app.apk", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []openapiclient.CompleteAppVersionUploadRequestPartsInner{*openapiclient.NewCompleteAppVersionUploadRequestPartsInner(int32(1), "d41d8cd98f00b204e9800998ecf8427e")}) // CompleteAppVersionUploadRequest | The fields to complete the upload. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.CompleteAppVersionUpload(context.Background(), appId, versionId).CompleteAppVersionUploadRequest(completeAppVersionUploadRequest).Execute()
+	resp, r, err := apiClient.AppsAPI.CompleteAppVersionUpload(context.Background(), appId, versionId).Accept(accept).CompleteAppVersionUploadRequest(completeAppVersionUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.CompleteAppVersionUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompleteAppVersionUpload`: GetAppVersions200ResponseDataInner
+	// response from `CompleteAppVersionUpload`: CreateAppBundle201ResponseAppBuild
 	fmt.Fprintf(os.Stdout, "Response from `AppsAPI.CompleteAppVersionUpload`: %v\n", resp)
 }
 ```
@@ -72,13 +151,14 @@ Other parameters are passed through a pointer to a apiCompleteAppVersionUploadRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
  **completeAppVersionUploadRequest** | [**CompleteAppVersionUploadRequest**](CompleteAppVersionUploadRequest.md) | The fields to complete the upload. | 
 
 ### Return type
 
-[**GetAppVersions200ResponseDataInner**](GetAppVersions200ResponseDataInner.md)
+[**CreateAppBundle201ResponseAppBuild**](CreateAppBundle201ResponseAppBuild.md)
 
 ### Authorization
 
@@ -94,9 +174,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetApp
+## CreateApp
 
-> GetApps200ResponseDataInner GetApp(ctx, appId).Execute()
+> GetApps200ResponseDataInner CreateApp(ctx).Accept(accept).CreateAppRequest(createAppRequest).Execute()
 
 
 
@@ -115,11 +195,152 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
+	createAppRequest := *openapiclient.NewCreateAppRequest("My App") // CreateAppRequest | The app to create.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppsAPI.CreateApp(context.Background()).Accept(accept).CreateAppRequest(createAppRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.CreateApp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateApp`: GetApps200ResponseDataInner
+	fmt.Fprintf(os.Stdout, "Response from `AppsAPI.CreateApp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAppRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
+ **createAppRequest** | [**CreateAppRequest**](CreateAppRequest.md) | The app to create. | 
+
+### Return type
+
+[**GetApps200ResponseDataInner**](GetApps200ResponseDataInner.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DetachTagsFromApp
+
+> DetachTagsFromApp(ctx, appId).Accept(accept).AttachTagsToAppRequest(attachTagsToAppRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/heru-inc/arbor-api-go"
+)
+
+func main() {
+	accept := "accept_example" // string |  (default to "application/json")
+	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
+	attachTagsToAppRequest := *openapiclient.NewAttachTagsToAppRequest([]string{"Tags_example"}) // AttachTagsToAppRequest | The tags to attach or detach. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AppsAPI.DetachTagsFromApp(context.Background(), appId).Accept(accept).AttachTagsToAppRequest(attachTagsToAppRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.DetachTagsFromApp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appId** | **string** | The ID of an app. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDetachTagsFromAppRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
+
+ **attachTagsToAppRequest** | [**AttachTagsToAppRequest**](AttachTagsToAppRequest.md) | The tags to attach or detach. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetApp
+
+> GetApps200ResponseDataInner GetApp(ctx, appId).Accept(accept).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/heru-inc/arbor-api-go"
+)
+
+func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.GetApp(context.Background(), appId).Execute()
+	resp, r, err := apiClient.AppsAPI.GetApp(context.Background(), appId).Accept(accept).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetApp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,6 +365,7 @@ Other parameters are passed through a pointer to a apiGetAppRequest struct via t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
 ### Return type
@@ -164,9 +386,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAppReleaseChannel
+## GetAppBundles
 
-> GetAppReleaseChannels200ResponseDataInner GetAppReleaseChannel(ctx, appId, releaseChannelId).Execute()
+> GetAppBundles200Response GetAppBundles(ctx, appId).Accept(accept).PerPage(perPage).Page(page).Status(status).Execute()
 
 
 
@@ -185,12 +407,169 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
+	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
+	perPage := int32(56) // int32 | The number of items to return per page. (optional) (default to 10)
+	page := int32(56) // int32 | The page number to return. (optional) (default to 1)
+	status := "status_example" // string | Filter by bundle status (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppsAPI.GetAppBundles(context.Background(), appId).Accept(accept).PerPage(perPage).Page(page).Status(status).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetAppBundles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAppBundles`: GetAppBundles200Response
+	fmt.Fprintf(os.Stdout, "Response from `AppsAPI.GetAppBundles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appId** | **string** | The ID of an app. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAppBundlesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
+
+ **perPage** | **int32** | The number of items to return per page. | [default to 10]
+ **page** | **int32** | The page number to return. | [default to 1]
+ **status** | **string** | Filter by bundle status | 
+
+### Return type
+
+[**GetAppBundles200Response**](GetAppBundles200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAppFiles
+
+> GetAppFiles200Response GetAppFiles(ctx, appId).Accept(accept).PerPage(perPage).Page(page).Sha512(sha512).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/heru-inc/arbor-api-go"
+)
+
+func main() {
+	accept := "accept_example" // string |  (default to "application/json")
+	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
+	perPage := int32(56) // int32 | The number of items to return per page. (optional) (default to 10)
+	page := int32(56) // int32 | The page number to return. (optional) (default to 1)
+	sha512 := []string{"Inner_example"} // []string | Filter files by SHA512 checksums. This parameter allows you to search for files matching any of the provided checksums. Maximum 10 checksums per request. The checksums should be provided as a query-parameter array. e.g. `?sha512[]=abc123&sha512[]=def456`. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppsAPI.GetAppFiles(context.Background(), appId).Accept(accept).PerPage(perPage).Page(page).Sha512(sha512).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetAppFiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAppFiles`: GetAppFiles200Response
+	fmt.Fprintf(os.Stdout, "Response from `AppsAPI.GetAppFiles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appId** | **string** | The ID of an app. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAppFilesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
+
+ **perPage** | **int32** | The number of items to return per page. | [default to 10]
+ **page** | **int32** | The page number to return. | [default to 1]
+ **sha512** | **[]string** | Filter files by SHA512 checksums. This parameter allows you to search for files matching any of the provided checksums. Maximum 10 checksums per request. The checksums should be provided as a query-parameter array. e.g. &#x60;?sha512[]&#x3D;abc123&amp;sha512[]&#x3D;def456&#x60;. | 
+
+### Return type
+
+[**GetAppFiles200Response**](GetAppFiles200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAppReleaseChannel
+
+> GetAppReleaseChannels200ResponseDataInner GetAppReleaseChannel(ctx, appId, releaseChannelId).Accept(accept).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/heru-inc/arbor-api-go"
+)
+
+func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	releaseChannelId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a release channel.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.GetAppReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
+	resp, r, err := apiClient.AppsAPI.GetAppReleaseChannel(context.Background(), appId, releaseChannelId).Accept(accept).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetAppReleaseChannel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,6 +595,7 @@ Other parameters are passed through a pointer to a apiGetAppReleaseChannelReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
 
@@ -239,7 +619,7 @@ Name | Type | Description  | Notes
 
 ## GetAppReleaseChannels
 
-> GetAppReleaseChannels200Response GetAppReleaseChannels(ctx, appId).Execute()
+> GetAppReleaseChannels200Response GetAppReleaseChannels(ctx, appId).Accept(accept).Execute()
 
 
 
@@ -258,11 +638,12 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.GetAppReleaseChannels(context.Background(), appId).Execute()
+	resp, r, err := apiClient.AppsAPI.GetAppReleaseChannels(context.Background(), appId).Accept(accept).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetAppReleaseChannels``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -287,6 +668,7 @@ Other parameters are passed through a pointer to a apiGetAppReleaseChannelsReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
 ### Return type
@@ -309,7 +691,7 @@ Name | Type | Description  | Notes
 
 ## GetAppVersions
 
-> GetAppVersions200Response GetAppVersions(ctx, appId).PerPage(perPage).Page(page).Execute()
+> GetAppVersions200Response GetAppVersions(ctx, appId).Accept(accept).PerPage(perPage).Page(page).Sha256(sha256).Execute()
 
 
 
@@ -328,13 +710,15 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	perPage := int32(56) // int32 | The number of items to return per page. (optional) (default to 10)
 	page := int32(56) // int32 | The page number to return. (optional) (default to 1)
+	sha256 := []string{"Inner_example"} // []string | Filter app versions by SHA256 checksums. This parameter allows you to search for versions matching any of the provided checksums. Maximum 10 checksums per request. The checksums should be provided as a query-parameter array. e.g. `?sha256[]=abc123&sha256[]=def456`. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.GetAppVersions(context.Background(), appId).PerPage(perPage).Page(page).Execute()
+	resp, r, err := apiClient.AppsAPI.GetAppVersions(context.Background(), appId).Accept(accept).PerPage(perPage).Page(page).Sha256(sha256).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetAppVersions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,9 +743,11 @@ Other parameters are passed through a pointer to a apiGetAppVersionsRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
  **perPage** | **int32** | The number of items to return per page. | [default to 10]
  **page** | **int32** | The page number to return. | [default to 1]
+ **sha256** | **[]string** | Filter app versions by SHA256 checksums. This parameter allows you to search for versions matching any of the provided checksums. Maximum 10 checksums per request. The checksums should be provided as a query-parameter array. e.g. &#x60;?sha256[]&#x3D;abc123&amp;sha256[]&#x3D;def456&#x60;. | 
 
 ### Return type
 
@@ -383,7 +769,7 @@ Name | Type | Description  | Notes
 
 ## GetApps
 
-> GetApps200Response GetApps(ctx).PerPage(perPage).Page(page).Execute()
+> GetApps200Response GetApps(ctx).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -402,12 +788,13 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	perPage := int32(56) // int32 | The number of items to return per page. (optional) (default to 10)
 	page := int32(56) // int32 | The page number to return. (optional) (default to 1)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.GetApps(context.Background()).PerPage(perPage).Page(page).Execute()
+	resp, r, err := apiClient.AppsAPI.GetApps(context.Background()).Accept(accept).PerPage(perPage).Page(page).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetApps``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -428,6 +815,7 @@ Other parameters are passed through a pointer to a apiGetAppsRequest struct via 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
  **perPage** | **int32** | The number of items to return per page. | [default to 10]
  **page** | **int32** | The page number to return. | [default to 1]
 
@@ -449,9 +837,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## InitiateAppVersionUpload
+## GetReleaseChannelDeviceStatuses
 
-> InitiateAppVersionUpload200Response InitiateAppVersionUpload(ctx, appId).InitiateAppVersionUploadRequest(initiateAppVersionUploadRequest).Execute()
+> GetReleaseChannelDeviceStatuses200Response GetReleaseChannelDeviceStatuses(ctx, appId, releaseChannelId).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -470,12 +858,92 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
+	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
+	releaseChannelId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a release channel.
+	perPage := int32(56) // int32 | The number of items to return per page. (optional) (default to 10)
+	page := int32(56) // int32 | The page number to return. (optional) (default to 1)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppsAPI.GetReleaseChannelDeviceStatuses(context.Background(), appId, releaseChannelId).Accept(accept).PerPage(perPage).Page(page).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.GetReleaseChannelDeviceStatuses``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetReleaseChannelDeviceStatuses`: GetReleaseChannelDeviceStatuses200Response
+	fmt.Fprintf(os.Stdout, "Response from `AppsAPI.GetReleaseChannelDeviceStatuses`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**appId** | **string** | The ID of an app. | 
+**releaseChannelId** | **string** | The ID of a release channel. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetReleaseChannelDeviceStatusesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
+
+
+ **perPage** | **int32** | The number of items to return per page. | [default to 10]
+ **page** | **int32** | The page number to return. | [default to 1]
+
+### Return type
+
+[**GetReleaseChannelDeviceStatuses200Response**](GetReleaseChannelDeviceStatuses200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## InitiateAppVersionUpload
+
+> InitiateAppVersionUpload200Response InitiateAppVersionUpload(ctx, appId).Accept(accept).InitiateAppVersionUploadRequest(initiateAppVersionUploadRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/heru-inc/arbor-api-go"
+)
+
+func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	initiateAppVersionUploadRequest := *openapiclient.NewInitiateAppVersionUploadRequest("my-app.apk") // InitiateAppVersionUploadRequest | Initiate a new app version upload. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.InitiateAppVersionUpload(context.Background(), appId).InitiateAppVersionUploadRequest(initiateAppVersionUploadRequest).Execute()
+	resp, r, err := apiClient.AppsAPI.InitiateAppVersionUpload(context.Background(), appId).Accept(accept).InitiateAppVersionUploadRequest(initiateAppVersionUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.InitiateAppVersionUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,6 +968,7 @@ Other parameters are passed through a pointer to a apiInitiateAppVersionUploadRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
  **initiateAppVersionUploadRequest** | [**InitiateAppVersionUploadRequest**](InitiateAppVersionUploadRequest.md) | Initiate a new app version upload. | 
 
@@ -523,7 +992,7 @@ Name | Type | Description  | Notes
 
 ## PreSignAppVersionUpload
 
-> []PreSignAppVersionUpload200ResponseInner PreSignAppVersionUpload(ctx, appId, versionId).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
+> []PreSignAppVersionUpload200ResponseInner PreSignAppVersionUpload(ctx, appId, versionId).Accept(accept).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
 
 
 
@@ -542,13 +1011,14 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	versionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app version.
 	preSignAppVersionUploadRequest := *openapiclient.NewPreSignAppVersionUploadRequest("xrdm-016da47e-4c49-48ad-9c61-94904e06a226/apps/2f5d24ec-be98-49d3-ac42-cdecbeea40f0/f40d390d-94fc-47a9-952c-8b7321f3eefc/my-app.apk", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []int32{int32(1)}) // PreSignAppVersionUploadRequest | The fields to retrieve presigned URLs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.PreSignAppVersionUpload(context.Background(), appId, versionId).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
+	resp, r, err := apiClient.AppsAPI.PreSignAppVersionUpload(context.Background(), appId, versionId).Accept(accept).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.PreSignAppVersionUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -574,6 +1044,7 @@ Other parameters are passed through a pointer to a apiPreSignAppVersionUploadReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
  **preSignAppVersionUploadRequest** | [**PreSignAppVersionUploadRequest**](PreSignAppVersionUploadRequest.md) | The fields to retrieve presigned URLs. | 
@@ -598,7 +1069,7 @@ Name | Type | Description  | Notes
 
 ## ShareReleaseChannel
 
-> ShareReleaseChannel200Response ShareReleaseChannel(ctx, appId, releaseChannelId).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
+> ShareReleaseChannel200Response ShareReleaseChannel(ctx, appId, releaseChannelId).Accept(accept).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
 
 
 
@@ -617,13 +1088,14 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	releaseChannelId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a release channel.
 	shareReleaseChannelRequest := *openapiclient.NewShareReleaseChannelRequest("another-organization-inc") // ShareReleaseChannelRequest | The details of the organization with which you want to share/unshare the release channel. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.ShareReleaseChannel(context.Background(), appId, releaseChannelId).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
+	resp, r, err := apiClient.AppsAPI.ShareReleaseChannel(context.Background(), appId, releaseChannelId).Accept(accept).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.ShareReleaseChannel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -649,6 +1121,7 @@ Other parameters are passed through a pointer to a apiShareReleaseChannelRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
  **shareReleaseChannelRequest** | [**ShareReleaseChannelRequest**](ShareReleaseChannelRequest.md) | The details of the organization with which you want to share/unshare the release channel. | 
@@ -673,7 +1146,7 @@ Name | Type | Description  | Notes
 
 ## UnshareReleaseChannel
 
-> UnshareReleaseChannel200Response UnshareReleaseChannel(ctx, appId, releaseChannelId).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
+> UnshareReleaseChannel200Response UnshareReleaseChannel(ctx, appId, releaseChannelId).Accept(accept).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
 
 
 
@@ -692,13 +1165,14 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	releaseChannelId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a release channel.
 	shareReleaseChannelRequest := *openapiclient.NewShareReleaseChannelRequest("another-organization-inc") // ShareReleaseChannelRequest | The details of the organization with which you want to share/unshare the release channel. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.UnshareReleaseChannel(context.Background(), appId, releaseChannelId).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
+	resp, r, err := apiClient.AppsAPI.UnshareReleaseChannel(context.Background(), appId, releaseChannelId).Accept(accept).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.UnshareReleaseChannel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -724,6 +1198,7 @@ Other parameters are passed through a pointer to a apiUnshareReleaseChannelReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
  **shareReleaseChannelRequest** | [**ShareReleaseChannelRequest**](ShareReleaseChannelRequest.md) | The details of the organization with which you want to share/unshare the release channel. | 
@@ -748,7 +1223,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApp
 
-> GetApps200ResponseDataInner UpdateApp(ctx, appId).UpdateAppRequest(updateAppRequest).Execute()
+> GetApps200ResponseDataInner UpdateApp(ctx, appId).Accept(accept).UpdateAppRequest(updateAppRequest).Execute()
 
 
 
@@ -767,12 +1242,13 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	updateAppRequest := *openapiclient.NewUpdateAppRequest() // UpdateAppRequest | The app fields to update. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.UpdateApp(context.Background(), appId).UpdateAppRequest(updateAppRequest).Execute()
+	resp, r, err := apiClient.AppsAPI.UpdateApp(context.Background(), appId).Accept(accept).UpdateAppRequest(updateAppRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.UpdateApp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -797,6 +1273,7 @@ Other parameters are passed through a pointer to a apiUpdateAppRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
  **updateAppRequest** | [**UpdateAppRequest**](UpdateAppRequest.md) | The app fields to update. | 
 
@@ -820,7 +1297,7 @@ Name | Type | Description  | Notes
 
 ## UpdateReleaseChannel
 
-> GetAppReleaseChannels200ResponseDataInner UpdateReleaseChannel(ctx, appId, releaseChannelId).UpdateReleaseChannelRequest(updateReleaseChannelRequest).Execute()
+> GetAppReleaseChannels200ResponseDataInner UpdateReleaseChannel(ctx, appId, releaseChannelId).Accept(accept).UpdateReleaseChannelRequest(updateReleaseChannelRequest).Execute()
 
 
 
@@ -839,13 +1316,14 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	appId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app.
 	releaseChannelId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a release channel.
-	updateReleaseChannelRequest := *openapiclient.NewUpdateReleaseChannelRequest("123e4567-e89b-12d3-a456-426614174000") // UpdateReleaseChannelRequest | The release channel fields to update. (optional)
+	updateReleaseChannelRequest := *openapiclient.NewUpdateReleaseChannelRequest() // UpdateReleaseChannelRequest | The release channel fields to update. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AppsAPI.UpdateReleaseChannel(context.Background(), appId, releaseChannelId).UpdateReleaseChannelRequest(updateReleaseChannelRequest).Execute()
+	resp, r, err := apiClient.AppsAPI.UpdateReleaseChannel(context.Background(), appId, releaseChannelId).Accept(accept).UpdateReleaseChannelRequest(updateReleaseChannelRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.UpdateReleaseChannel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -871,6 +1349,7 @@ Other parameters are passed through a pointer to a apiUpdateReleaseChannelReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
  **updateReleaseChannelRequest** | [**UpdateReleaseChannelRequest**](UpdateReleaseChannelRequest.md) | The release channel fields to update. | 

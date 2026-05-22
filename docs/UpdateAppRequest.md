@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 
@@ -27,30 +27,30 @@ NewUpdateAppRequestWithDefaults instantiates a new UpdateAppRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTitle
+### GetName
 
-`func (o *UpdateAppRequest) GetTitle() string`
+`func (o *UpdateAppRequest) GetName() string`
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetTitleOk
+### GetNameOk
 
-`func (o *UpdateAppRequest) GetTitleOk() (*string, bool)`
+`func (o *UpdateAppRequest) GetNameOk() (*string, bool)`
 
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetName
 
-`func (o *UpdateAppRequest) SetTitle(v string)`
+`func (o *UpdateAppRequest) SetName(v string)`
 
-SetTitle sets Title field to given value.
+SetName sets Name field to given value.
 
-### HasTitle
+### HasName
 
-`func (o *UpdateAppRequest) HasTitle() bool`
+`func (o *UpdateAppRequest) HasName() bool`
 
-HasTitle returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
 
 ### GetDescription
 

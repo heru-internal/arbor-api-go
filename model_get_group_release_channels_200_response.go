@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the GetGroupReleaseChannels200Response type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GetGroupReleaseChannels200Response{}
 
-// GetGroupReleaseChannels200Response Get a paginated list of release channels for a group.
+// GetGroupReleaseChannels200Response A paginated list of release channels for a group.
 type GetGroupReleaseChannels200Response struct {
 	Data []GetAppReleaseChannels200ResponseDataInner `json:"data,omitempty"`
 	Links *GetGroupReleaseChannels200ResponseLinks `json:"links,omitempty"`

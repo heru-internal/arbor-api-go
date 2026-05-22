@@ -7,15 +7,14 @@ Name | Type | Description | Notes
 **FirstName** | **string** |  | 
 **LastName** | **string** |  | 
 **Email** | **string** |  | 
-**OrganizationRoleId** | Pointer to **string** | Required when &#x60;groupRoleId&#x60; &amp; &#x60;groupIds&#x60; are not provided. | [optional] 
-**GroupRoleId** | Pointer to **string** | Required when &#x60;organizationRoleId&#x60; is not provided. | [optional] 
-**GroupIds** | Pointer to **[]string** | Required when &#x60;organizationRoleId&#x60; is not provided. | [optional] 
+**DefaultRoleId** | **string** | The default role assigned to the user. Can be an organization role or a group role. | 
+**GroupRoles** | Pointer to [**[]CreateUserRequestGroupRolesInner**](CreateUserRequestGroupRolesInner.md) | Optional group roles to assign to the user upon creation. | [optional] 
 
 ## Methods
 
 ### NewCreateUserRequest
 
-`func NewCreateUserRequest(firstName string, lastName string, email string, ) *CreateUserRequest`
+`func NewCreateUserRequest(firstName string, lastName string, email string, defaultRoleId string, ) *CreateUserRequest`
 
 NewCreateUserRequest instantiates a new CreateUserRequest object
 This constructor will assign default values to properties that have it defined,
@@ -90,80 +89,50 @@ and a boolean to check if the value has been set.
 SetEmail sets Email field to given value.
 
 
-### GetOrganizationRoleId
+### GetDefaultRoleId
 
-`func (o *CreateUserRequest) GetOrganizationRoleId() string`
+`func (o *CreateUserRequest) GetDefaultRoleId() string`
 
-GetOrganizationRoleId returns the OrganizationRoleId field if non-nil, zero value otherwise.
+GetDefaultRoleId returns the DefaultRoleId field if non-nil, zero value otherwise.
 
-### GetOrganizationRoleIdOk
+### GetDefaultRoleIdOk
 
-`func (o *CreateUserRequest) GetOrganizationRoleIdOk() (*string, bool)`
+`func (o *CreateUserRequest) GetDefaultRoleIdOk() (*string, bool)`
 
-GetOrganizationRoleIdOk returns a tuple with the OrganizationRoleId field if it's non-nil, zero value otherwise
+GetDefaultRoleIdOk returns a tuple with the DefaultRoleId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrganizationRoleId
+### SetDefaultRoleId
 
-`func (o *CreateUserRequest) SetOrganizationRoleId(v string)`
+`func (o *CreateUserRequest) SetDefaultRoleId(v string)`
 
-SetOrganizationRoleId sets OrganizationRoleId field to given value.
+SetDefaultRoleId sets DefaultRoleId field to given value.
 
-### HasOrganizationRoleId
 
-`func (o *CreateUserRequest) HasOrganizationRoleId() bool`
+### GetGroupRoles
 
-HasOrganizationRoleId returns a boolean if a field has been set.
+`func (o *CreateUserRequest) GetGroupRoles() []CreateUserRequestGroupRolesInner`
 
-### GetGroupRoleId
+GetGroupRoles returns the GroupRoles field if non-nil, zero value otherwise.
 
-`func (o *CreateUserRequest) GetGroupRoleId() string`
+### GetGroupRolesOk
 
-GetGroupRoleId returns the GroupRoleId field if non-nil, zero value otherwise.
+`func (o *CreateUserRequest) GetGroupRolesOk() (*[]CreateUserRequestGroupRolesInner, bool)`
 
-### GetGroupRoleIdOk
-
-`func (o *CreateUserRequest) GetGroupRoleIdOk() (*string, bool)`
-
-GetGroupRoleIdOk returns a tuple with the GroupRoleId field if it's non-nil, zero value otherwise
+GetGroupRolesOk returns a tuple with the GroupRoles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroupRoleId
+### SetGroupRoles
 
-`func (o *CreateUserRequest) SetGroupRoleId(v string)`
+`func (o *CreateUserRequest) SetGroupRoles(v []CreateUserRequestGroupRolesInner)`
 
-SetGroupRoleId sets GroupRoleId field to given value.
+SetGroupRoles sets GroupRoles field to given value.
 
-### HasGroupRoleId
+### HasGroupRoles
 
-`func (o *CreateUserRequest) HasGroupRoleId() bool`
+`func (o *CreateUserRequest) HasGroupRoles() bool`
 
-HasGroupRoleId returns a boolean if a field has been set.
-
-### GetGroupIds
-
-`func (o *CreateUserRequest) GetGroupIds() []string`
-
-GetGroupIds returns the GroupIds field if non-nil, zero value otherwise.
-
-### GetGroupIdsOk
-
-`func (o *CreateUserRequest) GetGroupIdsOk() (*[]string, bool)`
-
-GetGroupIdsOk returns a tuple with the GroupIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupIds
-
-`func (o *CreateUserRequest) SetGroupIds(v []string)`
-
-SetGroupIds sets GroupIds field to given value.
-
-### HasGroupIds
-
-`func (o *CreateUserRequest) HasGroupIds() bool`
-
-HasGroupIds returns a boolean if a field has been set.
+HasGroupRoles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

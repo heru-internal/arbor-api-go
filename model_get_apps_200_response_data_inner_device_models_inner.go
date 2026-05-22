@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -23,6 +23,9 @@ type GetApps200ResponseDataInnerDeviceModelsInner struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
+	IsSupported *bool `json:"isSupported,omitempty"`
+	CreatedAt *Time `json:"createdAt,omitempty"`
+	UpdatedAt *Time `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -141,6 +144,102 @@ func (o *GetApps200ResponseDataInnerDeviceModelsInner) SetManufacturer(v string)
 	o.Manufacturer = &v
 }
 
+// GetIsSupported returns the IsSupported field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetIsSupported() bool {
+	if o == nil || IsNil(o.IsSupported) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSupported
+}
+
+// GetIsSupportedOk returns a tuple with the IsSupported field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetIsSupportedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSupported) {
+		return nil, false
+	}
+	return o.IsSupported, true
+}
+
+// HasIsSupported returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) HasIsSupported() bool {
+	if o != nil && !IsNil(o.IsSupported) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSupported gets a reference to the given bool and assigns it to the IsSupported field.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) SetIsSupported(v bool) {
+	o.IsSupported = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetCreatedAt() Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetCreatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given Time and assigns it to the CreatedAt field.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) SetCreatedAt(v Time) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetUpdatedAt() Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetUpdatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given Time and assigns it to the UpdatedAt field.
+func (o *GetApps200ResponseDataInnerDeviceModelsInner) SetUpdatedAt(v Time) {
+	o.UpdatedAt = &v
+}
+
 func (o GetApps200ResponseDataInnerDeviceModelsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -159,6 +258,15 @@ func (o GetApps200ResponseDataInnerDeviceModelsInner) ToMap() (map[string]interf
 	}
 	if !IsNil(o.Manufacturer) {
 		toSerialize["manufacturer"] = o.Manufacturer
+	}
+	if !IsNil(o.IsSupported) {
+		toSerialize["isSupported"] = o.IsSupported
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -185,6 +293,9 @@ func (o *GetApps200ResponseDataInnerDeviceModelsInner) UnmarshalJSON(data []byte
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "manufacturer")
+		delete(additionalProperties, "isSupported")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
 		o.AdditionalProperties = additionalProperties
 	}
 

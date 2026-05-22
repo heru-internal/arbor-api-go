@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &PreSignFileUpload200ResponseInner{}
 // PreSignFileUpload200ResponseInner struct for PreSignFileUpload200ResponseInner
 type PreSignFileUpload200ResponseInner struct {
 	PartNumber *int32 `json:"partNumber,omitempty"`
-	Url *string `json:"url,omitempty"`
+	PresignedUrl *string `json:"presignedUrl,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,36 +76,36 @@ func (o *PreSignFileUpload200ResponseInner) SetPartNumber(v int32) {
 	o.PartNumber = &v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
-func (o *PreSignFileUpload200ResponseInner) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+// GetPresignedUrl returns the PresignedUrl field value if set, zero value otherwise.
+func (o *PreSignFileUpload200ResponseInner) GetPresignedUrl() string {
+	if o == nil || IsNil(o.PresignedUrl) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.PresignedUrl
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetPresignedUrlOk returns a tuple with the PresignedUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PreSignFileUpload200ResponseInner) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+func (o *PreSignFileUpload200ResponseInner) GetPresignedUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.PresignedUrl) {
 		return nil, false
 	}
-	return o.Url, true
+	return o.PresignedUrl, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *PreSignFileUpload200ResponseInner) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+// HasPresignedUrl returns a boolean if a field has been set.
+func (o *PreSignFileUpload200ResponseInner) HasPresignedUrl() bool {
+	if o != nil && !IsNil(o.PresignedUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *PreSignFileUpload200ResponseInner) SetUrl(v string) {
-	o.Url = &v
+// SetPresignedUrl gets a reference to the given string and assigns it to the PresignedUrl field.
+func (o *PreSignFileUpload200ResponseInner) SetPresignedUrl(v string) {
+	o.PresignedUrl = &v
 }
 
 func (o PreSignFileUpload200ResponseInner) MarshalJSON() ([]byte, error) {
@@ -121,8 +121,8 @@ func (o PreSignFileUpload200ResponseInner) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.PartNumber) {
 		toSerialize["partNumber"] = o.PartNumber
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if !IsNil(o.PresignedUrl) {
+		toSerialize["presignedUrl"] = o.PresignedUrl
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -147,7 +147,7 @@ func (o *PreSignFileUpload200ResponseInner) UnmarshalJSON(data []byte) (err erro
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "partNumber")
-		delete(additionalProperties, "url")
+		delete(additionalProperties, "presignedUrl")
 		o.AdditionalProperties = additionalProperties
 	}
 

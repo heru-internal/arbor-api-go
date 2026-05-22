@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -21,8 +21,11 @@ var _ MappedNullable = &InitiateFileUploadRequest{}
 
 // InitiateFileUploadRequest struct for InitiateFileUploadRequest
 type InitiateFileUploadRequest struct {
+	// Name of the file to upload. Cannot end with .apk or .obb (except .obb files are allowed when appBundleId is provided).
 	Filename string `json:"filename"`
 	Path string `json:"path"`
+	// Optional UUID of an existing app bundle to associate this file with
+	AppBundleId *string `json:"appBundleId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,6 +98,38 @@ func (o *InitiateFileUploadRequest) SetPath(v string) {
 	o.Path = v
 }
 
+// GetAppBundleId returns the AppBundleId field value if set, zero value otherwise.
+func (o *InitiateFileUploadRequest) GetAppBundleId() string {
+	if o == nil || IsNil(o.AppBundleId) {
+		var ret string
+		return ret
+	}
+	return *o.AppBundleId
+}
+
+// GetAppBundleIdOk returns a tuple with the AppBundleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InitiateFileUploadRequest) GetAppBundleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AppBundleId) {
+		return nil, false
+	}
+	return o.AppBundleId, true
+}
+
+// HasAppBundleId returns a boolean if a field has been set.
+func (o *InitiateFileUploadRequest) HasAppBundleId() bool {
+	if o != nil && !IsNil(o.AppBundleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppBundleId gets a reference to the given string and assigns it to the AppBundleId field.
+func (o *InitiateFileUploadRequest) SetAppBundleId(v string) {
+	o.AppBundleId = &v
+}
+
 func (o InitiateFileUploadRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -107,6 +142,9 @@ func (o InitiateFileUploadRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["filename"] = o.Filename
 	toSerialize["path"] = o.Path
+	if !IsNil(o.AppBundleId) {
+		toSerialize["appBundleId"] = o.AppBundleId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -153,6 +191,7 @@ func (o *InitiateFileUploadRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "filename")
 		delete(additionalProperties, "path")
+		delete(additionalProperties, "appBundleId")
 		o.AdditionalProperties = additionalProperties
 	}
 

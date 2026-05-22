@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]GetAppVersions200ResponseDataInner**](GetAppVersions200ResponseDataInner.md) |  | [optional] 
+**Data** | Pointer to [**[]CreateAppBundle201ResponseAppBuild**](CreateAppBundle201ResponseAppBuild.md) |  | [optional] 
 **Links** | Pointer to [**GetAppVersions200ResponseLinks**](GetAppVersions200ResponseLinks.md) |  | [optional] 
 **Meta** | Pointer to [**GetAppVersions200ResponseMeta**](GetAppVersions200ResponseMeta.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *GetAppVersions200Response) GetData() []GetAppVersions200ResponseDataInner`
+`func (o *GetAppVersions200Response) GetData() []CreateAppBundle201ResponseAppBuild`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *GetAppVersions200Response) GetDataOk() (*[]GetAppVersions200ResponseDataInner, bool)`
+`func (o *GetAppVersions200Response) GetDataOk() (*[]CreateAppBundle201ResponseAppBuild, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *GetAppVersions200Response) SetData(v []GetAppVersions200ResponseDataInner)`
+`func (o *GetAppVersions200Response) SetData(v []CreateAppBundle201ResponseAppBuild)`
 
 SetData sets Data field to given value.
 

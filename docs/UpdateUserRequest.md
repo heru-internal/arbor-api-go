@@ -6,9 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FirstName** | Pointer to **string** |  | [optional] 
 **LastName** | Pointer to **string** |  | [optional] 
-**OrganizationRoleId** | Pointer to **NullableString** |  | [optional] 
-**GroupRoleId** | Pointer to **NullableString** | Required when &#x60;groupIds&#x60; is provided. | [optional] 
-**GroupIds** | Pointer to **[]string** | Required when &#x60;groupRoleId&#x60; is provided. | [optional] 
+**DefaultRoleId** | Pointer to **string** |  | [optional] 
+**GroupRoles** | Pointer to [**[]UpdateUserRequestGroupRolesInner**](UpdateUserRequestGroupRolesInner.md) | Group roles to attach or detach from the user. | [optional] 
 
 ## Methods
 
@@ -79,100 +78,55 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
-### GetOrganizationRoleId
+### GetDefaultRoleId
 
-`func (o *UpdateUserRequest) GetOrganizationRoleId() string`
+`func (o *UpdateUserRequest) GetDefaultRoleId() string`
 
-GetOrganizationRoleId returns the OrganizationRoleId field if non-nil, zero value otherwise.
+GetDefaultRoleId returns the DefaultRoleId field if non-nil, zero value otherwise.
 
-### GetOrganizationRoleIdOk
+### GetDefaultRoleIdOk
 
-`func (o *UpdateUserRequest) GetOrganizationRoleIdOk() (*string, bool)`
+`func (o *UpdateUserRequest) GetDefaultRoleIdOk() (*string, bool)`
 
-GetOrganizationRoleIdOk returns a tuple with the OrganizationRoleId field if it's non-nil, zero value otherwise
+GetDefaultRoleIdOk returns a tuple with the DefaultRoleId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrganizationRoleId
+### SetDefaultRoleId
 
-`func (o *UpdateUserRequest) SetOrganizationRoleId(v string)`
+`func (o *UpdateUserRequest) SetDefaultRoleId(v string)`
 
-SetOrganizationRoleId sets OrganizationRoleId field to given value.
+SetDefaultRoleId sets DefaultRoleId field to given value.
 
-### HasOrganizationRoleId
+### HasDefaultRoleId
 
-`func (o *UpdateUserRequest) HasOrganizationRoleId() bool`
+`func (o *UpdateUserRequest) HasDefaultRoleId() bool`
 
-HasOrganizationRoleId returns a boolean if a field has been set.
+HasDefaultRoleId returns a boolean if a field has been set.
 
-### SetOrganizationRoleIdNil
+### GetGroupRoles
 
-`func (o *UpdateUserRequest) SetOrganizationRoleIdNil(b bool)`
+`func (o *UpdateUserRequest) GetGroupRoles() []UpdateUserRequestGroupRolesInner`
 
- SetOrganizationRoleIdNil sets the value for OrganizationRoleId to be an explicit nil
+GetGroupRoles returns the GroupRoles field if non-nil, zero value otherwise.
 
-### UnsetOrganizationRoleId
-`func (o *UpdateUserRequest) UnsetOrganizationRoleId()`
+### GetGroupRolesOk
 
-UnsetOrganizationRoleId ensures that no value is present for OrganizationRoleId, not even an explicit nil
-### GetGroupRoleId
+`func (o *UpdateUserRequest) GetGroupRolesOk() (*[]UpdateUserRequestGroupRolesInner, bool)`
 
-`func (o *UpdateUserRequest) GetGroupRoleId() string`
-
-GetGroupRoleId returns the GroupRoleId field if non-nil, zero value otherwise.
-
-### GetGroupRoleIdOk
-
-`func (o *UpdateUserRequest) GetGroupRoleIdOk() (*string, bool)`
-
-GetGroupRoleIdOk returns a tuple with the GroupRoleId field if it's non-nil, zero value otherwise
+GetGroupRolesOk returns a tuple with the GroupRoles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGroupRoleId
+### SetGroupRoles
 
-`func (o *UpdateUserRequest) SetGroupRoleId(v string)`
+`func (o *UpdateUserRequest) SetGroupRoles(v []UpdateUserRequestGroupRolesInner)`
 
-SetGroupRoleId sets GroupRoleId field to given value.
+SetGroupRoles sets GroupRoles field to given value.
 
-### HasGroupRoleId
+### HasGroupRoles
 
-`func (o *UpdateUserRequest) HasGroupRoleId() bool`
+`func (o *UpdateUserRequest) HasGroupRoles() bool`
 
-HasGroupRoleId returns a boolean if a field has been set.
-
-### SetGroupRoleIdNil
-
-`func (o *UpdateUserRequest) SetGroupRoleIdNil(b bool)`
-
- SetGroupRoleIdNil sets the value for GroupRoleId to be an explicit nil
-
-### UnsetGroupRoleId
-`func (o *UpdateUserRequest) UnsetGroupRoleId()`
-
-UnsetGroupRoleId ensures that no value is present for GroupRoleId, not even an explicit nil
-### GetGroupIds
-
-`func (o *UpdateUserRequest) GetGroupIds() []string`
-
-GetGroupIds returns the GroupIds field if non-nil, zero value otherwise.
-
-### GetGroupIdsOk
-
-`func (o *UpdateUserRequest) GetGroupIdsOk() (*[]string, bool)`
-
-GetGroupIdsOk returns a tuple with the GroupIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupIds
-
-`func (o *UpdateUserRequest) SetGroupIds(v []string)`
-
-SetGroupIds sets GroupIds field to given value.
-
-### HasGroupIds
-
-`func (o *UpdateUserRequest) HasGroupIds() bool`
-
-HasGroupIds returns a boolean if a field has been set.
+HasGroupRoles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

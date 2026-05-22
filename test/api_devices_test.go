@@ -1,5 +1,5 @@
 /*
-arborxr-api-v2
+ArborXR MDM API
 
 Testing DevicesAPIService
 
@@ -22,105 +22,338 @@ func Test_arborapi_DevicesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test DevicesAPIService DevicesAddReleaseChannel", func(t *testing.T) {
+	t.Run("Test DevicesAPIService AddFileToDevice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceId string
 
-		httpRes, err := apiClient.DevicesAPI.DevicesAddReleaseChannel(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DevicesAPI.AddFileToDevice(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test DevicesAPIService DevicesCheckFingerprint", func(t *testing.T) {
+	t.Run("Test DevicesAPIService AddReleaseChannelToDevice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceId string
 
-		httpRes, err := apiClient.DevicesAPI.DevicesCheckFingerprint(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DevicesAPI.AddReleaseChannelToDevice(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test DevicesAPIService DevicesDevice", func(t *testing.T) {
+	t.Run("Test DevicesAPIService AddVideoToDevice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceId string
 
-		resp, httpRes, err := apiClient.DevicesAPI.DevicesDevice(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DevicesAPI.AddVideoToDevice(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test DevicesAPIService DevicesDevices", func(t *testing.T) {
+	t.Run("Test DevicesAPIService AttachTagsToDevice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DevicesAPI.DevicesDevices(context.Background()).Execute()
+		var deviceId string
+
+		httpRes, err := apiClient.DevicesAPI.AttachTagsToDevice(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test DevicesAPIService DevicesLaunchApp", func(t *testing.T) {
+	t.Run("Test DevicesAPIService CheckFingerprint", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		httpRes, err := apiClient.DevicesAPI.CheckFingerprint(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService ClearAppDataForApp", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceId string
 		var appId string
 
-		httpRes, err := apiClient.DevicesAPI.DevicesLaunchApp(context.Background(), deviceId, appId).Execute()
+		httpRes, err := apiClient.DevicesAPI.ClearAppDataForApp(context.Background(), deviceId, appId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test DevicesAPIService DevicesReboot", func(t *testing.T) {
+	t.Run("Test DevicesAPIService ClearAppDataForPackage", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceId string
+		var packageName string
 
-		httpRes, err := apiClient.DevicesAPI.DevicesReboot(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DevicesAPI.ClearAppDataForPackage(context.Background(), deviceId, packageName).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test DevicesAPIService DevicesRemoveReleaseChannel", func(t *testing.T) {
+	t.Run("Test DevicesAPIService DetachTagsFromDevice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceId string
 
-		httpRes, err := apiClient.DevicesAPI.DevicesRemoveReleaseChannel(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DevicesAPI.DetachTagsFromDevice(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test DevicesAPIService DevicesUpdateDevice", func(t *testing.T) {
+	t.Run("Test DevicesAPIService FactoryResetDevice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceId string
 
-		resp, httpRes, err := apiClient.DevicesAPI.DevicesUpdateDevice(context.Background(), deviceId).Execute()
+		httpRes, err := apiClient.DevicesAPI.FactoryResetDevice(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService GetDevice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		resp, httpRes, err := apiClient.DevicesAPI.GetDevice(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService GetDeviceFiles", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		resp, httpRes, err := apiClient.DevicesAPI.GetDeviceFiles(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService GetDeviceReleaseChannels", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		resp, httpRes, err := apiClient.DevicesAPI.GetDeviceReleaseChannels(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService GetDeviceVideos", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		resp, httpRes, err := apiClient.DevicesAPI.GetDeviceVideos(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService GetDevices", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DevicesAPI.GetDevices(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService LaunchApp", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+		var appId string
+
+		httpRes, err := apiClient.DevicesAPI.LaunchApp(context.Background(), deviceId, appId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService LaunchPackage", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+		var packageName string
+
+		httpRes, err := apiClient.DevicesAPI.LaunchPackage(context.Background(), deviceId, packageName).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService LaunchVideo", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+		var videoId string
+
+		httpRes, err := apiClient.DevicesAPI.LaunchVideo(context.Background(), deviceId, videoId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService MigrateDeviceToOrganization", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+		var organizationSlug string
+
+		httpRes, err := apiClient.DevicesAPI.MigrateDeviceToOrganization(context.Background(), deviceId, organizationSlug).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService RebootDevice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		httpRes, err := apiClient.DevicesAPI.RebootDevice(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService RemoveFileFromDevice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+		var fileId string
+
+		httpRes, err := apiClient.DevicesAPI.RemoveFileFromDevice(context.Background(), deviceId, fileId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService RemoveReleaseChannelFromDevice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+		var releaseChannelId string
+
+		httpRes, err := apiClient.DevicesAPI.RemoveReleaseChannelFromDevice(context.Background(), deviceId, releaseChannelId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService RemoveVideoFromDevice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+		var videoId string
+
+		httpRes, err := apiClient.DevicesAPI.RemoveVideoFromDevice(context.Background(), deviceId, videoId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService ShutDownDevice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		httpRes, err := apiClient.DevicesAPI.ShutDownDevice(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService UpdateDevice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		resp, httpRes, err := apiClient.DevicesAPI.UpdateDevice(context.Background(), deviceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DevicesAPIService UpdateDeviceCustomFields", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var deviceId string
+
+		resp, httpRes, err := apiClient.DevicesAPI.UpdateDeviceCustomFields(context.Background(), deviceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

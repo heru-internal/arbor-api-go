@@ -1,0 +1,108 @@
+# GetThemes200Response
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Data** | Pointer to [**[]GetThemes200ResponseDataInner**](GetThemes200ResponseDataInner.md) |  | [optional] 
+**Links** | Pointer to [**GetThemes200ResponseLinks**](GetThemes200ResponseLinks.md) |  | [optional] 
+**Meta** | Pointer to [**GetThemes200ResponseMeta**](GetThemes200ResponseMeta.md) |  | [optional] 
+
+## Methods
+
+### NewGetThemes200Response
+
+`func NewGetThemes200Response() *GetThemes200Response`
+
+NewGetThemes200Response instantiates a new GetThemes200Response object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewGetThemes200ResponseWithDefaults
+
+`func NewGetThemes200ResponseWithDefaults() *GetThemes200Response`
+
+NewGetThemes200ResponseWithDefaults instantiates a new GetThemes200Response object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetData
+
+`func (o *GetThemes200Response) GetData() []GetThemes200ResponseDataInner`
+
+GetData returns the Data field if non-nil, zero value otherwise.
+
+### GetDataOk
+
+`func (o *GetThemes200Response) GetDataOk() (*[]GetThemes200ResponseDataInner, bool)`
+
+GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetData
+
+`func (o *GetThemes200Response) SetData(v []GetThemes200ResponseDataInner)`
+
+SetData sets Data field to given value.
+
+### HasData
+
+`func (o *GetThemes200Response) HasData() bool`
+
+HasData returns a boolean if a field has been set.
+
+### GetLinks
+
+`func (o *GetThemes200Response) GetLinks() GetThemes200ResponseLinks`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *GetThemes200Response) GetLinksOk() (*GetThemes200ResponseLinks, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *GetThemes200Response) SetLinks(v GetThemes200ResponseLinks)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *GetThemes200Response) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
+
+### GetMeta
+
+`func (o *GetThemes200Response) GetMeta() GetThemes200ResponseMeta`
+
+GetMeta returns the Meta field if non-nil, zero value otherwise.
+
+### GetMetaOk
+
+`func (o *GetThemes200Response) GetMetaOk() (*GetThemes200ResponseMeta, bool)`
+
+GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMeta
+
+`func (o *GetThemes200Response) SetMeta(v GetThemes200ResponseMeta)`
+
+SetMeta sets Meta field to given value.
+
+### HasMeta
+
+`func (o *GetThemes200Response) HasMeta() bool`
+
+HasMeta returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**DownloadUrl** | Pointer to **string** |  | [optional] 
+**DownloadUrl** | Pointer to **NullableString** | URL to download the icon. Returns null when status is not &#39;available&#39;. | [optional] 
+**CreatedAt** | Pointer to **Time** |  | [optional] 
+**UpdatedAt** | Pointer to **Time** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +103,66 @@ SetDownloadUrl sets DownloadUrl field to given value.
 `func (o *GetApps200ResponseDataInnerIcon) HasDownloadUrl() bool`
 
 HasDownloadUrl returns a boolean if a field has been set.
+
+### SetDownloadUrlNil
+
+`func (o *GetApps200ResponseDataInnerIcon) SetDownloadUrlNil(b bool)`
+
+ SetDownloadUrlNil sets the value for DownloadUrl to be an explicit nil
+
+### UnsetDownloadUrl
+`func (o *GetApps200ResponseDataInnerIcon) UnsetDownloadUrl()`
+
+UnsetDownloadUrl ensures that no value is present for DownloadUrl, not even an explicit nil
+### GetCreatedAt
+
+`func (o *GetApps200ResponseDataInnerIcon) GetCreatedAt() Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *GetApps200ResponseDataInnerIcon) GetCreatedAtOk() (*Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *GetApps200ResponseDataInnerIcon) SetCreatedAt(v Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *GetApps200ResponseDataInnerIcon) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *GetApps200ResponseDataInnerIcon) GetUpdatedAt() Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *GetApps200ResponseDataInnerIcon) GetUpdatedAtOk() (*Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *GetApps200ResponseDataInnerIcon) SetUpdatedAt(v Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *GetApps200ResponseDataInnerIcon) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

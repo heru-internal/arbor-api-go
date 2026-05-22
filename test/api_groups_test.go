@@ -1,5 +1,5 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
 Testing GroupsAPIService
 
@@ -35,19 +35,6 @@ func Test_arborapi_GroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GroupsAPIService AddReleaseChannelToDeviceGroup", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var groupId string
-
-		httpRes, err := apiClient.GroupsAPI.AddReleaseChannelToDeviceGroup(context.Background(), groupId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test GroupsAPIService AddReleaseChannelToGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -61,11 +48,117 @@ func Test_arborapi_GroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GroupsAPIService GetDeviceGroups", func(t *testing.T) {
+	t.Run("Test GroupsAPIService AddVideoToGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.GroupsAPI.GetDeviceGroups(context.Background()).Execute()
+		var groupId string
+
+		httpRes, err := apiClient.GroupsAPI.AddVideoToGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService AttachTagsToGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+
+		httpRes, err := apiClient.GroupsAPI.AttachTagsToGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService ConfigureGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+
+		resp, httpRes, err := apiClient.GroupsAPI.ConfigureGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService CreateGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.GroupsAPI.CreateGroup(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService DeleteGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+
+		httpRes, err := apiClient.GroupsAPI.DeleteGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService DetachTagsFromGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+
+		httpRes, err := apiClient.GroupsAPI.DetachTagsFromGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService DuplicateGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+
+		resp, httpRes, err := apiClient.GroupsAPI.DuplicateGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GetGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GetGroupHierarchy", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroupHierarchy(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -104,21 +197,9 @@ func Test_arborapi_GroupsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var groupId string
+		var fileId string
 
-		httpRes, err := apiClient.GroupsAPI.RemoveFileFromGroup(context.Background(), groupId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GroupsAPIService RemoveReleaseChannelFromDeviceGroup", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var groupId string
-
-		httpRes, err := apiClient.GroupsAPI.RemoveReleaseChannelFromDeviceGroup(context.Background(), groupId).Execute()
+		httpRes, err := apiClient.GroupsAPI.RemoveFileFromGroup(context.Background(), groupId, fileId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -130,10 +211,39 @@ func Test_arborapi_GroupsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var groupId string
+		var releaseChannelId string
 
-		httpRes, err := apiClient.GroupsAPI.RemoveReleaseChannelFromGroup(context.Background(), groupId).Execute()
+		httpRes, err := apiClient.GroupsAPI.RemoveReleaseChannelFromGroup(context.Background(), groupId, releaseChannelId).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService RemoveVideoFromGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+		var videoId string
+
+		httpRes, err := apiClient.GroupsAPI.RemoveVideoFromGroup(context.Background(), groupId, videoId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService UpdateGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var groupId string
+
+		resp, httpRes, err := apiClient.GroupsAPI.UpdateGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

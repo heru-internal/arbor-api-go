@@ -1,5 +1,5 @@
 /*
-arborxr-api-v2
+ArborXR MDM API
 
 Testing UsersAPIService
 
@@ -22,61 +22,76 @@ func Test_arborapi_UsersAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test UsersAPIService UsersCreateUser", func(t *testing.T) {
+	t.Run("Test UsersAPIService CreateUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.UsersAPI.UsersCreateUser(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UsersAPI.CreateUser(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test UsersAPIService UsersDeleteUser", func(t *testing.T) {
+	t.Run("Test UsersAPIService DeleteUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userId string
 
-		httpRes, err := apiClient.UsersAPI.UsersDeleteUser(context.Background(), userId).Execute()
+		httpRes, err := apiClient.UsersAPI.DeleteUser(context.Background(), userId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test UsersAPIService UsersUpdateUser", func(t *testing.T) {
+	t.Run("Test UsersAPIService GetCurrentUser", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.UsersAPI.GetCurrentUser(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test UsersAPIService GetUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userId string
 
-		httpRes, err := apiClient.UsersAPI.UsersUpdateUser(context.Background(), userId).Execute()
+		resp, httpRes, err := apiClient.UsersAPI.GetUser(context.Background(), userId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test UsersAPIService UsersUser", func(t *testing.T) {
+	t.Run("Test UsersAPIService GetUsers", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.UsersAPI.GetUsers(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test UsersAPIService UpdateUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var userId string
 
-		httpRes, err := apiClient.UsersAPI.UsersUser(context.Background(), userId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test UsersAPIService UsersUsers", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.UsersAPI.UsersUsers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UsersAPI.UpdateUser(context.Background(), userId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

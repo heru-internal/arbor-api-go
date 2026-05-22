@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Manufacturer** | Pointer to **string** |  | [optional] 
+**IsSupported** | Pointer to **bool** |  | [optional] 
+**CreatedAt** | Pointer to **Time** |  | [optional] 
+**UpdatedAt** | Pointer to **Time** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +104,81 @@ SetManufacturer sets Manufacturer field to given value.
 `func (o *GetApps200ResponseDataInnerDeviceModelsInner) HasManufacturer() bool`
 
 HasManufacturer returns a boolean if a field has been set.
+
+### GetIsSupported
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetIsSupported() bool`
+
+GetIsSupported returns the IsSupported field if non-nil, zero value otherwise.
+
+### GetIsSupportedOk
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetIsSupportedOk() (*bool, bool)`
+
+GetIsSupportedOk returns a tuple with the IsSupported field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSupported
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) SetIsSupported(v bool)`
+
+SetIsSupported sets IsSupported field to given value.
+
+### HasIsSupported
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) HasIsSupported() bool`
+
+HasIsSupported returns a boolean if a field has been set.
+
+### GetCreatedAt
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetCreatedAt() Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetCreatedAtOk() (*Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) SetCreatedAt(v Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetUpdatedAt() Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) GetUpdatedAtOk() (*Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) SetUpdatedAt(v Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *GetApps200ResponseDataInnerDeviceModelsInner) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateDeviceRequest{}
 
 // UpdateDeviceRequest struct for UpdateDeviceRequest
 type UpdateDeviceRequest struct {
-	Title *string `json:"title,omitempty"`
-	DeviceGroupId NullableString `json:"deviceGroupId,omitempty"`
+	Name *string `json:"name,omitempty"`
+	GroupId NullableString `json:"groupId,omitempty"`
 	Tags []string `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -45,78 +45,78 @@ func NewUpdateDeviceRequestWithDefaults() *UpdateDeviceRequest {
 	return &this
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *UpdateDeviceRequest) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *UpdateDeviceRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateDeviceRequest) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+func (o *UpdateDeviceRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Name, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+// HasName returns a boolean if a field has been set.
+func (o *UpdateDeviceRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *UpdateDeviceRequest) SetTitle(v string) {
-	o.Title = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *UpdateDeviceRequest) SetName(v string) {
+	o.Name = &v
 }
 
-// GetDeviceGroupId returns the DeviceGroupId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UpdateDeviceRequest) GetDeviceGroupId() string {
-	if o == nil || IsNil(o.DeviceGroupId.Get()) {
+// GetGroupId returns the GroupId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateDeviceRequest) GetGroupId() string {
+	if o == nil || IsNil(o.GroupId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DeviceGroupId.Get()
+	return *o.GroupId.Get()
 }
 
-// GetDeviceGroupIdOk returns a tuple with the DeviceGroupId field value if set, nil otherwise
+// GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UpdateDeviceRequest) GetDeviceGroupIdOk() (*string, bool) {
+func (o *UpdateDeviceRequest) GetGroupIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DeviceGroupId.Get(), o.DeviceGroupId.IsSet()
+	return o.GroupId.Get(), o.GroupId.IsSet()
 }
 
-// HasDeviceGroupId returns a boolean if a field has been set.
-func (o *UpdateDeviceRequest) HasDeviceGroupId() bool {
-	if o != nil && o.DeviceGroupId.IsSet() {
+// HasGroupId returns a boolean if a field has been set.
+func (o *UpdateDeviceRequest) HasGroupId() bool {
+	if o != nil && o.GroupId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeviceGroupId gets a reference to the given NullableString and assigns it to the DeviceGroupId field.
-func (o *UpdateDeviceRequest) SetDeviceGroupId(v string) {
-	o.DeviceGroupId.Set(&v)
+// SetGroupId gets a reference to the given NullableString and assigns it to the GroupId field.
+func (o *UpdateDeviceRequest) SetGroupId(v string) {
+	o.GroupId.Set(&v)
 }
-// SetDeviceGroupIdNil sets the value for DeviceGroupId to be an explicit nil
-func (o *UpdateDeviceRequest) SetDeviceGroupIdNil() {
-	o.DeviceGroupId.Set(nil)
+// SetGroupIdNil sets the value for GroupId to be an explicit nil
+func (o *UpdateDeviceRequest) SetGroupIdNil() {
+	o.GroupId.Set(nil)
 }
 
-// UnsetDeviceGroupId ensures that no value is present for DeviceGroupId, not even an explicit nil
-func (o *UpdateDeviceRequest) UnsetDeviceGroupId() {
-	o.DeviceGroupId.Unset()
+// UnsetGroupId ensures that no value is present for GroupId, not even an explicit nil
+func (o *UpdateDeviceRequest) UnsetGroupId() {
+	o.GroupId.Unset()
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -161,11 +161,11 @@ func (o UpdateDeviceRequest) MarshalJSON() ([]byte, error) {
 
 func (o UpdateDeviceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.DeviceGroupId.IsSet() {
-		toSerialize["deviceGroupId"] = o.DeviceGroupId.Get()
+	if o.GroupId.IsSet() {
+		toSerialize["groupId"] = o.GroupId.Get()
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
@@ -192,8 +192,8 @@ func (o *UpdateDeviceRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "title")
-		delete(additionalProperties, "deviceGroupId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "groupId")
 		delete(additionalProperties, "tags")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -1,6 +1,6 @@
 # \DeviceModelsAPI
 
-All URIs are relative to *https://api.xrdm.app/api/v2*
+All URIs are relative to *https://api.xrdm.app/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetDeviceModel
 
-> GetApps200ResponseDataInnerDeviceModelsInner GetDeviceModel(ctx, deviceModelId).Execute()
+> GetApps200ResponseDataInnerDeviceModelsInner GetDeviceModel(ctx, deviceModelId).Accept(accept).Execute()
 
 
 
@@ -30,11 +30,12 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	deviceModelId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a device model.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceModelsAPI.GetDeviceModel(context.Background(), deviceModelId).Execute()
+	resp, r, err := apiClient.DeviceModelsAPI.GetDeviceModel(context.Background(), deviceModelId).Accept(accept).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceModelsAPI.GetDeviceModel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,6 +60,7 @@ Other parameters are passed through a pointer to a apiGetDeviceModelRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
 
 
 ### Return type
@@ -81,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## GetDeviceModels
 
-> GetDeviceModels200Response GetDeviceModels(ctx).PerPage(perPage).Page(page).Execute()
+> GetDeviceModels200Response GetDeviceModels(ctx).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -100,12 +102,13 @@ import (
 )
 
 func main() {
+	accept := "accept_example" // string |  (default to "application/json")
 	perPage := int32(56) // int32 | The number of items to return per page. (optional) (default to 10)
 	page := int32(56) // int32 | The page number to return. (optional) (default to 1)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeviceModelsAPI.GetDeviceModels(context.Background()).PerPage(perPage).Page(page).Execute()
+	resp, r, err := apiClient.DeviceModelsAPI.GetDeviceModels(context.Background()).Accept(accept).PerPage(perPage).Page(page).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeviceModelsAPI.GetDeviceModels``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -126,6 +129,7 @@ Other parameters are passed through a pointer to a apiGetDeviceModelsRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string** |  | [default to &quot;application/json&quot;]
  **perPage** | **int32** | The number of items to return per page. | [default to 10]
  **page** | **int32** | The page number to return. | [default to 1]
 

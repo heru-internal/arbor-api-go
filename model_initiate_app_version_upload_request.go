@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -26,6 +26,8 @@ type InitiateAppVersionUploadRequest struct {
 	ReleaseChannelId *string `json:"releaseChannelId,omitempty"`
 	// Mutually exclusive from releaseChannelId
 	NewReleaseChannelTitle *string `json:"newReleaseChannelTitle,omitempty"`
+	// Type of app build. Use 'app-bundle' to create an AppBundle with PENDING status. Defaults to 'standalone'.
+	AppBuildType *string `json:"appBuildType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -137,6 +139,38 @@ func (o *InitiateAppVersionUploadRequest) SetNewReleaseChannelTitle(v string) {
 	o.NewReleaseChannelTitle = &v
 }
 
+// GetAppBuildType returns the AppBuildType field value if set, zero value otherwise.
+func (o *InitiateAppVersionUploadRequest) GetAppBuildType() string {
+	if o == nil || IsNil(o.AppBuildType) {
+		var ret string
+		return ret
+	}
+	return *o.AppBuildType
+}
+
+// GetAppBuildTypeOk returns a tuple with the AppBuildType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InitiateAppVersionUploadRequest) GetAppBuildTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AppBuildType) {
+		return nil, false
+	}
+	return o.AppBuildType, true
+}
+
+// HasAppBuildType returns a boolean if a field has been set.
+func (o *InitiateAppVersionUploadRequest) HasAppBuildType() bool {
+	if o != nil && !IsNil(o.AppBuildType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppBuildType gets a reference to the given string and assigns it to the AppBuildType field.
+func (o *InitiateAppVersionUploadRequest) SetAppBuildType(v string) {
+	o.AppBuildType = &v
+}
+
 func (o InitiateAppVersionUploadRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,6 +187,9 @@ func (o InitiateAppVersionUploadRequest) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.NewReleaseChannelTitle) {
 		toSerialize["newReleaseChannelTitle"] = o.NewReleaseChannelTitle
+	}
+	if !IsNil(o.AppBuildType) {
+		toSerialize["appBuildType"] = o.AppBuildType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -200,6 +237,7 @@ func (o *InitiateAppVersionUploadRequest) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "filename")
 		delete(additionalProperties, "releaseChannelId")
 		delete(additionalProperties, "newReleaseChannelTitle")
+		delete(additionalProperties, "appBuildType")
 		o.AdditionalProperties = additionalProperties
 	}
 

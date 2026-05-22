@@ -1,5 +1,5 @@
 /*
-arborxr-api-v2
+ArborXR MDM API
 
 Testing DeviceModelsAPIService
 
@@ -22,13 +22,13 @@ func Test_arborapi_DeviceModelsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test DeviceModelsAPIService DeviceModelsDeviceModel", func(t *testing.T) {
+	t.Run("Test DeviceModelsAPIService GetDeviceModel", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var deviceModelId string
 
-		resp, httpRes, err := apiClient.DeviceModelsAPI.DeviceModelsDeviceModel(context.Background(), deviceModelId).Execute()
+		resp, httpRes, err := apiClient.DeviceModelsAPI.GetDeviceModel(context.Background(), deviceModelId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,11 +36,11 @@ func Test_arborapi_DeviceModelsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DeviceModelsAPIService DeviceModelsDeviceModels", func(t *testing.T) {
+	t.Run("Test DeviceModelsAPIService GetDeviceModels", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.DeviceModelsAPI.DeviceModelsDeviceModels(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DeviceModelsAPI.GetDeviceModels(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

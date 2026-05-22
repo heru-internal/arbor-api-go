@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]GetUsers200ResponseDataInner**](GetUsers200ResponseDataInner.md) |  | [optional] 
+**Data** | Pointer to [**[]GetCurrentUser200Response**](GetCurrentUser200Response.md) |  | [optional] 
 **Links** | Pointer to [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | [optional] 
 **Meta** | Pointer to [**GetUsers200ResponseMeta**](GetUsers200ResponseMeta.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *GetUsers200Response) GetData() []GetUsers200ResponseDataInner`
+`func (o *GetUsers200Response) GetData() []GetCurrentUser200Response`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *GetUsers200Response) GetDataOk() (*[]GetUsers200ResponseDataInner, bool)`
+`func (o *GetUsers200Response) GetDataOk() (*[]GetCurrentUser200Response, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *GetUsers200Response) SetData(v []GetUsers200ResponseDataInner)`
+`func (o *GetUsers200Response) SetData(v []GetCurrentUser200Response)`
 
 SetData sets Data field to given value.
 

@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &GetAppVersions200Response{}
 
 // GetAppVersions200Response A paginated list of app versions.
 type GetAppVersions200Response struct {
-	Data []GetAppVersions200ResponseDataInner `json:"data,omitempty"`
+	Data []CreateAppBundle201ResponseAppBuild `json:"data,omitempty"`
 	Links *GetAppVersions200ResponseLinks `json:"links,omitempty"`
 	Meta *GetAppVersions200ResponseMeta `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,9 +46,9 @@ func NewGetAppVersions200ResponseWithDefaults() *GetAppVersions200Response {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *GetAppVersions200Response) GetData() []GetAppVersions200ResponseDataInner {
+func (o *GetAppVersions200Response) GetData() []CreateAppBundle201ResponseAppBuild {
 	if o == nil || IsNil(o.Data) {
-		var ret []GetAppVersions200ResponseDataInner
+		var ret []CreateAppBundle201ResponseAppBuild
 		return ret
 	}
 	return o.Data
@@ -56,7 +56,7 @@ func (o *GetAppVersions200Response) GetData() []GetAppVersions200ResponseDataInn
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetAppVersions200Response) GetDataOk() ([]GetAppVersions200ResponseDataInner, bool) {
+func (o *GetAppVersions200Response) GetDataOk() ([]CreateAppBundle201ResponseAppBuild, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *GetAppVersions200Response) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []GetAppVersions200ResponseDataInner and assigns it to the Data field.
-func (o *GetAppVersions200Response) SetData(v []GetAppVersions200ResponseDataInner) {
+// SetData gets a reference to the given []CreateAppBundle201ResponseAppBuild and assigns it to the Data field.
+func (o *GetAppVersions200Response) SetData(v []CreateAppBundle201ResponseAppBuild) {
 	o.Data = v
 }
 

@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -20,7 +20,7 @@ var _ MappedNullable = &UpdateAppRequest{}
 
 // UpdateAppRequest struct for UpdateAppRequest
 type UpdateAppRequest struct {
-	Title *string `json:"title,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Tags []string `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,36 +45,36 @@ func NewUpdateAppRequestWithDefaults() *UpdateAppRequest {
 	return &this
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *UpdateAppRequest) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *UpdateAppRequest) GetName() string {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateAppRequest) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
+func (o *UpdateAppRequest) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Name, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *UpdateAppRequest) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
+// HasName returns a boolean if a field has been set.
+func (o *UpdateAppRequest) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *UpdateAppRequest) SetTitle(v string) {
-	o.Title = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *UpdateAppRequest) SetName(v string) {
+	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -151,8 +151,8 @@ func (o UpdateAppRequest) MarshalJSON() ([]byte, error) {
 
 func (o UpdateAppRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -182,7 +182,7 @@ func (o *UpdateAppRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "title")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "tags")
 		o.AdditionalProperties = additionalProperties

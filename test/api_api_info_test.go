@@ -1,5 +1,5 @@
 /*
-arborxr-api-v2
+ArborXR MDM API
 
 Testing APIInfoAPIService
 
@@ -22,11 +22,23 @@ func Test_arborapi_APIInfoAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test APIInfoAPIService APIInfoInfo", func(t *testing.T) {
+	t.Run("Test APIInfoAPIService GetApiInfo", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.APIInfoAPI.APIInfoInfo(context.Background()).Execute()
+		resp, httpRes, err := apiClient.APIInfoAPI.GetApiInfo(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test APIInfoAPIService GetTokenInfo", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.APIInfoAPI.GetTokenInfo(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -21,6 +21,7 @@ var _ MappedNullable = &AddFileToGroupRequest{}
 
 // AddFileToGroupRequest struct for AddFileToGroupRequest
 type AddFileToGroupRequest struct {
+	// The ID of the file to add to the group
 	FileId string `json:"fileId"`
 	AdditionalProperties map[string]interface{}
 }

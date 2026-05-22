@@ -1,5 +1,5 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
 Testing RolesAPIService
 
@@ -22,13 +22,13 @@ func Test_arborapi_RolesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RolesAPIService GetGroupRole", func(t *testing.T) {
+	t.Run("Test RolesAPIService GetRole", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var roleId string
 
-		resp, httpRes, err := apiClient.RolesAPI.GetGroupRole(context.Background(), roleId).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.GetRole(context.Background(), roleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,37 +36,11 @@ func Test_arborapi_RolesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RolesAPIService GetGroupRoles", func(t *testing.T) {
+	t.Run("Test RolesAPIService GetRoles", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.RolesAPI.GetGroupRoles(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RolesAPIService GetOrganizationRole", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var roleId string
-
-		resp, httpRes, err := apiClient.RolesAPI.GetOrganizationRole(context.Background(), roleId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RolesAPIService GetOrganizationRoles", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.RolesAPI.GetOrganizationRoles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RolesAPI.GetRoles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

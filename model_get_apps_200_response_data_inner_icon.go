@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -22,7 +22,10 @@ var _ MappedNullable = &GetApps200ResponseDataInnerIcon{}
 type GetApps200ResponseDataInnerIcon struct {
 	Id *string `json:"id,omitempty"`
 	Status *string `json:"status,omitempty"`
-	DownloadUrl *string `json:"downloadUrl,omitempty"`
+	// URL to download the icon. Returns null when status is not 'available'.
+	DownloadUrl NullableString `json:"downloadUrl,omitempty"`
+	CreatedAt *Time `json:"createdAt,omitempty"`
+	UpdatedAt *Time `json:"updatedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,36 +112,110 @@ func (o *GetApps200ResponseDataInnerIcon) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetDownloadUrl returns the DownloadUrl field value if set, zero value otherwise.
+// GetDownloadUrl returns the DownloadUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetApps200ResponseDataInnerIcon) GetDownloadUrl() string {
-	if o == nil || IsNil(o.DownloadUrl) {
+	if o == nil || IsNil(o.DownloadUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DownloadUrl
+	return *o.DownloadUrl.Get()
 }
 
 // GetDownloadUrlOk returns a tuple with the DownloadUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetApps200ResponseDataInnerIcon) GetDownloadUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.DownloadUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DownloadUrl, true
+	return o.DownloadUrl.Get(), o.DownloadUrl.IsSet()
 }
 
 // HasDownloadUrl returns a boolean if a field has been set.
 func (o *GetApps200ResponseDataInnerIcon) HasDownloadUrl() bool {
-	if o != nil && !IsNil(o.DownloadUrl) {
+	if o != nil && o.DownloadUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDownloadUrl gets a reference to the given string and assigns it to the DownloadUrl field.
+// SetDownloadUrl gets a reference to the given NullableString and assigns it to the DownloadUrl field.
 func (o *GetApps200ResponseDataInnerIcon) SetDownloadUrl(v string) {
-	o.DownloadUrl = &v
+	o.DownloadUrl.Set(&v)
+}
+// SetDownloadUrlNil sets the value for DownloadUrl to be an explicit nil
+func (o *GetApps200ResponseDataInnerIcon) SetDownloadUrlNil() {
+	o.DownloadUrl.Set(nil)
+}
+
+// UnsetDownloadUrl ensures that no value is present for DownloadUrl, not even an explicit nil
+func (o *GetApps200ResponseDataInnerIcon) UnsetDownloadUrl() {
+	o.DownloadUrl.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInnerIcon) GetCreatedAt() Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInnerIcon) GetCreatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInnerIcon) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given Time and assigns it to the CreatedAt field.
+func (o *GetApps200ResponseDataInnerIcon) SetCreatedAt(v Time) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *GetApps200ResponseDataInnerIcon) GetUpdatedAt() Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetApps200ResponseDataInnerIcon) GetUpdatedAtOk() (*Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *GetApps200ResponseDataInnerIcon) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given Time and assigns it to the UpdatedAt field.
+func (o *GetApps200ResponseDataInnerIcon) SetUpdatedAt(v Time) {
+	o.UpdatedAt = &v
 }
 
 func (o GetApps200ResponseDataInnerIcon) MarshalJSON() ([]byte, error) {
@@ -157,8 +234,14 @@ func (o GetApps200ResponseDataInnerIcon) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.DownloadUrl) {
-		toSerialize["downloadUrl"] = o.DownloadUrl
+	if o.DownloadUrl.IsSet() {
+		toSerialize["downloadUrl"] = o.DownloadUrl.Get()
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -185,6 +268,8 @@ func (o *GetApps200ResponseDataInnerIcon) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "downloadUrl")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
 		o.AdditionalProperties = additionalProperties
 	}
 

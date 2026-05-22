@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileId** | **string** |  | 
+**FileId** | **string** | The ID of the file to add to the group | 
 
 ## Methods
 

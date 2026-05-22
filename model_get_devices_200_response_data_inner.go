@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -13,6 +13,7 @@ package arborapi
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the GetDevices200ResponseDataInner type satisfies the MappedNullable interface at compile time
@@ -20,25 +21,27 @@ var _ MappedNullable = &GetDevices200ResponseDataInner{}
 
 // GetDevices200ResponseDataInner struct for GetDevices200ResponseDataInner
 type GetDevices200ResponseDataInner struct {
-	Id *string `json:"id,omitempty"`
-	Title *string `json:"title,omitempty"`
-	SerialNumber *string `json:"serialNumber,omitempty"`
-	DeviceGroup NullableString `json:"deviceGroup,omitempty"`
-	Group *GetDeviceGroups200ResponseDataInner `json:"group,omitempty"`
-	Model *string `json:"model,omitempty"`
-	Tags []string `json:"tags,omitempty"`
-	LastCommunicatedAt NullableString `json:"lastCommunicatedAt,omitempty"`
-	IsOnline NullableBool `json:"isOnline,omitempty"`
+	Id string `json:"id"`
+	Organization *GetCurrentOrganization200Response `json:"organization,omitempty"`
+	Name string `json:"name"`
+	SerialNumber string `json:"serialNumber"`
+	Group *GetDevices200ResponseDataInnerGroup `json:"group,omitempty"`
+	DeviceModel GetApps200ResponseDataInnerDeviceModelsInner `json:"deviceModel"`
+	Tags []string `json:"tags"`
+	LastCommunicatedAt NullableTime `json:"lastCommunicatedAt,omitempty"`
+	IsOnline bool `json:"isOnline"`
 	ClientVersion NullableString `json:"clientVersion,omitempty"`
 	LauncherVersion NullableString `json:"launcherVersion,omitempty"`
-	EnrollmentDate NullableString `json:"enrollmentDate,omitempty"`
+	EnrollmentDate NullableTime `json:"enrollmentDate"`
 	SystemVersion NullableString `json:"systemVersion,omitempty"`
 	OsVersion NullableString `json:"osVersion,omitempty"`
 	Ssid NullableString `json:"ssid,omitempty"`
 	MacAddress NullableString `json:"macAddress,omitempty"`
 	RandomizedMacAddress NullableString `json:"randomizedMacAddress,omitempty"`
-	StorageSpaceFreeGb NullableFloat32 `json:"storageSpaceFreeGb,omitempty"`
-	StorageSpaceTotalGb NullableFloat32 `json:"storageSpaceTotalGb,omitempty"`
+	// Free storage space in bytes
+	StorageSpaceFreeBytes NullableInt64 `json:"storageSpaceFreeBytes,omitempty"`
+	// Total storage space in bytes
+	StorageSpaceTotalBytes NullableInt64 `json:"storageSpaceTotalBytes,omitempty"`
 	BatteryHealth NullableString `json:"batteryHealth,omitempty"`
 	BatteryCharging NullableBool `json:"batteryCharging,omitempty"`
 	BatteryPercentage NullableInt32 `json:"batteryPercentage,omitempty"`
@@ -49,7 +52,14 @@ type GetDevices200ResponseDataInner struct {
 	LinkSpeedMbps NullableInt32 `json:"linkSpeedMbps,omitempty"`
 	LastLocationLatitude NullableFloat32 `json:"lastLocationLatitude,omitempty"`
 	LastLocationLongitude NullableFloat32 `json:"lastLocationLongitude,omitempty"`
-	LastLocationAt NullableString `json:"lastLocationAt,omitempty"`
+	LastLocationAt NullableTime `json:"lastLocationAt,omitempty"`
+	RunningApp NullableGetDevices200ResponseDataInnerRunningApp `json:"runningApp,omitempty"`
+	CustomFields []GetDevices200ResponseDataInnerCustomFieldsInner `json:"customFields"`
+	ComplianceStatus string `json:"complianceStatus"`
+	// Currently, only PICO & Meta Hms devices report this data.
+	Controllers []GetDevices200ResponseDataInnerControllersInner `json:"controllers"`
+	CreatedAt Time `json:"createdAt"`
+	UpdatedAt Time `json:"updatedAt"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -59,8 +69,20 @@ type _GetDevices200ResponseDataInner GetDevices200ResponseDataInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetDevices200ResponseDataInner() *GetDevices200ResponseDataInner {
+func NewGetDevices200ResponseDataInner(id string, name string, serialNumber string, deviceModel GetApps200ResponseDataInnerDeviceModelsInner, tags []string, isOnline bool, enrollmentDate NullableTime, customFields []GetDevices200ResponseDataInnerCustomFieldsInner, complianceStatus string, controllers []GetDevices200ResponseDataInnerControllersInner, createdAt Time, updatedAt Time) *GetDevices200ResponseDataInner {
 	this := GetDevices200ResponseDataInner{}
+	this.Id = id
+	this.Name = name
+	this.SerialNumber = serialNumber
+	this.DeviceModel = deviceModel
+	this.Tags = tags
+	this.IsOnline = isOnline
+	this.EnrollmentDate = enrollmentDate
+	this.CustomFields = customFields
+	this.ComplianceStatus = complianceStatus
+	this.Controllers = controllers
+	this.CreatedAt = createdAt
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -72,148 +94,114 @@ func NewGetDevices200ResponseDataInnerWithDefaults() *GetDevices200ResponseDataI
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *GetDevices200ResponseDataInner) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *GetDevices200ResponseDataInner) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *GetDevices200ResponseDataInner) SetId(v string) {
-	o.Id = &v
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *GetDevices200ResponseDataInner) GetTitle() string {
-	if o == nil || IsNil(o.Title) {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetDevices200ResponseDataInner) GetTitleOk() (*string, bool) {
-	if o == nil || IsNil(o.Title) {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasTitle() bool {
-	if o != nil && !IsNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *GetDevices200ResponseDataInner) SetTitle(v string) {
-	o.Title = &v
-}
-
-// GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
-func (o *GetDevices200ResponseDataInner) GetSerialNumber() string {
-	if o == nil || IsNil(o.SerialNumber) {
-		var ret string
-		return ret
-	}
-	return *o.SerialNumber
-}
-
-// GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetDevices200ResponseDataInner) GetSerialNumberOk() (*string, bool) {
-	if o == nil || IsNil(o.SerialNumber) {
-		return nil, false
-	}
-	return o.SerialNumber, true
-}
-
-// HasSerialNumber returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasSerialNumber() bool {
-	if o != nil && !IsNil(o.SerialNumber) {
-		return true
-	}
-
-	return false
-}
-
-// SetSerialNumber gets a reference to the given string and assigns it to the SerialNumber field.
-func (o *GetDevices200ResponseDataInner) SetSerialNumber(v string) {
-	o.SerialNumber = &v
-}
-
-// GetDeviceGroup returns the DeviceGroup field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetDeviceGroup() string {
-	if o == nil || IsNil(o.DeviceGroup.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.DeviceGroup.Get()
-}
-
-// GetDeviceGroupOk returns a tuple with the DeviceGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetDeviceGroupOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DeviceGroup.Get(), o.DeviceGroup.IsSet()
+	return &o.Id, true
 }
 
-// HasDeviceGroup returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasDeviceGroup() bool {
-	if o != nil && o.DeviceGroup.IsSet() {
+// SetId sets field value
+func (o *GetDevices200ResponseDataInner) SetId(v string) {
+	o.Id = v
+}
+
+// GetOrganization returns the Organization field value if set, zero value otherwise.
+func (o *GetDevices200ResponseDataInner) GetOrganization() GetCurrentOrganization200Response {
+	if o == nil || IsNil(o.Organization) {
+		var ret GetCurrentOrganization200Response
+		return ret
+	}
+	return *o.Organization
+}
+
+// GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetOrganizationOk() (*GetCurrentOrganization200Response, bool) {
+	if o == nil || IsNil(o.Organization) {
+		return nil, false
+	}
+	return o.Organization, true
+}
+
+// HasOrganization returns a boolean if a field has been set.
+func (o *GetDevices200ResponseDataInner) HasOrganization() bool {
+	if o != nil && !IsNil(o.Organization) {
 		return true
 	}
 
 	return false
 }
 
-// SetDeviceGroup gets a reference to the given NullableString and assigns it to the DeviceGroup field.
-func (o *GetDevices200ResponseDataInner) SetDeviceGroup(v string) {
-	o.DeviceGroup.Set(&v)
-}
-// SetDeviceGroupNil sets the value for DeviceGroup to be an explicit nil
-func (o *GetDevices200ResponseDataInner) SetDeviceGroupNil() {
-	o.DeviceGroup.Set(nil)
+// SetOrganization gets a reference to the given GetCurrentOrganization200Response and assigns it to the Organization field.
+func (o *GetDevices200ResponseDataInner) SetOrganization(v GetCurrentOrganization200Response) {
+	o.Organization = &v
 }
 
-// UnsetDeviceGroup ensures that no value is present for DeviceGroup, not even an explicit nil
-func (o *GetDevices200ResponseDataInner) UnsetDeviceGroup() {
-	o.DeviceGroup.Unset()
+// GetName returns the Name field value
+func (o *GetDevices200ResponseDataInner) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *GetDevices200ResponseDataInner) SetName(v string) {
+	o.Name = v
+}
+
+// GetSerialNumber returns the SerialNumber field value
+func (o *GetDevices200ResponseDataInner) GetSerialNumber() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SerialNumber
+}
+
+// GetSerialNumberOk returns a tuple with the SerialNumber field value
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetSerialNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SerialNumber, true
+}
+
+// SetSerialNumber sets field value
+func (o *GetDevices200ResponseDataInner) SetSerialNumber(v string) {
+	o.SerialNumber = v
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise.
-func (o *GetDevices200ResponseDataInner) GetGroup() GetDeviceGroups200ResponseDataInner {
+func (o *GetDevices200ResponseDataInner) GetGroup() GetDevices200ResponseDataInnerGroup {
 	if o == nil || IsNil(o.Group) {
-		var ret GetDeviceGroups200ResponseDataInner
+		var ret GetDevices200ResponseDataInnerGroup
 		return ret
 	}
 	return *o.Group
@@ -221,7 +209,7 @@ func (o *GetDevices200ResponseDataInner) GetGroup() GetDeviceGroups200ResponseDa
 
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDevices200ResponseDataInner) GetGroupOk() (*GetDeviceGroups200ResponseDataInner, bool) {
+func (o *GetDevices200ResponseDataInner) GetGroupOk() (*GetDevices200ResponseDataInnerGroup, bool) {
 	if o == nil || IsNil(o.Group) {
 		return nil, false
 	}
@@ -237,79 +225,63 @@ func (o *GetDevices200ResponseDataInner) HasGroup() bool {
 	return false
 }
 
-// SetGroup gets a reference to the given GetDeviceGroups200ResponseDataInner and assigns it to the Group field.
-func (o *GetDevices200ResponseDataInner) SetGroup(v GetDeviceGroups200ResponseDataInner) {
+// SetGroup gets a reference to the given GetDevices200ResponseDataInnerGroup and assigns it to the Group field.
+func (o *GetDevices200ResponseDataInner) SetGroup(v GetDevices200ResponseDataInnerGroup) {
 	o.Group = &v
 }
 
-// GetModel returns the Model field value if set, zero value otherwise.
-func (o *GetDevices200ResponseDataInner) GetModel() string {
-	if o == nil || IsNil(o.Model) {
-		var ret string
+// GetDeviceModel returns the DeviceModel field value
+func (o *GetDevices200ResponseDataInner) GetDeviceModel() GetApps200ResponseDataInnerDeviceModelsInner {
+	if o == nil {
+		var ret GetApps200ResponseDataInnerDeviceModelsInner
 		return ret
 	}
-	return *o.Model
+
+	return o.DeviceModel
 }
 
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
+// GetDeviceModelOk returns a tuple with the DeviceModel field value
 // and a boolean to check if the value has been set.
-func (o *GetDevices200ResponseDataInner) GetModelOk() (*string, bool) {
-	if o == nil || IsNil(o.Model) {
+func (o *GetDevices200ResponseDataInner) GetDeviceModelOk() (*GetApps200ResponseDataInnerDeviceModelsInner, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Model, true
+	return &o.DeviceModel, true
 }
 
-// HasModel returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasModel() bool {
-	if o != nil && !IsNil(o.Model) {
-		return true
-	}
-
-	return false
+// SetDeviceModel sets field value
+func (o *GetDevices200ResponseDataInner) SetDeviceModel(v GetApps200ResponseDataInnerDeviceModelsInner) {
+	o.DeviceModel = v
 }
 
-// SetModel gets a reference to the given string and assigns it to the Model field.
-func (o *GetDevices200ResponseDataInner) SetModel(v string) {
-	o.Model = &v
-}
-
-// GetTags returns the Tags field value if set, zero value otherwise.
+// GetTags returns the Tags field value
 func (o *GetDevices200ResponseDataInner) GetTags() []string {
-	if o == nil || IsNil(o.Tags) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Tags
 }
 
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// GetTagsOk returns a tuple with the Tags field value
 // and a boolean to check if the value has been set.
 func (o *GetDevices200ResponseDataInner) GetTagsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Tags) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Tags, true
 }
 
-// HasTags returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasTags() bool {
-	if o != nil && !IsNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given []string and assigns it to the Tags field.
+// SetTags sets field value
 func (o *GetDevices200ResponseDataInner) SetTags(v []string) {
 	o.Tags = v
 }
 
 // GetLastCommunicatedAt returns the LastCommunicatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAt() string {
+func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAt() Time {
 	if o == nil || IsNil(o.LastCommunicatedAt.Get()) {
-		var ret string
+		var ret Time
 		return ret
 	}
 	return *o.LastCommunicatedAt.Get()
@@ -318,7 +290,7 @@ func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAt() string {
 // GetLastCommunicatedAtOk returns a tuple with the LastCommunicatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAtOk() (*string, bool) {
+func (o *GetDevices200ResponseDataInner) GetLastCommunicatedAtOk() (*Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -334,8 +306,8 @@ func (o *GetDevices200ResponseDataInner) HasLastCommunicatedAt() bool {
 	return false
 }
 
-// SetLastCommunicatedAt gets a reference to the given NullableString and assigns it to the LastCommunicatedAt field.
-func (o *GetDevices200ResponseDataInner) SetLastCommunicatedAt(v string) {
+// SetLastCommunicatedAt gets a reference to the given NullableTime and assigns it to the LastCommunicatedAt field.
+func (o *GetDevices200ResponseDataInner) SetLastCommunicatedAt(v Time) {
 	o.LastCommunicatedAt.Set(&v)
 }
 // SetLastCommunicatedAtNil sets the value for LastCommunicatedAt to be an explicit nil
@@ -348,46 +320,28 @@ func (o *GetDevices200ResponseDataInner) UnsetLastCommunicatedAt() {
 	o.LastCommunicatedAt.Unset()
 }
 
-// GetIsOnline returns the IsOnline field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIsOnline returns the IsOnline field value
 func (o *GetDevices200ResponseDataInner) GetIsOnline() bool {
-	if o == nil || IsNil(o.IsOnline.Get()) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsOnline.Get()
+
+	return o.IsOnline
 }
 
-// GetIsOnlineOk returns a tuple with the IsOnline field value if set, nil otherwise
+// GetIsOnlineOk returns a tuple with the IsOnline field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetDevices200ResponseDataInner) GetIsOnlineOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.IsOnline.Get(), o.IsOnline.IsSet()
+	return &o.IsOnline, true
 }
 
-// HasIsOnline returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasIsOnline() bool {
-	if o != nil && o.IsOnline.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetIsOnline gets a reference to the given NullableBool and assigns it to the IsOnline field.
+// SetIsOnline sets field value
 func (o *GetDevices200ResponseDataInner) SetIsOnline(v bool) {
-	o.IsOnline.Set(&v)
-}
-// SetIsOnlineNil sets the value for IsOnline to be an explicit nil
-func (o *GetDevices200ResponseDataInner) SetIsOnlineNil() {
-	o.IsOnline.Set(nil)
-}
-
-// UnsetIsOnline ensures that no value is present for IsOnline, not even an explicit nil
-func (o *GetDevices200ResponseDataInner) UnsetIsOnline() {
-	o.IsOnline.Unset()
+	o.IsOnline = v
 }
 
 // GetClientVersion returns the ClientVersion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -474,46 +428,30 @@ func (o *GetDevices200ResponseDataInner) UnsetLauncherVersion() {
 	o.LauncherVersion.Unset()
 }
 
-// GetEnrollmentDate returns the EnrollmentDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetEnrollmentDate() string {
-	if o == nil || IsNil(o.EnrollmentDate.Get()) {
-		var ret string
+// GetEnrollmentDate returns the EnrollmentDate field value
+// If the value is explicit nil, the zero value for Time will be returned
+func (o *GetDevices200ResponseDataInner) GetEnrollmentDate() Time {
+	if o == nil || o.EnrollmentDate.Get() == nil {
+		var ret Time
 		return ret
 	}
+
 	return *o.EnrollmentDate.Get()
 }
 
-// GetEnrollmentDateOk returns a tuple with the EnrollmentDate field value if set, nil otherwise
+// GetEnrollmentDateOk returns a tuple with the EnrollmentDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetEnrollmentDateOk() (*string, bool) {
+func (o *GetDevices200ResponseDataInner) GetEnrollmentDateOk() (*Time, bool) {
 	if o == nil {
 		return nil, false
 	}
 	return o.EnrollmentDate.Get(), o.EnrollmentDate.IsSet()
 }
 
-// HasEnrollmentDate returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasEnrollmentDate() bool {
-	if o != nil && o.EnrollmentDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEnrollmentDate gets a reference to the given NullableString and assigns it to the EnrollmentDate field.
-func (o *GetDevices200ResponseDataInner) SetEnrollmentDate(v string) {
+// SetEnrollmentDate sets field value
+func (o *GetDevices200ResponseDataInner) SetEnrollmentDate(v Time) {
 	o.EnrollmentDate.Set(&v)
-}
-// SetEnrollmentDateNil sets the value for EnrollmentDate to be an explicit nil
-func (o *GetDevices200ResponseDataInner) SetEnrollmentDateNil() {
-	o.EnrollmentDate.Set(nil)
-}
-
-// UnsetEnrollmentDate ensures that no value is present for EnrollmentDate, not even an explicit nil
-func (o *GetDevices200ResponseDataInner) UnsetEnrollmentDate() {
-	o.EnrollmentDate.Unset()
 }
 
 // GetSystemVersion returns the SystemVersion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -726,88 +664,88 @@ func (o *GetDevices200ResponseDataInner) UnsetRandomizedMacAddress() {
 	o.RandomizedMacAddress.Unset()
 }
 
-// GetStorageSpaceFreeGb returns the StorageSpaceFreeGb field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeGb() float32 {
-	if o == nil || IsNil(o.StorageSpaceFreeGb.Get()) {
-		var ret float32
+// GetStorageSpaceFreeBytes returns the StorageSpaceFreeBytes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeBytes() int64 {
+	if o == nil || IsNil(o.StorageSpaceFreeBytes.Get()) {
+		var ret int64
 		return ret
 	}
-	return *o.StorageSpaceFreeGb.Get()
+	return *o.StorageSpaceFreeBytes.Get()
 }
 
-// GetStorageSpaceFreeGbOk returns a tuple with the StorageSpaceFreeGb field value if set, nil otherwise
+// GetStorageSpaceFreeBytesOk returns a tuple with the StorageSpaceFreeBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeGbOk() (*float32, bool) {
+func (o *GetDevices200ResponseDataInner) GetStorageSpaceFreeBytesOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.StorageSpaceFreeGb.Get(), o.StorageSpaceFreeGb.IsSet()
+	return o.StorageSpaceFreeBytes.Get(), o.StorageSpaceFreeBytes.IsSet()
 }
 
-// HasStorageSpaceFreeGb returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasStorageSpaceFreeGb() bool {
-	if o != nil && o.StorageSpaceFreeGb.IsSet() {
+// HasStorageSpaceFreeBytes returns a boolean if a field has been set.
+func (o *GetDevices200ResponseDataInner) HasStorageSpaceFreeBytes() bool {
+	if o != nil && o.StorageSpaceFreeBytes.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStorageSpaceFreeGb gets a reference to the given NullableFloat32 and assigns it to the StorageSpaceFreeGb field.
-func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeGb(v float32) {
-	o.StorageSpaceFreeGb.Set(&v)
+// SetStorageSpaceFreeBytes gets a reference to the given NullableInt64 and assigns it to the StorageSpaceFreeBytes field.
+func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeBytes(v int64) {
+	o.StorageSpaceFreeBytes.Set(&v)
 }
-// SetStorageSpaceFreeGbNil sets the value for StorageSpaceFreeGb to be an explicit nil
-func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeGbNil() {
-	o.StorageSpaceFreeGb.Set(nil)
-}
-
-// UnsetStorageSpaceFreeGb ensures that no value is present for StorageSpaceFreeGb, not even an explicit nil
-func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceFreeGb() {
-	o.StorageSpaceFreeGb.Unset()
+// SetStorageSpaceFreeBytesNil sets the value for StorageSpaceFreeBytes to be an explicit nil
+func (o *GetDevices200ResponseDataInner) SetStorageSpaceFreeBytesNil() {
+	o.StorageSpaceFreeBytes.Set(nil)
 }
 
-// GetStorageSpaceTotalGb returns the StorageSpaceTotalGb field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalGb() float32 {
-	if o == nil || IsNil(o.StorageSpaceTotalGb.Get()) {
-		var ret float32
+// UnsetStorageSpaceFreeBytes ensures that no value is present for StorageSpaceFreeBytes, not even an explicit nil
+func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceFreeBytes() {
+	o.StorageSpaceFreeBytes.Unset()
+}
+
+// GetStorageSpaceTotalBytes returns the StorageSpaceTotalBytes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalBytes() int64 {
+	if o == nil || IsNil(o.StorageSpaceTotalBytes.Get()) {
+		var ret int64
 		return ret
 	}
-	return *o.StorageSpaceTotalGb.Get()
+	return *o.StorageSpaceTotalBytes.Get()
 }
 
-// GetStorageSpaceTotalGbOk returns a tuple with the StorageSpaceTotalGb field value if set, nil otherwise
+// GetStorageSpaceTotalBytesOk returns a tuple with the StorageSpaceTotalBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalGbOk() (*float32, bool) {
+func (o *GetDevices200ResponseDataInner) GetStorageSpaceTotalBytesOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.StorageSpaceTotalGb.Get(), o.StorageSpaceTotalGb.IsSet()
+	return o.StorageSpaceTotalBytes.Get(), o.StorageSpaceTotalBytes.IsSet()
 }
 
-// HasStorageSpaceTotalGb returns a boolean if a field has been set.
-func (o *GetDevices200ResponseDataInner) HasStorageSpaceTotalGb() bool {
-	if o != nil && o.StorageSpaceTotalGb.IsSet() {
+// HasStorageSpaceTotalBytes returns a boolean if a field has been set.
+func (o *GetDevices200ResponseDataInner) HasStorageSpaceTotalBytes() bool {
+	if o != nil && o.StorageSpaceTotalBytes.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStorageSpaceTotalGb gets a reference to the given NullableFloat32 and assigns it to the StorageSpaceTotalGb field.
-func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalGb(v float32) {
-	o.StorageSpaceTotalGb.Set(&v)
+// SetStorageSpaceTotalBytes gets a reference to the given NullableInt64 and assigns it to the StorageSpaceTotalBytes field.
+func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalBytes(v int64) {
+	o.StorageSpaceTotalBytes.Set(&v)
 }
-// SetStorageSpaceTotalGbNil sets the value for StorageSpaceTotalGb to be an explicit nil
-func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalGbNil() {
-	o.StorageSpaceTotalGb.Set(nil)
+// SetStorageSpaceTotalBytesNil sets the value for StorageSpaceTotalBytes to be an explicit nil
+func (o *GetDevices200ResponseDataInner) SetStorageSpaceTotalBytesNil() {
+	o.StorageSpaceTotalBytes.Set(nil)
 }
 
-// UnsetStorageSpaceTotalGb ensures that no value is present for StorageSpaceTotalGb, not even an explicit nil
-func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceTotalGb() {
-	o.StorageSpaceTotalGb.Unset()
+// UnsetStorageSpaceTotalBytes ensures that no value is present for StorageSpaceTotalBytes, not even an explicit nil
+func (o *GetDevices200ResponseDataInner) UnsetStorageSpaceTotalBytes() {
+	o.StorageSpaceTotalBytes.Unset()
 }
 
 // GetBatteryHealth returns the BatteryHealth field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1231,9 +1169,9 @@ func (o *GetDevices200ResponseDataInner) UnsetLastLocationLongitude() {
 }
 
 // GetLastLocationAt returns the LastLocationAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetLastLocationAt() string {
+func (o *GetDevices200ResponseDataInner) GetLastLocationAt() Time {
 	if o == nil || IsNil(o.LastLocationAt.Get()) {
-		var ret string
+		var ret Time
 		return ret
 	}
 	return *o.LastLocationAt.Get()
@@ -1242,7 +1180,7 @@ func (o *GetDevices200ResponseDataInner) GetLastLocationAt() string {
 // GetLastLocationAtOk returns a tuple with the LastLocationAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetLastLocationAtOk() (*string, bool) {
+func (o *GetDevices200ResponseDataInner) GetLastLocationAtOk() (*Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1258,8 +1196,8 @@ func (o *GetDevices200ResponseDataInner) HasLastLocationAt() bool {
 	return false
 }
 
-// SetLastLocationAt gets a reference to the given NullableString and assigns it to the LastLocationAt field.
-func (o *GetDevices200ResponseDataInner) SetLastLocationAt(v string) {
+// SetLastLocationAt gets a reference to the given NullableTime and assigns it to the LastLocationAt field.
+func (o *GetDevices200ResponseDataInner) SetLastLocationAt(v Time) {
 	o.LastLocationAt.Set(&v)
 }
 // SetLastLocationAtNil sets the value for LastLocationAt to be an explicit nil
@@ -1272,6 +1210,168 @@ func (o *GetDevices200ResponseDataInner) UnsetLastLocationAt() {
 	o.LastLocationAt.Unset()
 }
 
+// GetRunningApp returns the RunningApp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDevices200ResponseDataInner) GetRunningApp() GetDevices200ResponseDataInnerRunningApp {
+	if o == nil || IsNil(o.RunningApp.Get()) {
+		var ret GetDevices200ResponseDataInnerRunningApp
+		return ret
+	}
+	return *o.RunningApp.Get()
+}
+
+// GetRunningAppOk returns a tuple with the RunningApp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetDevices200ResponseDataInner) GetRunningAppOk() (*GetDevices200ResponseDataInnerRunningApp, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RunningApp.Get(), o.RunningApp.IsSet()
+}
+
+// HasRunningApp returns a boolean if a field has been set.
+func (o *GetDevices200ResponseDataInner) HasRunningApp() bool {
+	if o != nil && o.RunningApp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRunningApp gets a reference to the given NullableGetDevices200ResponseDataInnerRunningApp and assigns it to the RunningApp field.
+func (o *GetDevices200ResponseDataInner) SetRunningApp(v GetDevices200ResponseDataInnerRunningApp) {
+	o.RunningApp.Set(&v)
+}
+// SetRunningAppNil sets the value for RunningApp to be an explicit nil
+func (o *GetDevices200ResponseDataInner) SetRunningAppNil() {
+	o.RunningApp.Set(nil)
+}
+
+// UnsetRunningApp ensures that no value is present for RunningApp, not even an explicit nil
+func (o *GetDevices200ResponseDataInner) UnsetRunningApp() {
+	o.RunningApp.Unset()
+}
+
+// GetCustomFields returns the CustomFields field value
+func (o *GetDevices200ResponseDataInner) GetCustomFields() []GetDevices200ResponseDataInnerCustomFieldsInner {
+	if o == nil {
+		var ret []GetDevices200ResponseDataInnerCustomFieldsInner
+		return ret
+	}
+
+	return o.CustomFields
+}
+
+// GetCustomFieldsOk returns a tuple with the CustomFields field value
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetCustomFieldsOk() ([]GetDevices200ResponseDataInnerCustomFieldsInner, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CustomFields, true
+}
+
+// SetCustomFields sets field value
+func (o *GetDevices200ResponseDataInner) SetCustomFields(v []GetDevices200ResponseDataInnerCustomFieldsInner) {
+	o.CustomFields = v
+}
+
+// GetComplianceStatus returns the ComplianceStatus field value
+func (o *GetDevices200ResponseDataInner) GetComplianceStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ComplianceStatus
+}
+
+// GetComplianceStatusOk returns a tuple with the ComplianceStatus field value
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetComplianceStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ComplianceStatus, true
+}
+
+// SetComplianceStatus sets field value
+func (o *GetDevices200ResponseDataInner) SetComplianceStatus(v string) {
+	o.ComplianceStatus = v
+}
+
+// GetControllers returns the Controllers field value
+func (o *GetDevices200ResponseDataInner) GetControllers() []GetDevices200ResponseDataInnerControllersInner {
+	if o == nil {
+		var ret []GetDevices200ResponseDataInnerControllersInner
+		return ret
+	}
+
+	return o.Controllers
+}
+
+// GetControllersOk returns a tuple with the Controllers field value
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetControllersOk() ([]GetDevices200ResponseDataInnerControllersInner, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Controllers, true
+}
+
+// SetControllers sets field value
+func (o *GetDevices200ResponseDataInner) SetControllers(v []GetDevices200ResponseDataInnerControllersInner) {
+	o.Controllers = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *GetDevices200ResponseDataInner) GetCreatedAt() Time {
+	if o == nil {
+		var ret Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetCreatedAtOk() (*Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *GetDevices200ResponseDataInner) SetCreatedAt(v Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value
+func (o *GetDevices200ResponseDataInner) GetUpdatedAt() Time {
+	if o == nil {
+		var ret Time
+		return ret
+	}
+
+	return o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
+// and a boolean to check if the value has been set.
+func (o *GetDevices200ResponseDataInner) GetUpdatedAtOk() (*Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UpdatedAt, true
+}
+
+// SetUpdatedAt sets field value
+func (o *GetDevices200ResponseDataInner) SetUpdatedAt(v Time) {
+	o.UpdatedAt = v
+}
+
 func (o GetDevices200ResponseDataInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1282,42 +1382,28 @@ func (o GetDevices200ResponseDataInner) MarshalJSON() ([]byte, error) {
 
 func (o GetDevices200ResponseDataInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize["id"] = o.Id
+	if !IsNil(o.Organization) {
+		toSerialize["organization"] = o.Organization
 	}
-	if !IsNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
-	if !IsNil(o.SerialNumber) {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.DeviceGroup.IsSet() {
-		toSerialize["deviceGroup"] = o.DeviceGroup.Get()
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["serialNumber"] = o.SerialNumber
 	if !IsNil(o.Group) {
 		toSerialize["group"] = o.Group
 	}
-	if !IsNil(o.Model) {
-		toSerialize["model"] = o.Model
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
+	toSerialize["deviceModel"] = o.DeviceModel
+	toSerialize["tags"] = o.Tags
 	if o.LastCommunicatedAt.IsSet() {
 		toSerialize["lastCommunicatedAt"] = o.LastCommunicatedAt.Get()
 	}
-	if o.IsOnline.IsSet() {
-		toSerialize["isOnline"] = o.IsOnline.Get()
-	}
+	toSerialize["isOnline"] = o.IsOnline
 	if o.ClientVersion.IsSet() {
 		toSerialize["clientVersion"] = o.ClientVersion.Get()
 	}
 	if o.LauncherVersion.IsSet() {
 		toSerialize["launcherVersion"] = o.LauncherVersion.Get()
 	}
-	if o.EnrollmentDate.IsSet() {
-		toSerialize["enrollmentDate"] = o.EnrollmentDate.Get()
-	}
+	toSerialize["enrollmentDate"] = o.EnrollmentDate.Get()
 	if o.SystemVersion.IsSet() {
 		toSerialize["systemVersion"] = o.SystemVersion.Get()
 	}
@@ -1333,11 +1419,11 @@ func (o GetDevices200ResponseDataInner) ToMap() (map[string]interface{}, error) 
 	if o.RandomizedMacAddress.IsSet() {
 		toSerialize["randomizedMacAddress"] = o.RandomizedMacAddress.Get()
 	}
-	if o.StorageSpaceFreeGb.IsSet() {
-		toSerialize["storageSpaceFreeGb"] = o.StorageSpaceFreeGb.Get()
+	if o.StorageSpaceFreeBytes.IsSet() {
+		toSerialize["storageSpaceFreeBytes"] = o.StorageSpaceFreeBytes.Get()
 	}
-	if o.StorageSpaceTotalGb.IsSet() {
-		toSerialize["storageSpaceTotalGb"] = o.StorageSpaceTotalGb.Get()
+	if o.StorageSpaceTotalBytes.IsSet() {
+		toSerialize["storageSpaceTotalBytes"] = o.StorageSpaceTotalBytes.Get()
 	}
 	if o.BatteryHealth.IsSet() {
 		toSerialize["batteryHealth"] = o.BatteryHealth.Get()
@@ -1372,6 +1458,14 @@ func (o GetDevices200ResponseDataInner) ToMap() (map[string]interface{}, error) 
 	if o.LastLocationAt.IsSet() {
 		toSerialize["lastLocationAt"] = o.LastLocationAt.Get()
 	}
+	if o.RunningApp.IsSet() {
+		toSerialize["runningApp"] = o.RunningApp.Get()
+	}
+	toSerialize["customFields"] = o.CustomFields
+	toSerialize["complianceStatus"] = o.ComplianceStatus
+	toSerialize["controllers"] = o.Controllers
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1381,6 +1475,38 @@ func (o GetDevices200ResponseDataInner) ToMap() (map[string]interface{}, error) 
 }
 
 func (o *GetDevices200ResponseDataInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"serialNumber",
+		"deviceModel",
+		"tags",
+		"isOnline",
+		"enrollmentDate",
+		"customFields",
+		"complianceStatus",
+		"controllers",
+		"createdAt",
+		"updatedAt",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varGetDevices200ResponseDataInner := _GetDevices200ResponseDataInner{}
 
 	err = json.Unmarshal(data, &varGetDevices200ResponseDataInner)
@@ -1395,11 +1521,11 @@ func (o *GetDevices200ResponseDataInner) UnmarshalJSON(data []byte) (err error) 
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "title")
+		delete(additionalProperties, "organization")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "serialNumber")
-		delete(additionalProperties, "deviceGroup")
 		delete(additionalProperties, "group")
-		delete(additionalProperties, "model")
+		delete(additionalProperties, "deviceModel")
 		delete(additionalProperties, "tags")
 		delete(additionalProperties, "lastCommunicatedAt")
 		delete(additionalProperties, "isOnline")
@@ -1411,8 +1537,8 @@ func (o *GetDevices200ResponseDataInner) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "ssid")
 		delete(additionalProperties, "macAddress")
 		delete(additionalProperties, "randomizedMacAddress")
-		delete(additionalProperties, "storageSpaceFreeGb")
-		delete(additionalProperties, "storageSpaceTotalGb")
+		delete(additionalProperties, "storageSpaceFreeBytes")
+		delete(additionalProperties, "storageSpaceTotalBytes")
 		delete(additionalProperties, "batteryHealth")
 		delete(additionalProperties, "batteryCharging")
 		delete(additionalProperties, "batteryPercentage")
@@ -1424,6 +1550,12 @@ func (o *GetDevices200ResponseDataInner) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "lastLocationLatitude")
 		delete(additionalProperties, "lastLocationLongitude")
 		delete(additionalProperties, "lastLocationAt")
+		delete(additionalProperties, "runningApp")
+		delete(additionalProperties, "customFields")
+		delete(additionalProperties, "complianceStatus")
+		delete(additionalProperties, "controllers")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
 		o.AdditionalProperties = additionalProperties
 	}
 

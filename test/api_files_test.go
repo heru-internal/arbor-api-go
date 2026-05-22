@@ -1,5 +1,5 @@
 /*
-arborxr-api-v2
+ArborXR MDM API
 
 Testing FilesAPIService
 
@@ -22,13 +22,26 @@ func Test_arborapi_FilesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test FilesAPIService FilesFile", func(t *testing.T) {
+	t.Run("Test FilesAPIService AttachTagsToFile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var fileId string
 
-		resp, httpRes, err := apiClient.FilesAPI.FilesFile(context.Background(), fileId).Execute()
+		httpRes, err := apiClient.FilesAPI.AttachTagsToFile(context.Background(), fileId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilesAPIService CompleteFileUpload", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var fileId string
+
+		resp, httpRes, err := apiClient.FilesAPI.CompleteFileUpload(context.Background(), fileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,11 +49,91 @@ func Test_arborapi_FilesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FilesAPIService FilesFiles", func(t *testing.T) {
+	t.Run("Test FilesAPIService DeleteFile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.FilesAPI.FilesFiles(context.Background()).Execute()
+		var fileId string
+
+		httpRes, err := apiClient.FilesAPI.DeleteFile(context.Background(), fileId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilesAPIService DetachTagsFromFile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var fileId string
+
+		httpRes, err := apiClient.FilesAPI.DetachTagsFromFile(context.Background(), fileId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilesAPIService GetFile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var fileId string
+
+		resp, httpRes, err := apiClient.FilesAPI.GetFile(context.Background(), fileId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilesAPIService GetFileDeviceStatuses", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var fileId string
+
+		resp, httpRes, err := apiClient.FilesAPI.GetFileDeviceStatuses(context.Background(), fileId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilesAPIService GetFiles", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.FilesAPI.GetFiles(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilesAPIService InitiateFileUpload", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.FilesAPI.InitiateFileUpload(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FilesAPIService PreSignFileUpload", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var fileId string
+
+		resp, httpRes, err := apiClient.FilesAPI.PreSignFileUpload(context.Background(), fileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

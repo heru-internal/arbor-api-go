@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Filename** | **string** |  | 
 **ReleaseChannelId** | Pointer to **string** | Mutually exclusive from newReleaseChannelTitle | [optional] 
 **NewReleaseChannelTitle** | Pointer to **string** | Mutually exclusive from releaseChannelId | [optional] 
+**AppBuildType** | Pointer to **string** | Type of app build. Use &#39;app-bundle&#39; to create an AppBundle with PENDING status. Defaults to &#39;standalone&#39;. | [optional] 
 
 ## Methods
 
@@ -96,6 +97,31 @@ SetNewReleaseChannelTitle sets NewReleaseChannelTitle field to given value.
 `func (o *InitiateAppVersionUploadRequest) HasNewReleaseChannelTitle() bool`
 
 HasNewReleaseChannelTitle returns a boolean if a field has been set.
+
+### GetAppBuildType
+
+`func (o *InitiateAppVersionUploadRequest) GetAppBuildType() string`
+
+GetAppBuildType returns the AppBuildType field if non-nil, zero value otherwise.
+
+### GetAppBuildTypeOk
+
+`func (o *InitiateAppVersionUploadRequest) GetAppBuildTypeOk() (*string, bool)`
+
+GetAppBuildTypeOk returns a tuple with the AppBuildType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppBuildType
+
+`func (o *InitiateAppVersionUploadRequest) SetAppBuildType(v string)`
+
+SetAppBuildType sets AppBuildType field to given value.
+
+### HasAppBuildType
+
+`func (o *InitiateAppVersionUploadRequest) HasAppBuildType() bool`
+
+HasAppBuildType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

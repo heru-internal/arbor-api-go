@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -13,7 +13,6 @@ package arborapi
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the UpdateReleaseChannelRequest type satisfies the MappedNullable interface at compile time
@@ -21,7 +20,8 @@ var _ MappedNullable = &UpdateReleaseChannelRequest{}
 
 // UpdateReleaseChannelRequest struct for UpdateReleaseChannelRequest
 type UpdateReleaseChannelRequest struct {
-	VersionId string `json:"versionId"`
+	VersionId *string
+	BundleId *string
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,9 +31,8 @@ type _UpdateReleaseChannelRequest UpdateReleaseChannelRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateReleaseChannelRequest(versionId string) *UpdateReleaseChannelRequest {
+func NewUpdateReleaseChannelRequest() *UpdateReleaseChannelRequest {
 	this := UpdateReleaseChannelRequest{}
-	this.VersionId = versionId
 	return &this
 }
 
@@ -45,28 +44,68 @@ func NewUpdateReleaseChannelRequestWithDefaults() *UpdateReleaseChannelRequest {
 	return &this
 }
 
-// GetVersionId returns the VersionId field value
+// GetVersionId returns the VersionId field value if set, zero value otherwise.
 func (o *UpdateReleaseChannelRequest) GetVersionId() string {
-	if o == nil {
+	if o == nil || IsNil(o.VersionId) {
 		var ret string
 		return ret
 	}
-
-	return o.VersionId
+	return *o.VersionId
 }
 
-// GetVersionIdOk returns a tuple with the VersionId field value
+// GetVersionIdOk returns a tuple with the VersionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateReleaseChannelRequest) GetVersionIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VersionId) {
 		return nil, false
 	}
-	return &o.VersionId, true
+	return o.VersionId, true
 }
 
-// SetVersionId sets field value
+// HasVersionId returns a boolean if a field has been set.
+func (o *UpdateReleaseChannelRequest) HasVersionId() bool {
+	if o != nil && !IsNil(o.VersionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersionId gets a reference to the given string and assigns it to the VersionId field.
 func (o *UpdateReleaseChannelRequest) SetVersionId(v string) {
-	o.VersionId = v
+	o.VersionId = &v
+}
+
+// GetBundleId returns the BundleId field value if set, zero value otherwise.
+func (o *UpdateReleaseChannelRequest) GetBundleId() string {
+	if o == nil || IsNil(o.BundleId) {
+		var ret string
+		return ret
+	}
+	return *o.BundleId
+}
+
+// GetBundleIdOk returns a tuple with the BundleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateReleaseChannelRequest) GetBundleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.BundleId) {
+		return nil, false
+	}
+	return o.BundleId, true
+}
+
+// HasBundleId returns a boolean if a field has been set.
+func (o *UpdateReleaseChannelRequest) HasBundleId() bool {
+	if o != nil && !IsNil(o.BundleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleId gets a reference to the given string and assigns it to the BundleId field.
+func (o *UpdateReleaseChannelRequest) SetBundleId(v string) {
+	o.BundleId = &v
 }
 
 func (o UpdateReleaseChannelRequest) MarshalJSON() ([]byte, error) {
@@ -79,7 +118,12 @@ func (o UpdateReleaseChannelRequest) MarshalJSON() ([]byte, error) {
 
 func (o UpdateReleaseChannelRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["versionId"] = o.VersionId
+	if !IsNil(o.VersionId) {
+		toSerialize["versionId"] = o.VersionId
+	}
+	if !IsNil(o.BundleId) {
+		toSerialize["bundleId"] = o.BundleId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -89,27 +133,6 @@ func (o UpdateReleaseChannelRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *UpdateReleaseChannelRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"versionId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varUpdateReleaseChannelRequest := _UpdateReleaseChannelRequest{}
 
 	err = json.Unmarshal(data, &varUpdateReleaseChannelRequest)
@@ -124,6 +147,7 @@ func (o *UpdateReleaseChannelRequest) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "versionId")
+		delete(additionalProperties, "bundleId")
 		o.AdditionalProperties = additionalProperties
 	}
 

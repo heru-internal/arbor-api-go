@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | Pointer to **string** |  | [optional] 
-**DeviceGroupId** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**GroupId** | Pointer to **NullableString** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -27,66 +27,66 @@ NewUpdateDeviceRequestWithDefaults instantiates a new UpdateDeviceRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTitle
+### GetName
 
-`func (o *UpdateDeviceRequest) GetTitle() string`
+`func (o *UpdateDeviceRequest) GetName() string`
 
-GetTitle returns the Title field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetTitleOk
+### GetNameOk
 
-`func (o *UpdateDeviceRequest) GetTitleOk() (*string, bool)`
+`func (o *UpdateDeviceRequest) GetNameOk() (*string, bool)`
 
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTitle
+### SetName
 
-`func (o *UpdateDeviceRequest) SetTitle(v string)`
+`func (o *UpdateDeviceRequest) SetName(v string)`
 
-SetTitle sets Title field to given value.
+SetName sets Name field to given value.
 
-### HasTitle
+### HasName
 
-`func (o *UpdateDeviceRequest) HasTitle() bool`
+`func (o *UpdateDeviceRequest) HasName() bool`
 
-HasTitle returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
 
-### GetDeviceGroupId
+### GetGroupId
 
-`func (o *UpdateDeviceRequest) GetDeviceGroupId() string`
+`func (o *UpdateDeviceRequest) GetGroupId() string`
 
-GetDeviceGroupId returns the DeviceGroupId field if non-nil, zero value otherwise.
+GetGroupId returns the GroupId field if non-nil, zero value otherwise.
 
-### GetDeviceGroupIdOk
+### GetGroupIdOk
 
-`func (o *UpdateDeviceRequest) GetDeviceGroupIdOk() (*string, bool)`
+`func (o *UpdateDeviceRequest) GetGroupIdOk() (*string, bool)`
 
-GetDeviceGroupIdOk returns a tuple with the DeviceGroupId field if it's non-nil, zero value otherwise
+GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDeviceGroupId
+### SetGroupId
 
-`func (o *UpdateDeviceRequest) SetDeviceGroupId(v string)`
+`func (o *UpdateDeviceRequest) SetGroupId(v string)`
 
-SetDeviceGroupId sets DeviceGroupId field to given value.
+SetGroupId sets GroupId field to given value.
 
-### HasDeviceGroupId
+### HasGroupId
 
-`func (o *UpdateDeviceRequest) HasDeviceGroupId() bool`
+`func (o *UpdateDeviceRequest) HasGroupId() bool`
 
-HasDeviceGroupId returns a boolean if a field has been set.
+HasGroupId returns a boolean if a field has been set.
 
-### SetDeviceGroupIdNil
+### SetGroupIdNil
 
-`func (o *UpdateDeviceRequest) SetDeviceGroupIdNil(b bool)`
+`func (o *UpdateDeviceRequest) SetGroupIdNil(b bool)`
 
- SetDeviceGroupIdNil sets the value for DeviceGroupId to be an explicit nil
+ SetGroupIdNil sets the value for GroupId to be an explicit nil
 
-### UnsetDeviceGroupId
-`func (o *UpdateDeviceRequest) UnsetDeviceGroupId()`
+### UnsetGroupId
+`func (o *UpdateDeviceRequest) UnsetGroupId()`
 
-UnsetDeviceGroupId ensures that no value is present for DeviceGroupId, not even an explicit nil
+UnsetGroupId ensures that no value is present for GroupId, not even an explicit nil
 ### GetTags
 
 `func (o *UpdateDeviceRequest) GetTags() []string`

@@ -1,9 +1,9 @@
 /*
-ArborXR Public API
+ArborXR MDM API
 
-This API provides a RESTful interface to interact with your organization's data.
+This API provides a RESTful interface to interact with your organization's devices under management.
 
-API version: v2
+API version: v3
 Contact: support@arborxr.com
 */
 
@@ -90,15 +90,21 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/1.2.0/go",
+		UserAgent:        "OpenAPI-Generator/1.3.0/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://api.xrdm.app/api/v2",
+				URL: "https://api.xrdm.app/api/v3",
 				Description: "No description provided",
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{
+			"APIInfoAPIService.GetTokenInfo": {
+				{
+					URL: "https://api.xrdm.app/api",
+					Description: "No description provided",
+				},
+			},
 		},
 	}
 	return cfg

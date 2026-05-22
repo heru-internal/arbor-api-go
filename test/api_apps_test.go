@@ -1,5 +1,5 @@
 /*
-arborxr-api-v2
+ArborXR MDM API
 
 Testing AppsAPIService
 
@@ -22,40 +22,27 @@ func Test_arborapi_AppsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AppsAPIService AppsApp", func(t *testing.T) {
+	t.Run("Test AppsAPIService AttachTagsToApp", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var appId string
 
-		resp, httpRes, err := apiClient.AppsAPI.AppsApp(context.Background(), appId).Execute()
+		httpRes, err := apiClient.AppsAPI.AttachTagsToApp(context.Background(), appId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AppsAPIService AppsApps", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.AppsAPI.AppsApps(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AppsAPIService AppsCompleteVersionUpload", func(t *testing.T) {
+	t.Run("Test AppsAPIService CompleteAppVersionUpload", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var appId string
 		var versionId string
 
-		resp, httpRes, err := apiClient.AppsAPI.AppsCompleteVersionUpload(context.Background(), appId, versionId).Execute()
+		resp, httpRes, err := apiClient.AppsAPI.CompleteAppVersionUpload(context.Background(), appId, versionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,14 +50,165 @@ func Test_arborapi_AppsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AppsAPIService AppsPreSignVersionUploadUrl", func(t *testing.T) {
+	t.Run("Test AppsAPIService CreateApp", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AppsAPI.CreateApp(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService DetachTagsFromApp", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		httpRes, err := apiClient.AppsAPI.DetachTagsFromApp(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetApp", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		resp, httpRes, err := apiClient.AppsAPI.GetApp(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetAppBundles", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		resp, httpRes, err := apiClient.AppsAPI.GetAppBundles(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetAppFiles", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		resp, httpRes, err := apiClient.AppsAPI.GetAppFiles(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetAppReleaseChannel", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+		var releaseChannelId string
+
+		resp, httpRes, err := apiClient.AppsAPI.GetAppReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetAppReleaseChannels", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		resp, httpRes, err := apiClient.AppsAPI.GetAppReleaseChannels(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetAppVersions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		resp, httpRes, err := apiClient.AppsAPI.GetAppVersions(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetApps", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AppsAPI.GetApps(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService GetReleaseChannelDeviceStatuses", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+		var releaseChannelId string
+
+		resp, httpRes, err := apiClient.AppsAPI.GetReleaseChannelDeviceStatuses(context.Background(), appId, releaseChannelId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService InitiateAppVersionUpload", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		resp, httpRes, err := apiClient.AppsAPI.InitiateAppVersionUpload(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService PreSignAppVersionUpload", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var appId string
 		var versionId string
 
-		resp, httpRes, err := apiClient.AppsAPI.AppsPreSignVersionUploadUrl(context.Background(), appId, versionId).Execute()
+		resp, httpRes, err := apiClient.AppsAPI.PreSignAppVersionUpload(context.Background(), appId, versionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,14 +216,14 @@ func Test_arborapi_AppsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AppsAPIService AppsReleaseChannel", func(t *testing.T) {
+	t.Run("Test AppsAPIService ShareReleaseChannel", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var appId string
 		var releaseChannelId string
 
-		resp, httpRes, err := apiClient.AppsAPI.AppsReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
+		resp, httpRes, err := apiClient.AppsAPI.ShareReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,28 +231,14 @@ func Test_arborapi_AppsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AppsAPIService AppsReleaseChannels", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var appId string
-
-		resp, httpRes, err := apiClient.AppsAPI.AppsReleaseChannels(context.Background(), appId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AppsAPIService AppsRevokeReleaseChannel", func(t *testing.T) {
+	t.Run("Test AppsAPIService UnshareReleaseChannel", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var appId string
 		var releaseChannelId string
 
-		resp, httpRes, err := apiClient.AppsAPI.AppsRevokeReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
+		resp, httpRes, err := apiClient.AppsAPI.UnshareReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -122,71 +246,28 @@ func Test_arborapi_AppsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AppsAPIService AppsShareReleaseChannel", func(t *testing.T) {
+	t.Run("Test AppsAPIService UpdateApp", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var appId string
+
+		resp, httpRes, err := apiClient.AppsAPI.UpdateApp(context.Background(), appId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppsAPIService UpdateReleaseChannel", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var appId string
 		var releaseChannelId string
 
-		resp, httpRes, err := apiClient.AppsAPI.AppsShareReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AppsAPIService AppsStartVersionUpload", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var appId string
-
-		resp, httpRes, err := apiClient.AppsAPI.AppsStartVersionUpload(context.Background(), appId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AppsAPIService AppsUpdateApp", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var appId string
-
-		resp, httpRes, err := apiClient.AppsAPI.AppsUpdateApp(context.Background(), appId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AppsAPIService AppsUpdateReleaseChannel", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var appId string
-		var releaseChannelId string
-
-		resp, httpRes, err := apiClient.AppsAPI.AppsUpdateReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AppsAPIService AppsVersions", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var appId string
-
-		resp, httpRes, err := apiClient.AppsAPI.AppsVersions(context.Background(), appId).Execute()
+		resp, httpRes, err := apiClient.AppsAPI.UpdateReleaseChannel(context.Background(), appId, releaseChannelId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
