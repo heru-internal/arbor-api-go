@@ -1818,7 +1818,7 @@ func (r ApiGetGroupHierarchyRequest) Accept(accept string) ApiGetGroupHierarchyR
 	return r
 }
 
-func (r ApiGetGroupHierarchyRequest) Execute() (*GetGroupHierarchy200Response, *http.Response, error) {
+func (r ApiGetGroupHierarchyRequest) Execute() (*GroupHierarchyResponse, *http.Response, error) {
 	return r.ApiService.GetGroupHierarchyExecute(r)
 }
 
@@ -1838,13 +1838,13 @@ func (a *GroupsAPIService) GetGroupHierarchy(ctx context.Context) ApiGetGroupHie
 }
 
 // Execute executes the request
-//  @return GetGroupHierarchy200Response
-func (a *GroupsAPIService) GetGroupHierarchyExecute(r ApiGetGroupHierarchyRequest) (*GetGroupHierarchy200Response, *http.Response, error) {
+//  @return GroupHierarchyResponse
+func (a *GroupsAPIService) GetGroupHierarchyExecute(r ApiGetGroupHierarchyRequest) (*GroupHierarchyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetGroupHierarchy200Response
+		localVarReturnValue  *GroupHierarchyResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GetGroupHierarchy")

@@ -11494,7 +11494,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetGroupHierarchy_200_response"
+                $ref: "#/components/schemas/GroupHierarchyResponse"
           description: Success
         "400":
           content:
@@ -13437,6 +13437,64 @@ components:
       - isConfigured
       - name
       - updatedAt
+      type: object
+    GroupHierarchyResponse:
+      description: The complete hierarchy tree of all groups.
+      example:
+        data:
+        - id: 123e4567-e89b-12d3-a456-426614174000
+          name: Canada
+          isConfigured: false
+          createdAt: 2024-01-01T12:00:00.000Z
+          updatedAt: 2024-01-02T12:00:00.000Z
+          children:
+          - id: 223e4567-e89b-12d3-a456-426614174000
+            name: Ontario
+            isConfigured: false
+            createdAt: 2024-01-01T12:00:00.000Z
+            updatedAt: 2024-01-02T12:00:00.000Z
+            children:
+            - id: 323e4567-e89b-12d3-a456-426614174000
+              name: Toronto
+              isConfigured: true
+              deviceCount: 15
+              createdAt: 2024-01-01T12:00:00.000Z
+              updatedAt: 2024-01-02T12:00:00.000Z
+            - id: 423e4567-e89b-12d3-a456-426614174000
+              name: Ottawa
+              isConfigured: true
+              deviceCount: 8
+              createdAt: 2024-01-01T12:00:00.000Z
+              updatedAt: 2024-01-02T12:00:00.000Z
+        - id: 123e4567-e89b-12d3-a456-426614174000
+          name: Canada
+          isConfigured: false
+          createdAt: 2024-01-01T12:00:00.000Z
+          updatedAt: 2024-01-02T12:00:00.000Z
+          children:
+          - id: 223e4567-e89b-12d3-a456-426614174000
+            name: Ontario
+            isConfigured: false
+            createdAt: 2024-01-01T12:00:00.000Z
+            updatedAt: 2024-01-02T12:00:00.000Z
+            children:
+            - id: 323e4567-e89b-12d3-a456-426614174000
+              name: Toronto
+              isConfigured: true
+              deviceCount: 15
+              createdAt: 2024-01-01T12:00:00.000Z
+              updatedAt: 2024-01-02T12:00:00.000Z
+            - id: 423e4567-e89b-12d3-a456-426614174000
+              name: Ottawa
+              isConfigured: true
+              deviceCount: 8
+              createdAt: 2024-01-01T12:00:00.000Z
+              updatedAt: 2024-01-02T12:00:00.000Z
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/GroupHierarchyNode"
+          type: array
       type: object
     GetTokenInfo_200_response:
       example:
@@ -22014,64 +22072,6 @@ components:
       - key
       - parts
       - uploadId
-      type: object
-    GetGroupHierarchy_200_response:
-      description: The complete hierarchy tree of all groups.
-      example:
-        data:
-        - id: 123e4567-e89b-12d3-a456-426614174000
-          name: Canada
-          isConfigured: false
-          createdAt: 2024-01-01T12:00:00.000Z
-          updatedAt: 2024-01-02T12:00:00.000Z
-          children:
-          - id: 223e4567-e89b-12d3-a456-426614174000
-            name: Ontario
-            isConfigured: false
-            createdAt: 2024-01-01T12:00:00.000Z
-            updatedAt: 2024-01-02T12:00:00.000Z
-            children:
-            - id: 323e4567-e89b-12d3-a456-426614174000
-              name: Toronto
-              isConfigured: true
-              deviceCount: 15
-              createdAt: 2024-01-01T12:00:00.000Z
-              updatedAt: 2024-01-02T12:00:00.000Z
-            - id: 423e4567-e89b-12d3-a456-426614174000
-              name: Ottawa
-              isConfigured: true
-              deviceCount: 8
-              createdAt: 2024-01-01T12:00:00.000Z
-              updatedAt: 2024-01-02T12:00:00.000Z
-        - id: 123e4567-e89b-12d3-a456-426614174000
-          name: Canada
-          isConfigured: false
-          createdAt: 2024-01-01T12:00:00.000Z
-          updatedAt: 2024-01-02T12:00:00.000Z
-          children:
-          - id: 223e4567-e89b-12d3-a456-426614174000
-            name: Ontario
-            isConfigured: false
-            createdAt: 2024-01-01T12:00:00.000Z
-            updatedAt: 2024-01-02T12:00:00.000Z
-            children:
-            - id: 323e4567-e89b-12d3-a456-426614174000
-              name: Toronto
-              isConfigured: true
-              deviceCount: 15
-              createdAt: 2024-01-01T12:00:00.000Z
-              updatedAt: 2024-01-02T12:00:00.000Z
-            - id: 423e4567-e89b-12d3-a456-426614174000
-              name: Ottawa
-              isConfigured: true
-              deviceCount: 8
-              createdAt: 2024-01-01T12:00:00.000Z
-              updatedAt: 2024-01-02T12:00:00.000Z
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/GroupHierarchyNode"
-          type: array
       type: object
     GetGroups_200_response_links:
       example:

@@ -1,4 +1,4 @@
-# GetGroupHierarchy200Response
+# GroupHierarchyResponse
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGetGroupHierarchy200Response
+### NewGroupHierarchyResponse
 
-`func NewGetGroupHierarchy200Response() *GetGroupHierarchy200Response`
+`func NewGroupHierarchyResponse() *GroupHierarchyResponse`
 
-NewGetGroupHierarchy200Response instantiates a new GetGroupHierarchy200Response object
+NewGroupHierarchyResponse instantiates a new GroupHierarchyResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGetGroupHierarchy200ResponseWithDefaults
+### NewGroupHierarchyResponseWithDefaults
 
-`func NewGetGroupHierarchy200ResponseWithDefaults() *GetGroupHierarchy200Response`
+`func NewGroupHierarchyResponseWithDefaults() *GroupHierarchyResponse`
 
-NewGetGroupHierarchy200ResponseWithDefaults instantiates a new GetGroupHierarchy200Response object
+NewGroupHierarchyResponseWithDefaults instantiates a new GroupHierarchyResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *GetGroupHierarchy200Response) GetData() []GroupHierarchyNode`
+`func (o *GroupHierarchyResponse) GetData() []GroupHierarchyNode`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *GetGroupHierarchy200Response) GetDataOk() (*[]GroupHierarchyNode, bool)`
+`func (o *GroupHierarchyResponse) GetDataOk() (*[]GroupHierarchyNode, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *GetGroupHierarchy200Response) SetData(v []GroupHierarchyNode)`
+`func (o *GroupHierarchyResponse) SetData(v []GroupHierarchyNode)`
 
 SetData sets Data field to given value.
 
 ### HasData
 
-`func (o *GetGroupHierarchy200Response) HasData() bool`
+`func (o *GroupHierarchyResponse) HasData() bool`
 
 HasData returns a boolean if a field has been set.
 

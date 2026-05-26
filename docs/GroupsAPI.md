@@ -744,7 +744,7 @@ Name | Type | Description  | Notes
 
 ## GetGroupHierarchy
 
-> GetGroupHierarchy200Response GetGroupHierarchy(ctx).Accept(accept).Execute()
+> GroupHierarchyResponse GetGroupHierarchy(ctx).Accept(accept).Execute()
 
 
 
@@ -772,7 +772,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetGroupHierarchy``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetGroupHierarchy`: GetGroupHierarchy200Response
+	// response from `GetGroupHierarchy`: GroupHierarchyResponse
 	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetGroupHierarchy`: %v\n", resp)
 }
 ```
@@ -792,7 +792,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGroupHierarchy200Response**](GetGroupHierarchy200Response.md)
+[**GroupHierarchyResponse**](GroupHierarchyResponse.md)
 
 ### Authorization
 

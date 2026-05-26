@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetGroupHierarchy200Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetGroupHierarchy200Response{}
+// checks if the GroupHierarchyResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupHierarchyResponse{}
 
-// GetGroupHierarchy200Response The complete hierarchy tree of all groups.
-type GetGroupHierarchy200Response struct {
+// GroupHierarchyResponse The complete hierarchy tree of all groups.
+type GroupHierarchyResponse struct {
 	Data []GroupHierarchyNode `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _GetGroupHierarchy200Response GetGroupHierarchy200Response
+type _GroupHierarchyResponse GroupHierarchyResponse
 
-// NewGetGroupHierarchy200Response instantiates a new GetGroupHierarchy200Response object
+// NewGroupHierarchyResponse instantiates a new GroupHierarchyResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetGroupHierarchy200Response() *GetGroupHierarchy200Response {
-	this := GetGroupHierarchy200Response{}
+func NewGroupHierarchyResponse() *GroupHierarchyResponse {
+	this := GroupHierarchyResponse{}
 	return &this
 }
 
-// NewGetGroupHierarchy200ResponseWithDefaults instantiates a new GetGroupHierarchy200Response object
+// NewGroupHierarchyResponseWithDefaults instantiates a new GroupHierarchyResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetGroupHierarchy200ResponseWithDefaults() *GetGroupHierarchy200Response {
-	this := GetGroupHierarchy200Response{}
+func NewGroupHierarchyResponseWithDefaults() *GroupHierarchyResponse {
+	this := GroupHierarchyResponse{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *GetGroupHierarchy200Response) GetData() []GroupHierarchyNode {
+func (o *GroupHierarchyResponse) GetData() []GroupHierarchyNode {
 	if o == nil || IsNil(o.Data) {
 		var ret []GroupHierarchyNode
 		return ret
@@ -54,7 +54,7 @@ func (o *GetGroupHierarchy200Response) GetData() []GroupHierarchyNode {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetGroupHierarchy200Response) GetDataOk() ([]GroupHierarchyNode, bool) {
+func (o *GroupHierarchyResponse) GetDataOk() ([]GroupHierarchyNode, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *GetGroupHierarchy200Response) GetDataOk() ([]GroupHierarchyNode, bool) 
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *GetGroupHierarchy200Response) HasData() bool {
+func (o *GroupHierarchyResponse) HasData() bool {
 	if o != nil && !IsNil(o.Data) {
 		return true
 	}
@@ -71,11 +71,11 @@ func (o *GetGroupHierarchy200Response) HasData() bool {
 }
 
 // SetData gets a reference to the given []GroupHierarchyNode and assigns it to the Data field.
-func (o *GetGroupHierarchy200Response) SetData(v []GroupHierarchyNode) {
+func (o *GroupHierarchyResponse) SetData(v []GroupHierarchyNode) {
 	o.Data = v
 }
 
-func (o GetGroupHierarchy200Response) MarshalJSON() ([]byte, error) {
+func (o GroupHierarchyResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -83,7 +83,7 @@ func (o GetGroupHierarchy200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetGroupHierarchy200Response) ToMap() (map[string]interface{}, error) {
+func (o GroupHierarchyResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
@@ -96,16 +96,16 @@ func (o GetGroupHierarchy200Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GetGroupHierarchy200Response) UnmarshalJSON(data []byte) (err error) {
-	varGetGroupHierarchy200Response := _GetGroupHierarchy200Response{}
+func (o *GroupHierarchyResponse) UnmarshalJSON(data []byte) (err error) {
+	varGroupHierarchyResponse := _GroupHierarchyResponse{}
 
-	err = json.Unmarshal(data, &varGetGroupHierarchy200Response)
+	err = json.Unmarshal(data, &varGroupHierarchyResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = GetGroupHierarchy200Response(varGetGroupHierarchy200Response)
+	*o = GroupHierarchyResponse(varGroupHierarchyResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -117,38 +117,38 @@ func (o *GetGroupHierarchy200Response) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableGetGroupHierarchy200Response struct {
-	value *GetGroupHierarchy200Response
+type NullableGroupHierarchyResponse struct {
+	value *GroupHierarchyResponse
 	isSet bool
 }
 
-func (v NullableGetGroupHierarchy200Response) Get() *GetGroupHierarchy200Response {
+func (v NullableGroupHierarchyResponse) Get() *GroupHierarchyResponse {
 	return v.value
 }
 
-func (v *NullableGetGroupHierarchy200Response) Set(val *GetGroupHierarchy200Response) {
+func (v *NullableGroupHierarchyResponse) Set(val *GroupHierarchyResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetGroupHierarchy200Response) IsSet() bool {
+func (v NullableGroupHierarchyResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetGroupHierarchy200Response) Unset() {
+func (v *NullableGroupHierarchyResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetGroupHierarchy200Response(val *GetGroupHierarchy200Response) *NullableGetGroupHierarchy200Response {
-	return &NullableGetGroupHierarchy200Response{value: val, isSet: true}
+func NewNullableGroupHierarchyResponse(val *GroupHierarchyResponse) *NullableGroupHierarchyResponse {
+	return &NullableGroupHierarchyResponse{value: val, isSet: true}
 }
 
-func (v NullableGetGroupHierarchy200Response) MarshalJSON() ([]byte, error) {
+func (v NullableGroupHierarchyResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetGroupHierarchy200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableGroupHierarchyResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
