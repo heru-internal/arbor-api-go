@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to [**[]GetAppBundleFiles200ResponseDataInner**](GetAppBundleFiles200ResponseDataInner.md) |  | [optional] 
-**Links** | Pointer to [**GetAppBundleFiles200ResponseLinks**](GetAppBundleFiles200ResponseLinks.md) |  | [optional] 
-**Meta** | Pointer to [**GetAppBundleFiles200ResponseMeta**](GetAppBundleFiles200ResponseMeta.md) |  | [optional] 
+**Links** | Pointer to [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | [optional] 
+**Meta** | Pointer to [**GetUsers200ResponseMeta**](GetUsers200ResponseMeta.md) |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *GetAppBundleFiles200Response) GetLinks() GetAppBundleFiles200ResponseLinks`
+`func (o *GetAppBundleFiles200Response) GetLinks() GetUsers200ResponseLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GetAppBundleFiles200Response) GetLinksOk() (*GetAppBundleFiles200ResponseLinks, bool)`
+`func (o *GetAppBundleFiles200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GetAppBundleFiles200Response) SetLinks(v GetAppBundleFiles200ResponseLinks)`
+`func (o *GetAppBundleFiles200Response) SetLinks(v GetUsers200ResponseLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -79,20 +79,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *GetAppBundleFiles200Response) GetMeta() GetAppBundleFiles200ResponseMeta`
+`func (o *GetAppBundleFiles200Response) GetMeta() GetUsers200ResponseMeta`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *GetAppBundleFiles200Response) GetMetaOk() (*GetAppBundleFiles200ResponseMeta, bool)`
+`func (o *GetAppBundleFiles200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *GetAppBundleFiles200Response) SetMeta(v GetAppBundleFiles200ResponseMeta)`
+`func (o *GetAppBundleFiles200Response) SetMeta(v GetUsers200ResponseMeta)`
 
 SetMeta sets Meta field to given value.
 

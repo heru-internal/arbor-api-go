@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 ## GetVideoDeviceStatuses
 
-> GetVideoDeviceStatuses200Response GetVideoDeviceStatuses(ctx, videoId).Accept(accept).PerPage(perPage).Page(page).Execute()
+> GetFileDeviceStatuses200Response GetVideoDeviceStatuses(ctx, videoId).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -410,7 +410,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `VideosAPI.GetVideoDeviceStatuses``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetVideoDeviceStatuses`: GetVideoDeviceStatuses200Response
+	// response from `GetVideoDeviceStatuses`: GetFileDeviceStatuses200Response
 	fmt.Fprintf(os.Stdout, "Response from `VideosAPI.GetVideoDeviceStatuses`: %v\n", resp)
 }
 ```
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetVideoDeviceStatuses200Response**](GetVideoDeviceStatuses200Response.md)
+[**GetFileDeviceStatuses200Response**](GetFileDeviceStatuses200Response.md)
 
 ### Authorization
 
@@ -593,7 +593,7 @@ Name | Type | Description  | Notes
 
 ## PreSignVideoUpload
 
-> []PreSignVideoUpload200ResponseInner PreSignVideoUpload(ctx, videoId).Accept(accept).PreSignVideoUploadRequest(preSignVideoUploadRequest).Execute()
+> []PreSignVideoUpload200ResponseInner PreSignVideoUpload(ctx, videoId).Accept(accept).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
 
 
 
@@ -614,11 +614,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	videoId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a video.
-	preSignVideoUploadRequest := *openapiclient.NewPreSignVideoUploadRequest("xrdm-016da47e-4c49-48ad-9c61-94904e06a226/videos/2f5d24ec-be98-49d3-ac42-cdecbeea40f0/f40d390d-94fc-47a9-952c-8b7321f3eefc/my-video.mp4", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []int32{int32(1)}) // PreSignVideoUploadRequest | The fields to retrieve presigned URLs for video upload. (optional)
+	preSignAppVersionUploadRequest := *openapiclient.NewPreSignAppVersionUploadRequest("xrdm-016da47e-4c49-48ad-9c61-94904e06a226/apps/2f5d24ec-be98-49d3-ac42-cdecbeea40f0/f40d390d-94fc-47a9-952c-8b7321f3eefc/my-app.apk", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []int32{int32(1)}) // PreSignAppVersionUploadRequest | The fields to retrieve presigned URLs for video upload. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VideosAPI.PreSignVideoUpload(context.Background(), videoId).Accept(accept).PreSignVideoUploadRequest(preSignVideoUploadRequest).Execute()
+	resp, r, err := apiClient.VideosAPI.PreSignVideoUpload(context.Background(), videoId).Accept(accept).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VideosAPI.PreSignVideoUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -645,7 +645,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **preSignVideoUploadRequest** | [**PreSignVideoUploadRequest**](PreSignVideoUploadRequest.md) | The fields to retrieve presigned URLs for video upload. | 
+ **preSignAppVersionUploadRequest** | [**PreSignAppVersionUploadRequest**](PreSignAppVersionUploadRequest.md) | The fields to retrieve presigned URLs for video upload. | 
 
 ### Return type
 

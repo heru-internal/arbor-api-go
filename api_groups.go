@@ -29,7 +29,7 @@ type ApiAddFileToGroupRequest struct {
 	ApiService *GroupsAPIService
 	accept *string
 	groupId string
-	addFileToGroupRequest *AddFileToGroupRequest
+	addFileToDeviceRequest *AddFileToDeviceRequest
 }
 
 func (r ApiAddFileToGroupRequest) Accept(accept string) ApiAddFileToGroupRequest {
@@ -38,8 +38,8 @@ func (r ApiAddFileToGroupRequest) Accept(accept string) ApiAddFileToGroupRequest
 }
 
 // The file to add to the group.
-func (r ApiAddFileToGroupRequest) AddFileToGroupRequest(addFileToGroupRequest AddFileToGroupRequest) ApiAddFileToGroupRequest {
-	r.addFileToGroupRequest = &addFileToGroupRequest
+func (r ApiAddFileToGroupRequest) AddFileToDeviceRequest(addFileToDeviceRequest AddFileToDeviceRequest) ApiAddFileToGroupRequest {
+	r.addFileToDeviceRequest = &addFileToDeviceRequest
 	return r
 }
 
@@ -106,7 +106,7 @@ func (a *GroupsAPIService) AddFileToGroupExecute(r ApiAddFileToGroupRequest) (*h
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.addFileToGroupRequest
+	localVarPostBody = r.addFileToDeviceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -205,7 +205,7 @@ type ApiAddReleaseChannelToGroupRequest struct {
 	ApiService *GroupsAPIService
 	accept *string
 	groupId string
-	addReleaseChannelToGroupRequest *AddReleaseChannelToGroupRequest
+	addReleaseChannelToDeviceRequest *AddReleaseChannelToDeviceRequest
 }
 
 func (r ApiAddReleaseChannelToGroupRequest) Accept(accept string) ApiAddReleaseChannelToGroupRequest {
@@ -214,8 +214,8 @@ func (r ApiAddReleaseChannelToGroupRequest) Accept(accept string) ApiAddReleaseC
 }
 
 // The release channel to add to the group.
-func (r ApiAddReleaseChannelToGroupRequest) AddReleaseChannelToGroupRequest(addReleaseChannelToGroupRequest AddReleaseChannelToGroupRequest) ApiAddReleaseChannelToGroupRequest {
-	r.addReleaseChannelToGroupRequest = &addReleaseChannelToGroupRequest
+func (r ApiAddReleaseChannelToGroupRequest) AddReleaseChannelToDeviceRequest(addReleaseChannelToDeviceRequest AddReleaseChannelToDeviceRequest) ApiAddReleaseChannelToGroupRequest {
+	r.addReleaseChannelToDeviceRequest = &addReleaseChannelToDeviceRequest
 	return r
 }
 
@@ -282,7 +282,7 @@ func (a *GroupsAPIService) AddReleaseChannelToGroupExecute(r ApiAddReleaseChanne
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.addReleaseChannelToGroupRequest
+	localVarPostBody = r.addReleaseChannelToDeviceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -381,7 +381,7 @@ type ApiAddVideoToGroupRequest struct {
 	ApiService *GroupsAPIService
 	accept *string
 	groupId string
-	addVideoToGroupRequest *AddVideoToGroupRequest
+	addVideoToDeviceRequest *AddVideoToDeviceRequest
 }
 
 func (r ApiAddVideoToGroupRequest) Accept(accept string) ApiAddVideoToGroupRequest {
@@ -390,8 +390,8 @@ func (r ApiAddVideoToGroupRequest) Accept(accept string) ApiAddVideoToGroupReque
 }
 
 // The video to add to the group.
-func (r ApiAddVideoToGroupRequest) AddVideoToGroupRequest(addVideoToGroupRequest AddVideoToGroupRequest) ApiAddVideoToGroupRequest {
-	r.addVideoToGroupRequest = &addVideoToGroupRequest
+func (r ApiAddVideoToGroupRequest) AddVideoToDeviceRequest(addVideoToDeviceRequest AddVideoToDeviceRequest) ApiAddVideoToGroupRequest {
+	r.addVideoToDeviceRequest = &addVideoToDeviceRequest
 	return r
 }
 
@@ -458,7 +458,7 @@ func (a *GroupsAPIService) AddVideoToGroupExecute(r ApiAddVideoToGroupRequest) (
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.addVideoToGroupRequest
+	localVarPostBody = r.addVideoToDeviceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -1447,7 +1447,7 @@ type ApiDuplicateGroupRequest struct {
 	ApiService *GroupsAPIService
 	accept *string
 	groupId string
-	duplicateGroupRequest *DuplicateGroupRequest
+	createTagRequest *CreateTagRequest
 }
 
 func (r ApiDuplicateGroupRequest) Accept(accept string) ApiDuplicateGroupRequest {
@@ -1456,8 +1456,8 @@ func (r ApiDuplicateGroupRequest) Accept(accept string) ApiDuplicateGroupRequest
 }
 
 // The name for the duplicated group.
-func (r ApiDuplicateGroupRequest) DuplicateGroupRequest(duplicateGroupRequest DuplicateGroupRequest) ApiDuplicateGroupRequest {
-	r.duplicateGroupRequest = &duplicateGroupRequest
+func (r ApiDuplicateGroupRequest) CreateTagRequest(createTagRequest CreateTagRequest) ApiDuplicateGroupRequest {
+	r.createTagRequest = &createTagRequest
 	return r
 }
 
@@ -1526,7 +1526,7 @@ func (a *GroupsAPIService) DuplicateGroupExecute(r ApiDuplicateGroupRequest) (*G
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.duplicateGroupRequest
+	localVarPostBody = r.createTagRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2007,7 +2007,7 @@ func (r ApiGetGroupReleaseChannelsRequest) Page(page int32) ApiGetGroupReleaseCh
 	return r
 }
 
-func (r ApiGetGroupReleaseChannelsRequest) Execute() (*GetGroupReleaseChannels200Response, *http.Response, error) {
+func (r ApiGetGroupReleaseChannelsRequest) Execute() (*GetAppReleaseChannels200Response, *http.Response, error) {
 	return r.ApiService.GetGroupReleaseChannelsExecute(r)
 }
 
@@ -2029,13 +2029,13 @@ func (a *GroupsAPIService) GetGroupReleaseChannels(ctx context.Context, groupId 
 }
 
 // Execute executes the request
-//  @return GetGroupReleaseChannels200Response
-func (a *GroupsAPIService) GetGroupReleaseChannelsExecute(r ApiGetGroupReleaseChannelsRequest) (*GetGroupReleaseChannels200Response, *http.Response, error) {
+//  @return GetAppReleaseChannels200Response
+func (a *GroupsAPIService) GetGroupReleaseChannelsExecute(r ApiGetGroupReleaseChannelsRequest) (*GetAppReleaseChannels200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetGroupReleaseChannels200Response
+		localVarReturnValue  *GetAppReleaseChannels200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GetGroupReleaseChannels")
@@ -2907,7 +2907,7 @@ type ApiUpdateGroupRequest struct {
 	ApiService *GroupsAPIService
 	accept *string
 	groupId string
-	updateGroupRequest *UpdateGroupRequest
+	createGroupRequest *CreateGroupRequest
 }
 
 func (r ApiUpdateGroupRequest) Accept(accept string) ApiUpdateGroupRequest {
@@ -2916,8 +2916,8 @@ func (r ApiUpdateGroupRequest) Accept(accept string) ApiUpdateGroupRequest {
 }
 
 // The group fields to update an existing group.
-func (r ApiUpdateGroupRequest) UpdateGroupRequest(updateGroupRequest UpdateGroupRequest) ApiUpdateGroupRequest {
-	r.updateGroupRequest = &updateGroupRequest
+func (r ApiUpdateGroupRequest) CreateGroupRequest(createGroupRequest CreateGroupRequest) ApiUpdateGroupRequest {
+	r.createGroupRequest = &createGroupRequest
 	return r
 }
 
@@ -2986,7 +2986,7 @@ func (a *GroupsAPIService) UpdateGroupExecute(r ApiUpdateGroupRequest) (*GetDevi
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.updateGroupRequest
+	localVarPostBody = r.createGroupRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

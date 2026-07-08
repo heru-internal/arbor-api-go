@@ -754,7 +754,7 @@ Name | Type | Description  | Notes
 
 ## GetDeviceFiles
 
-> GetDeviceFiles200Response GetDeviceFiles(ctx, deviceId).Accept(accept).PerPage(perPage).Page(page).Execute()
+> GetFiles200Response GetDeviceFiles(ctx, deviceId).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -785,7 +785,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DevicesAPI.GetDeviceFiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetDeviceFiles`: GetDeviceFiles200Response
+	// response from `GetDeviceFiles`: GetFiles200Response
 	fmt.Fprintf(os.Stdout, "Response from `DevicesAPI.GetDeviceFiles`: %v\n", resp)
 }
 ```
@@ -812,7 +812,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetDeviceFiles200Response**](GetDeviceFiles200Response.md)
+[**GetFiles200Response**](GetFiles200Response.md)
 
 ### Authorization
 
@@ -830,7 +830,7 @@ Name | Type | Description  | Notes
 
 ## GetDeviceReleaseChannels
 
-> GetDeviceReleaseChannels200Response GetDeviceReleaseChannels(ctx, deviceId).Accept(accept).PerPage(perPage).Page(page).Execute()
+> GetAppReleaseChannels200Response GetDeviceReleaseChannels(ctx, deviceId).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -861,7 +861,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DevicesAPI.GetDeviceReleaseChannels``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetDeviceReleaseChannels`: GetDeviceReleaseChannels200Response
+	// response from `GetDeviceReleaseChannels`: GetAppReleaseChannels200Response
 	fmt.Fprintf(os.Stdout, "Response from `DevicesAPI.GetDeviceReleaseChannels`: %v\n", resp)
 }
 ```
@@ -888,7 +888,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetDeviceReleaseChannels200Response**](GetDeviceReleaseChannels200Response.md)
+[**GetAppReleaseChannels200Response**](GetAppReleaseChannels200Response.md)
 
 ### Authorization
 
@@ -906,7 +906,7 @@ Name | Type | Description  | Notes
 
 ## GetDeviceVideos
 
-> GetDeviceVideos200Response GetDeviceVideos(ctx, deviceId).Accept(accept).PerPage(perPage).Page(page).Execute()
+> GetVideos200Response GetDeviceVideos(ctx, deviceId).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -937,7 +937,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DevicesAPI.GetDeviceVideos``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetDeviceVideos`: GetDeviceVideos200Response
+	// response from `GetDeviceVideos`: GetVideos200Response
 	fmt.Fprintf(os.Stdout, "Response from `DevicesAPI.GetDeviceVideos`: %v\n", resp)
 }
 ```
@@ -964,7 +964,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetDeviceVideos200Response**](GetDeviceVideos200Response.md)
+[**GetVideos200Response**](GetVideos200Response.md)
 
 ### Authorization
 

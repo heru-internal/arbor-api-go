@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **NullableString** |  | 
 **Mode** | **string** |  | 
-**MetaHmsSettings** | [**GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings**](GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings.md) |  | 
+**MetaHmsSettings** | [**ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings**](ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings.md) |  | 
 **CreatedAt** | **NullableTime** |  | 
 **UpdatedAt** | **NullableTime** |  | 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewGetGroupHeadsetExperience200ResponseOneOf2
 
-`func NewGetGroupHeadsetExperience200ResponseOneOf2(id NullableString, mode string, metaHmsSettings GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings, createdAt NullableTime, updatedAt NullableTime, ) *GetGroupHeadsetExperience200ResponseOneOf2`
+`func NewGetGroupHeadsetExperience200ResponseOneOf2(id NullableString, mode string, metaHmsSettings ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings, createdAt NullableTime, updatedAt NullableTime, ) *GetGroupHeadsetExperience200ResponseOneOf2`
 
 NewGetGroupHeadsetExperience200ResponseOneOf2 instantiates a new GetGroupHeadsetExperience200ResponseOneOf2 object
 This constructor will assign default values to properties that have it defined,
@@ -81,20 +81,20 @@ SetMode sets Mode field to given value.
 
 ### GetMetaHmsSettings
 
-`func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettings() GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings`
+`func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettings() ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings`
 
 GetMetaHmsSettings returns the MetaHmsSettings field if non-nil, zero value otherwise.
 
 ### GetMetaHmsSettingsOk
 
-`func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettingsOk() (*GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings, bool)`
+`func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettingsOk() (*ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings, bool)`
 
 GetMetaHmsSettingsOk returns a tuple with the MetaHmsSettings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetaHmsSettings
 
-`func (o *GetGroupHeadsetExperience200ResponseOneOf2) SetMetaHmsSettings(v GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings)`
+`func (o *GetGroupHeadsetExperience200ResponseOneOf2) SetMetaHmsSettings(v ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings)`
 
 SetMetaHmsSettings sets MetaHmsSettings field to given value.
 

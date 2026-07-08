@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CompleteCustom3DEnvironmentUpload
 
-> GetCustom3DEnvironment200Response CompleteCustom3DEnvironmentUpload(ctx, custom3DEnvironmentId).Accept(accept).CompleteCustom3DEnvironmentUploadRequest(completeCustom3DEnvironmentUploadRequest).Execute()
+> GetCustom3DEnvironment200Response CompleteCustom3DEnvironmentUpload(ctx, custom3DEnvironmentId).Accept(accept).CompleteImageUploadRequest(completeImageUploadRequest).Execute()
 
 
 
@@ -35,11 +35,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	custom3DEnvironmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the custom 3D environment.
-	completeCustom3DEnvironmentUploadRequest := *openapiclient.NewCompleteCustom3DEnvironmentUploadRequest("custom-3d-environments%2F123e4567-e89b-12d3-a456-426614174000%2Fmy-environment.glb", "ExampleUploadId123", []openapiclient.CompleteCustom3DEnvironmentUploadRequestPartsInner{*openapiclient.NewCompleteCustom3DEnvironmentUploadRequestPartsInner(int32(123), "ETag_example")}) // CompleteCustom3DEnvironmentUploadRequest | Complete a multipart upload for a custom 3D environment. (optional)
+	completeImageUploadRequest := *openapiclient.NewCompleteImageUploadRequest("images%2F123e4567-e89b-12d3-a456-426614174000%2Fwallpaper.jpg", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []openapiclient.CompleteImageUploadRequestPartsInner{*openapiclient.NewCompleteImageUploadRequestPartsInner(int32(123), "ETag_example")}) // CompleteImageUploadRequest | Complete a multipart upload for a custom 3D environment. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.Custom3DEnvironmentsAPI.CompleteCustom3DEnvironmentUpload(context.Background(), custom3DEnvironmentId).Accept(accept).CompleteCustom3DEnvironmentUploadRequest(completeCustom3DEnvironmentUploadRequest).Execute()
+	resp, r, err := apiClient.Custom3DEnvironmentsAPI.CompleteCustom3DEnvironmentUpload(context.Background(), custom3DEnvironmentId).Accept(accept).CompleteImageUploadRequest(completeImageUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Custom3DEnvironmentsAPI.CompleteCustom3DEnvironmentUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **completeCustom3DEnvironmentUploadRequest** | [**CompleteCustom3DEnvironmentUploadRequest**](CompleteCustom3DEnvironmentUploadRequest.md) | Complete a multipart upload for a custom 3D environment. | 
+ **completeImageUploadRequest** | [**CompleteImageUploadRequest**](CompleteImageUploadRequest.md) | Complete a multipart upload for a custom 3D environment. | 
 
 ### Return type
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## InitiateCustom3DEnvironmentUpload
 
-> InitiateCustom3DEnvironmentUpload201Response InitiateCustom3DEnvironmentUpload(ctx).Accept(accept).InitiateCustom3DEnvironmentUploadRequest(initiateCustom3DEnvironmentUploadRequest).Execute()
+> InitiateCustom3DEnvironmentUpload201Response InitiateCustom3DEnvironmentUpload(ctx).Accept(accept).InitiateImageUploadRequest(initiateImageUploadRequest).Execute()
 
 
 
@@ -250,11 +250,11 @@ import (
 
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
-	initiateCustom3DEnvironmentUploadRequest := *openapiclient.NewInitiateCustom3DEnvironmentUploadRequest("my-environment.glb") // InitiateCustom3DEnvironmentUploadRequest | Initiate a new custom 3D environment upload. (optional)
+	initiateImageUploadRequest := *openapiclient.NewInitiateImageUploadRequest("wallpaper.jpg") // InitiateImageUploadRequest | Initiate a new custom 3D environment upload. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.Custom3DEnvironmentsAPI.InitiateCustom3DEnvironmentUpload(context.Background()).Accept(accept).InitiateCustom3DEnvironmentUploadRequest(initiateCustom3DEnvironmentUploadRequest).Execute()
+	resp, r, err := apiClient.Custom3DEnvironmentsAPI.InitiateCustom3DEnvironmentUpload(context.Background()).Accept(accept).InitiateImageUploadRequest(initiateImageUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Custom3DEnvironmentsAPI.InitiateCustom3DEnvironmentUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -276,7 +276,7 @@ Other parameters are passed through a pointer to a apiInitiateCustom3DEnvironmen
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
- **initiateCustom3DEnvironmentUploadRequest** | [**InitiateCustom3DEnvironmentUploadRequest**](InitiateCustom3DEnvironmentUploadRequest.md) | Initiate a new custom 3D environment upload. | 
+ **initiateImageUploadRequest** | [**InitiateImageUploadRequest**](InitiateImageUploadRequest.md) | Initiate a new custom 3D environment upload. | 
 
 ### Return type
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## PreSignCustom3DEnvironmentUpload
 
-> []PreSignCustom3DEnvironmentUpload200ResponseInner PreSignCustom3DEnvironmentUpload(ctx, custom3DEnvironmentId).Accept(accept).PreSignCustom3DEnvironmentUploadRequest(preSignCustom3DEnvironmentUploadRequest).Execute()
+> []PreSignImageUpload200ResponseInner PreSignCustom3DEnvironmentUpload(ctx, custom3DEnvironmentId).Accept(accept).PreSignImageUploadRequest(preSignImageUploadRequest).Execute()
 
 
 
@@ -319,16 +319,16 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	custom3DEnvironmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the custom 3D environment.
-	preSignCustom3DEnvironmentUploadRequest := *openapiclient.NewPreSignCustom3DEnvironmentUploadRequest("custom-3d-environments%2F123e4567-e89b-12d3-a456-426614174000%2Fmy-environment.glb", "ExampleUploadId123", []int32{int32(123)}) // PreSignCustom3DEnvironmentUploadRequest | Pre-sign URLs for multipart upload parts. (optional)
+	preSignImageUploadRequest := *openapiclient.NewPreSignImageUploadRequest("images%2F123e4567-e89b-12d3-a456-426614174000%2Fwallpaper.jpg", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []int32{int32(123)}) // PreSignImageUploadRequest | Pre-sign URLs for multipart upload parts. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.Custom3DEnvironmentsAPI.PreSignCustom3DEnvironmentUpload(context.Background(), custom3DEnvironmentId).Accept(accept).PreSignCustom3DEnvironmentUploadRequest(preSignCustom3DEnvironmentUploadRequest).Execute()
+	resp, r, err := apiClient.Custom3DEnvironmentsAPI.PreSignCustom3DEnvironmentUpload(context.Background(), custom3DEnvironmentId).Accept(accept).PreSignImageUploadRequest(preSignImageUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Custom3DEnvironmentsAPI.PreSignCustom3DEnvironmentUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PreSignCustom3DEnvironmentUpload`: []PreSignCustom3DEnvironmentUpload200ResponseInner
+	// response from `PreSignCustom3DEnvironmentUpload`: []PreSignImageUpload200ResponseInner
 	fmt.Fprintf(os.Stdout, "Response from `Custom3DEnvironmentsAPI.PreSignCustom3DEnvironmentUpload`: %v\n", resp)
 }
 ```
@@ -350,11 +350,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **preSignCustom3DEnvironmentUploadRequest** | [**PreSignCustom3DEnvironmentUploadRequest**](PreSignCustom3DEnvironmentUploadRequest.md) | Pre-sign URLs for multipart upload parts. | 
+ **preSignImageUploadRequest** | [**PreSignImageUploadRequest**](PreSignImageUploadRequest.md) | Pre-sign URLs for multipart upload parts. | 
 
 ### Return type
 
-[**[]PreSignCustom3DEnvironmentUpload200ResponseInner**](PreSignCustom3DEnvironmentUpload200ResponseInner.md)
+[**[]PreSignImageUpload200ResponseInner**](PreSignImageUpload200ResponseInner.md)
 
 ### Authorization
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to [**[]GetImages200ResponseDataInner**](GetImages200ResponseDataInner.md) |  | [optional] 
-**Links** | Pointer to [**GetImages200ResponseLinks**](GetImages200ResponseLinks.md) |  | [optional] 
-**Meta** | Pointer to [**GetImages200ResponseMeta**](GetImages200ResponseMeta.md) |  | [optional] 
+**Links** | Pointer to [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | [optional] 
+**Meta** | Pointer to [**GetUsers200ResponseMeta**](GetUsers200ResponseMeta.md) |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *GetImages200Response) GetLinks() GetImages200ResponseLinks`
+`func (o *GetImages200Response) GetLinks() GetUsers200ResponseLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GetImages200Response) GetLinksOk() (*GetImages200ResponseLinks, bool)`
+`func (o *GetImages200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GetImages200Response) SetLinks(v GetImages200ResponseLinks)`
+`func (o *GetImages200Response) SetLinks(v GetUsers200ResponseLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -79,20 +79,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *GetImages200Response) GetMeta() GetImages200ResponseMeta`
+`func (o *GetImages200Response) GetMeta() GetUsers200ResponseMeta`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *GetImages200Response) GetMetaOk() (*GetImages200ResponseMeta, bool)`
+`func (o *GetImages200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *GetImages200Response) SetMeta(v GetImages200ResponseMeta)`
+`func (o *GetImages200Response) SetMeta(v GetUsers200ResponseMeta)`
 
 SetMeta sets Meta field to given value.
 

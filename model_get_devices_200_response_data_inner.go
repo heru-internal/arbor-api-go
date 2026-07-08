@@ -50,8 +50,8 @@ type GetDevices200ResponseDataInner struct {
 	SignalStrength NullableFloat32 `json:"signalStrength,omitempty"`
 	FrequencyMhz NullableInt32 `json:"frequencyMhz,omitempty"`
 	LinkSpeedMbps NullableInt32 `json:"linkSpeedMbps,omitempty"`
-	LastLocationLatitude NullableFloat32 `json:"lastLocationLatitude,omitempty"`
-	LastLocationLongitude NullableFloat32 `json:"lastLocationLongitude,omitempty"`
+	LastLocationLatitude NullableString `json:"lastLocationLatitude,omitempty"`
+	LastLocationLongitude NullableString `json:"lastLocationLongitude,omitempty"`
 	LastLocationAt NullableTime `json:"lastLocationAt,omitempty"`
 	RunningApp NullableGetDevices200ResponseDataInnerRunningApp `json:"runningApp,omitempty"`
 	CustomFields []GetDevices200ResponseDataInnerCustomFieldsInner `json:"customFields"`
@@ -1085,9 +1085,9 @@ func (o *GetDevices200ResponseDataInner) UnsetLinkSpeedMbps() {
 }
 
 // GetLastLocationLatitude returns the LastLocationLatitude field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetLastLocationLatitude() float32 {
+func (o *GetDevices200ResponseDataInner) GetLastLocationLatitude() string {
 	if o == nil || IsNil(o.LastLocationLatitude.Get()) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.LastLocationLatitude.Get()
@@ -1096,7 +1096,7 @@ func (o *GetDevices200ResponseDataInner) GetLastLocationLatitude() float32 {
 // GetLastLocationLatitudeOk returns a tuple with the LastLocationLatitude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetLastLocationLatitudeOk() (*float32, bool) {
+func (o *GetDevices200ResponseDataInner) GetLastLocationLatitudeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1112,8 +1112,8 @@ func (o *GetDevices200ResponseDataInner) HasLastLocationLatitude() bool {
 	return false
 }
 
-// SetLastLocationLatitude gets a reference to the given NullableFloat32 and assigns it to the LastLocationLatitude field.
-func (o *GetDevices200ResponseDataInner) SetLastLocationLatitude(v float32) {
+// SetLastLocationLatitude gets a reference to the given NullableString and assigns it to the LastLocationLatitude field.
+func (o *GetDevices200ResponseDataInner) SetLastLocationLatitude(v string) {
 	o.LastLocationLatitude.Set(&v)
 }
 // SetLastLocationLatitudeNil sets the value for LastLocationLatitude to be an explicit nil
@@ -1127,9 +1127,9 @@ func (o *GetDevices200ResponseDataInner) UnsetLastLocationLatitude() {
 }
 
 // GetLastLocationLongitude returns the LastLocationLongitude field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetDevices200ResponseDataInner) GetLastLocationLongitude() float32 {
+func (o *GetDevices200ResponseDataInner) GetLastLocationLongitude() string {
 	if o == nil || IsNil(o.LastLocationLongitude.Get()) {
-		var ret float32
+		var ret string
 		return ret
 	}
 	return *o.LastLocationLongitude.Get()
@@ -1138,7 +1138,7 @@ func (o *GetDevices200ResponseDataInner) GetLastLocationLongitude() float32 {
 // GetLastLocationLongitudeOk returns a tuple with the LastLocationLongitude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetDevices200ResponseDataInner) GetLastLocationLongitudeOk() (*float32, bool) {
+func (o *GetDevices200ResponseDataInner) GetLastLocationLongitudeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -1154,8 +1154,8 @@ func (o *GetDevices200ResponseDataInner) HasLastLocationLongitude() bool {
 	return false
 }
 
-// SetLastLocationLongitude gets a reference to the given NullableFloat32 and assigns it to the LastLocationLongitude field.
-func (o *GetDevices200ResponseDataInner) SetLastLocationLongitude(v float32) {
+// SetLastLocationLongitude gets a reference to the given NullableString and assigns it to the LastLocationLongitude field.
+func (o *GetDevices200ResponseDataInner) SetLastLocationLongitude(v string) {
 	o.LastLocationLongitude.Set(&v)
 }
 // SetLastLocationLongitudeNil sets the value for LastLocationLongitude to be an explicit nil

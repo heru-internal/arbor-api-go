@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | [**[]CreateAppBundle201Response**](CreateAppBundle201Response.md) |  | 
-**Links** | [**GetAppBundles200ResponseLinks**](GetAppBundles200ResponseLinks.md) |  | 
+**Links** | [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | 
 **Meta** | [**GetAppBundles200ResponseMeta**](GetAppBundles200ResponseMeta.md) |  | 
 
 ## Methods
 
 ### NewGetAppBundles200Response
 
-`func NewGetAppBundles200Response(data []CreateAppBundle201Response, links GetAppBundles200ResponseLinks, meta GetAppBundles200ResponseMeta, ) *GetAppBundles200Response`
+`func NewGetAppBundles200Response(data []CreateAppBundle201Response, links GetUsers200ResponseLinks, meta GetAppBundles200ResponseMeta, ) *GetAppBundles200Response`
 
 NewGetAppBundles200Response instantiates a new GetAppBundles200Response object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetData sets Data field to given value.
 
 ### GetLinks
 
-`func (o *GetAppBundles200Response) GetLinks() GetAppBundles200ResponseLinks`
+`func (o *GetAppBundles200Response) GetLinks() GetUsers200ResponseLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GetAppBundles200Response) GetLinksOk() (*GetAppBundles200ResponseLinks, bool)`
+`func (o *GetAppBundles200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GetAppBundles200Response) SetLinks(v GetAppBundles200ResponseLinks)`
+`func (o *GetAppBundles200Response) SetLinks(v GetUsers200ResponseLinks)`
 
 SetLinks sets Links field to given value.
 

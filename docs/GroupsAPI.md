@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 ## AddFileToGroup
 
-> AddFileToGroup(ctx, groupId).Accept(accept).AddFileToGroupRequest(addFileToGroupRequest).Execute()
+> AddFileToGroup(ctx, groupId).Accept(accept).AddFileToDeviceRequest(addFileToDeviceRequest).Execute()
 
 
 
@@ -47,11 +47,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	groupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a group.
-	addFileToGroupRequest := *openapiclient.NewAddFileToGroupRequest("123e4567-e89b-12d3-a456-426614174000") // AddFileToGroupRequest | The file to add to the group. (optional)
+	addFileToDeviceRequest := *openapiclient.NewAddFileToDeviceRequest("123e4567-e89b-12d3-a456-426614174000") // AddFileToDeviceRequest | The file to add to the group. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.GroupsAPI.AddFileToGroup(context.Background(), groupId).Accept(accept).AddFileToGroupRequest(addFileToGroupRequest).Execute()
+	r, err := apiClient.GroupsAPI.AddFileToGroup(context.Background(), groupId).Accept(accept).AddFileToDeviceRequest(addFileToDeviceRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.AddFileToGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **addFileToGroupRequest** | [**AddFileToGroupRequest**](AddFileToGroupRequest.md) | The file to add to the group. | 
+ **addFileToDeviceRequest** | [**AddFileToDeviceRequest**](AddFileToDeviceRequest.md) | The file to add to the group. | 
 
 ### Return type
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ## AddReleaseChannelToGroup
 
-> AddReleaseChannelToGroup(ctx, groupId).Accept(accept).AddReleaseChannelToGroupRequest(addReleaseChannelToGroupRequest).Execute()
+> AddReleaseChannelToGroup(ctx, groupId).Accept(accept).AddReleaseChannelToDeviceRequest(addReleaseChannelToDeviceRequest).Execute()
 
 
 
@@ -119,11 +119,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	groupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a group.
-	addReleaseChannelToGroupRequest := *openapiclient.NewAddReleaseChannelToGroupRequest("123e4567-e89b-12d3-a456-426614174000") // AddReleaseChannelToGroupRequest | The release channel to add to the group. (optional)
+	addReleaseChannelToDeviceRequest := *openapiclient.NewAddReleaseChannelToDeviceRequest("123e4567-e89b-12d3-a456-426614174000") // AddReleaseChannelToDeviceRequest | The release channel to add to the group. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.GroupsAPI.AddReleaseChannelToGroup(context.Background(), groupId).Accept(accept).AddReleaseChannelToGroupRequest(addReleaseChannelToGroupRequest).Execute()
+	r, err := apiClient.GroupsAPI.AddReleaseChannelToGroup(context.Background(), groupId).Accept(accept).AddReleaseChannelToDeviceRequest(addReleaseChannelToDeviceRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.AddReleaseChannelToGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **addReleaseChannelToGroupRequest** | [**AddReleaseChannelToGroupRequest**](AddReleaseChannelToGroupRequest.md) | The release channel to add to the group. | 
+ **addReleaseChannelToDeviceRequest** | [**AddReleaseChannelToDeviceRequest**](AddReleaseChannelToDeviceRequest.md) | The release channel to add to the group. | 
 
 ### Return type
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## AddVideoToGroup
 
-> AddVideoToGroup(ctx, groupId).Accept(accept).AddVideoToGroupRequest(addVideoToGroupRequest).Execute()
+> AddVideoToGroup(ctx, groupId).Accept(accept).AddVideoToDeviceRequest(addVideoToDeviceRequest).Execute()
 
 
 
@@ -191,11 +191,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	groupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a group.
-	addVideoToGroupRequest := *openapiclient.NewAddVideoToGroupRequest("123e4567-e89b-12d3-a456-426614174000") // AddVideoToGroupRequest | The video to add to the group. (optional)
+	addVideoToDeviceRequest := *openapiclient.NewAddVideoToDeviceRequest("123e4567-e89b-12d3-a456-426614174000") // AddVideoToDeviceRequest | The video to add to the group. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.GroupsAPI.AddVideoToGroup(context.Background(), groupId).Accept(accept).AddVideoToGroupRequest(addVideoToGroupRequest).Execute()
+	r, err := apiClient.GroupsAPI.AddVideoToGroup(context.Background(), groupId).Accept(accept).AddVideoToDeviceRequest(addVideoToDeviceRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.AddVideoToGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **addVideoToGroupRequest** | [**AddVideoToGroupRequest**](AddVideoToGroupRequest.md) | The video to add to the group. | 
+ **addVideoToDeviceRequest** | [**AddVideoToDeviceRequest**](AddVideoToDeviceRequest.md) | The video to add to the group. | 
 
 ### Return type
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 ## DuplicateGroup
 
-> GetDevices200ResponseDataInnerGroup DuplicateGroup(ctx, groupId).Accept(accept).DuplicateGroupRequest(duplicateGroupRequest).Execute()
+> GetDevices200ResponseDataInnerGroup DuplicateGroup(ctx, groupId).Accept(accept).CreateTagRequest(createTagRequest).Execute()
 
 
 
@@ -619,11 +619,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	groupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a group.
-	duplicateGroupRequest := *openapiclient.NewDuplicateGroupRequest("Duplicated Warehouse Group") // DuplicateGroupRequest | The name for the duplicated group. (optional)
+	createTagRequest := *openapiclient.NewCreateTagRequest("beta") // CreateTagRequest | The name for the duplicated group. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.DuplicateGroup(context.Background(), groupId).Accept(accept).DuplicateGroupRequest(duplicateGroupRequest).Execute()
+	resp, r, err := apiClient.GroupsAPI.DuplicateGroup(context.Background(), groupId).Accept(accept).CreateTagRequest(createTagRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.DuplicateGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -650,7 +650,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **duplicateGroupRequest** | [**DuplicateGroupRequest**](DuplicateGroupRequest.md) | The name for the duplicated group. | 
+ **createTagRequest** | [**CreateTagRequest**](CreateTagRequest.md) | The name for the duplicated group. | 
 
 ### Return type
 
@@ -810,7 +810,7 @@ Name | Type | Description  | Notes
 
 ## GetGroupReleaseChannels
 
-> GetGroupReleaseChannels200Response GetGroupReleaseChannels(ctx, groupId).Accept(accept).PerPage(perPage).Page(page).Execute()
+> GetAppReleaseChannels200Response GetGroupReleaseChannels(ctx, groupId).Accept(accept).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -841,7 +841,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetGroupReleaseChannels``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetGroupReleaseChannels`: GetGroupReleaseChannels200Response
+	// response from `GetGroupReleaseChannels`: GetAppReleaseChannels200Response
 	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetGroupReleaseChannels`: %v\n", resp)
 }
 ```
@@ -868,7 +868,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetGroupReleaseChannels200Response**](GetGroupReleaseChannels200Response.md)
+[**GetAppReleaseChannels200Response**](GetAppReleaseChannels200Response.md)
 
 ### Authorization
 
@@ -1175,7 +1175,7 @@ Name | Type | Description  | Notes
 
 ## UpdateGroup
 
-> GetDevices200ResponseDataInnerGroup UpdateGroup(ctx, groupId).Accept(accept).UpdateGroupRequest(updateGroupRequest).Execute()
+> GetDevices200ResponseDataInnerGroup UpdateGroup(ctx, groupId).Accept(accept).CreateGroupRequest(createGroupRequest).Execute()
 
 
 
@@ -1196,11 +1196,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	groupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a group.
-	updateGroupRequest := *openapiclient.NewUpdateGroupRequest("Updated Warehouse Group", "123e4567-e89b-12d3-a456-426614174001") // UpdateGroupRequest | The group fields to update an existing group. (optional)
+	createGroupRequest := *openapiclient.NewCreateGroupRequest("New Warehouse Group", "123e4567-e89b-12d3-a456-426614174001") // CreateGroupRequest | The group fields to update an existing group. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.UpdateGroup(context.Background(), groupId).Accept(accept).UpdateGroupRequest(updateGroupRequest).Execute()
+	resp, r, err := apiClient.GroupsAPI.UpdateGroup(context.Background(), groupId).Accept(accept).CreateGroupRequest(createGroupRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.UpdateGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1227,7 +1227,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **updateGroupRequest** | [**UpdateGroupRequest**](UpdateGroupRequest.md) | The group fields to update an existing group. | 
+ **createGroupRequest** | [**CreateGroupRequest**](CreateGroupRequest.md) | The group fields to update an existing group. | 
 
 ### Return type
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to [**[]GetStatuses200ResponseDataInner**](GetStatuses200ResponseDataInner.md) |  | [optional] 
-**Links** | Pointer to [**GetStatuses200ResponseLinks**](GetStatuses200ResponseLinks.md) |  | [optional] 
-**Meta** | Pointer to [**GetStatuses200ResponseMeta**](GetStatuses200ResponseMeta.md) |  | [optional] 
+**Links** | Pointer to [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | [optional] 
+**Meta** | Pointer to [**GetUsers200ResponseMeta**](GetUsers200ResponseMeta.md) |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *GetStatuses200Response) GetLinks() GetStatuses200ResponseLinks`
+`func (o *GetStatuses200Response) GetLinks() GetUsers200ResponseLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GetStatuses200Response) GetLinksOk() (*GetStatuses200ResponseLinks, bool)`
+`func (o *GetStatuses200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GetStatuses200Response) SetLinks(v GetStatuses200ResponseLinks)`
+`func (o *GetStatuses200Response) SetLinks(v GetUsers200ResponseLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -79,20 +79,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *GetStatuses200Response) GetMeta() GetStatuses200ResponseMeta`
+`func (o *GetStatuses200Response) GetMeta() GetUsers200ResponseMeta`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *GetStatuses200Response) GetMetaOk() (*GetStatuses200ResponseMeta, bool)`
+`func (o *GetStatuses200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *GetStatuses200Response) SetMeta(v GetStatuses200ResponseMeta)`
+`func (o *GetStatuses200Response) SetMeta(v GetUsers200ResponseMeta)`
 
 SetMeta sets Meta field to given value.
 

@@ -21,8 +21,8 @@ var _ MappedNullable = &GetReleaseChannelDeviceStatuses200Response{}
 // GetReleaseChannelDeviceStatuses200Response Get a paginated list of device statuses for a release channel.
 type GetReleaseChannelDeviceStatuses200Response struct {
 	Data []GetReleaseChannelDeviceStatuses200ResponseDataInner `json:"data,omitempty"`
-	Links *GetReleaseChannelDeviceStatuses200ResponseLinks `json:"links,omitempty"`
-	Meta *GetReleaseChannelDeviceStatuses200ResponseMeta `json:"meta,omitempty"`
+	Links *GetUsers200ResponseLinks `json:"links,omitempty"`
+	Meta *GetUsers200ResponseMeta `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,9 +78,9 @@ func (o *GetReleaseChannelDeviceStatuses200Response) SetData(v []GetReleaseChann
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GetReleaseChannelDeviceStatuses200Response) GetLinks() GetReleaseChannelDeviceStatuses200ResponseLinks {
+func (o *GetReleaseChannelDeviceStatuses200Response) GetLinks() GetUsers200ResponseLinks {
 	if o == nil || IsNil(o.Links) {
-		var ret GetReleaseChannelDeviceStatuses200ResponseLinks
+		var ret GetUsers200ResponseLinks
 		return ret
 	}
 	return *o.Links
@@ -88,7 +88,7 @@ func (o *GetReleaseChannelDeviceStatuses200Response) GetLinks() GetReleaseChanne
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetReleaseChannelDeviceStatuses200Response) GetLinksOk() (*GetReleaseChannelDeviceStatuses200ResponseLinks, bool) {
+func (o *GetReleaseChannelDeviceStatuses200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *GetReleaseChannelDeviceStatuses200Response) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given GetReleaseChannelDeviceStatuses200ResponseLinks and assigns it to the Links field.
-func (o *GetReleaseChannelDeviceStatuses200Response) SetLinks(v GetReleaseChannelDeviceStatuses200ResponseLinks) {
+// SetLinks gets a reference to the given GetUsers200ResponseLinks and assigns it to the Links field.
+func (o *GetReleaseChannelDeviceStatuses200Response) SetLinks(v GetUsers200ResponseLinks) {
 	o.Links = &v
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *GetReleaseChannelDeviceStatuses200Response) GetMeta() GetReleaseChannelDeviceStatuses200ResponseMeta {
+func (o *GetReleaseChannelDeviceStatuses200Response) GetMeta() GetUsers200ResponseMeta {
 	if o == nil || IsNil(o.Meta) {
-		var ret GetReleaseChannelDeviceStatuses200ResponseMeta
+		var ret GetUsers200ResponseMeta
 		return ret
 	}
 	return *o.Meta
@@ -120,7 +120,7 @@ func (o *GetReleaseChannelDeviceStatuses200Response) GetMeta() GetReleaseChannel
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetReleaseChannelDeviceStatuses200Response) GetMetaOk() (*GetReleaseChannelDeviceStatuses200ResponseMeta, bool) {
+func (o *GetReleaseChannelDeviceStatuses200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool) {
 	if o == nil || IsNil(o.Meta) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *GetReleaseChannelDeviceStatuses200Response) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given GetReleaseChannelDeviceStatuses200ResponseMeta and assigns it to the Meta field.
-func (o *GetReleaseChannelDeviceStatuses200Response) SetMeta(v GetReleaseChannelDeviceStatuses200ResponseMeta) {
+// SetMeta gets a reference to the given GetUsers200ResponseMeta and assigns it to the Meta field.
+func (o *GetReleaseChannelDeviceStatuses200Response) SetMeta(v GetUsers200ResponseMeta) {
 	o.Meta = &v
 }
 

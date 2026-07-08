@@ -2957,7 +2957,7 @@ func (r ApiUnshareReleaseChannelRequest) ShareReleaseChannelRequest(shareRelease
 	return r
 }
 
-func (r ApiUnshareReleaseChannelRequest) Execute() (*UnshareReleaseChannel200Response, *http.Response, error) {
+func (r ApiUnshareReleaseChannelRequest) Execute() (*ShareReleaseChannel200Response, *http.Response, error) {
 	return r.ApiService.UnshareReleaseChannelExecute(r)
 }
 
@@ -2981,13 +2981,13 @@ func (a *AppsAPIService) UnshareReleaseChannel(ctx context.Context, appId string
 }
 
 // Execute executes the request
-//  @return UnshareReleaseChannel200Response
-func (a *AppsAPIService) UnshareReleaseChannelExecute(r ApiUnshareReleaseChannelRequest) (*UnshareReleaseChannel200Response, *http.Response, error) {
+//  @return ShareReleaseChannel200Response
+func (a *AppsAPIService) UnshareReleaseChannelExecute(r ApiUnshareReleaseChannelRequest) (*ShareReleaseChannel200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *UnshareReleaseChannel200Response
+		localVarReturnValue  *ShareReleaseChannel200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppsAPIService.UnshareReleaseChannel")

@@ -31,8 +31,8 @@ Name | Type | Description | Notes
 **SignalStrength** | Pointer to **NullableFloat32** |  | [optional] 
 **FrequencyMhz** | Pointer to **NullableInt32** |  | [optional] 
 **LinkSpeedMbps** | Pointer to **NullableInt32** |  | [optional] 
-**LastLocationLatitude** | Pointer to **NullableFloat32** |  | [optional] 
-**LastLocationLongitude** | Pointer to **NullableFloat32** |  | [optional] 
+**LastLocationLatitude** | Pointer to **NullableString** |  | [optional] 
+**LastLocationLongitude** | Pointer to **NullableString** |  | [optional] 
 **LastLocationAt** | Pointer to **NullableTime** |  | [optional] 
 **RunningApp** | Pointer to [**NullableGetDevices200ResponseDataInnerRunningApp**](GetDevices200ResponseDataInnerRunningApp.md) |  | [optional] 
 **CustomFields** | [**[]GetDevices200ResponseDataInnerCustomFieldsInner**](GetDevices200ResponseDataInnerCustomFieldsInner.md) |  | 
@@ -892,20 +892,20 @@ HasLinkSpeedMbps returns a boolean if a field has been set.
 UnsetLinkSpeedMbps ensures that no value is present for LinkSpeedMbps, not even an explicit nil
 ### GetLastLocationLatitude
 
-`func (o *GetDevices200ResponseDataInner) GetLastLocationLatitude() float32`
+`func (o *GetDevices200ResponseDataInner) GetLastLocationLatitude() string`
 
 GetLastLocationLatitude returns the LastLocationLatitude field if non-nil, zero value otherwise.
 
 ### GetLastLocationLatitudeOk
 
-`func (o *GetDevices200ResponseDataInner) GetLastLocationLatitudeOk() (*float32, bool)`
+`func (o *GetDevices200ResponseDataInner) GetLastLocationLatitudeOk() (*string, bool)`
 
 GetLastLocationLatitudeOk returns a tuple with the LastLocationLatitude field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastLocationLatitude
 
-`func (o *GetDevices200ResponseDataInner) SetLastLocationLatitude(v float32)`
+`func (o *GetDevices200ResponseDataInner) SetLastLocationLatitude(v string)`
 
 SetLastLocationLatitude sets LastLocationLatitude field to given value.
 
@@ -927,20 +927,20 @@ HasLastLocationLatitude returns a boolean if a field has been set.
 UnsetLastLocationLatitude ensures that no value is present for LastLocationLatitude, not even an explicit nil
 ### GetLastLocationLongitude
 
-`func (o *GetDevices200ResponseDataInner) GetLastLocationLongitude() float32`
+`func (o *GetDevices200ResponseDataInner) GetLastLocationLongitude() string`
 
 GetLastLocationLongitude returns the LastLocationLongitude field if non-nil, zero value otherwise.
 
 ### GetLastLocationLongitudeOk
 
-`func (o *GetDevices200ResponseDataInner) GetLastLocationLongitudeOk() (*float32, bool)`
+`func (o *GetDevices200ResponseDataInner) GetLastLocationLongitudeOk() (*string, bool)`
 
 GetLastLocationLongitudeOk returns a tuple with the LastLocationLongitude field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastLocationLongitude
 
-`func (o *GetDevices200ResponseDataInner) SetLastLocationLongitude(v float32)`
+`func (o *GetDevices200ResponseDataInner) SetLastLocationLongitude(v string)`
 
 SetLastLocationLongitude sets LastLocationLongitude field to given value.
 

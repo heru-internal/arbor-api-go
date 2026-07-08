@@ -21,7 +21,7 @@ var _ MappedNullable = &AddFilesToAppBundleRequest{}
 
 // AddFilesToAppBundleRequest struct for AddFilesToAppBundleRequest
 type AddFilesToAppBundleRequest struct {
-	Files []AddFilesToAppBundleRequestFilesInner `json:"files"`
+	Files []CreateAppBundleRequestFilesInner `json:"files"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _AddFilesToAppBundleRequest AddFilesToAppBundleRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddFilesToAppBundleRequest(files []AddFilesToAppBundleRequestFilesInner) *AddFilesToAppBundleRequest {
+func NewAddFilesToAppBundleRequest(files []CreateAppBundleRequestFilesInner) *AddFilesToAppBundleRequest {
 	this := AddFilesToAppBundleRequest{}
 	this.Files = files
 	return &this
@@ -46,9 +46,9 @@ func NewAddFilesToAppBundleRequestWithDefaults() *AddFilesToAppBundleRequest {
 }
 
 // GetFiles returns the Files field value
-func (o *AddFilesToAppBundleRequest) GetFiles() []AddFilesToAppBundleRequestFilesInner {
+func (o *AddFilesToAppBundleRequest) GetFiles() []CreateAppBundleRequestFilesInner {
 	if o == nil {
-		var ret []AddFilesToAppBundleRequestFilesInner
+		var ret []CreateAppBundleRequestFilesInner
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *AddFilesToAppBundleRequest) GetFiles() []AddFilesToAppBundleRequestFile
 
 // GetFilesOk returns a tuple with the Files field value
 // and a boolean to check if the value has been set.
-func (o *AddFilesToAppBundleRequest) GetFilesOk() ([]AddFilesToAppBundleRequestFilesInner, bool) {
+func (o *AddFilesToAppBundleRequest) GetFilesOk() ([]CreateAppBundleRequestFilesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *AddFilesToAppBundleRequest) GetFilesOk() ([]AddFilesToAppBundleRequestF
 }
 
 // SetFiles sets field value
-func (o *AddFilesToAppBundleRequest) SetFiles(v []AddFilesToAppBundleRequestFilesInner) {
+func (o *AddFilesToAppBundleRequest) SetFiles(v []CreateAppBundleRequestFilesInner) {
 	o.Files = v
 }
 

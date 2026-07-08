@@ -21,8 +21,8 @@ var _ MappedNullable = &GetVideos200Response{}
 // GetVideos200Response Get a paginated list of videos.
 type GetVideos200Response struct {
 	Data []GetVideos200ResponseDataInner `json:"data,omitempty"`
-	Links *GetVideos200ResponseLinks `json:"links,omitempty"`
-	Meta *GetVideos200ResponseMeta `json:"meta,omitempty"`
+	Links *GetUsers200ResponseLinks `json:"links,omitempty"`
+	Meta *GetUsers200ResponseMeta `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,9 +78,9 @@ func (o *GetVideos200Response) SetData(v []GetVideos200ResponseDataInner) {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GetVideos200Response) GetLinks() GetVideos200ResponseLinks {
+func (o *GetVideos200Response) GetLinks() GetUsers200ResponseLinks {
 	if o == nil || IsNil(o.Links) {
-		var ret GetVideos200ResponseLinks
+		var ret GetUsers200ResponseLinks
 		return ret
 	}
 	return *o.Links
@@ -88,7 +88,7 @@ func (o *GetVideos200Response) GetLinks() GetVideos200ResponseLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetVideos200Response) GetLinksOk() (*GetVideos200ResponseLinks, bool) {
+func (o *GetVideos200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *GetVideos200Response) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given GetVideos200ResponseLinks and assigns it to the Links field.
-func (o *GetVideos200Response) SetLinks(v GetVideos200ResponseLinks) {
+// SetLinks gets a reference to the given GetUsers200ResponseLinks and assigns it to the Links field.
+func (o *GetVideos200Response) SetLinks(v GetUsers200ResponseLinks) {
 	o.Links = &v
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *GetVideos200Response) GetMeta() GetVideos200ResponseMeta {
+func (o *GetVideos200Response) GetMeta() GetUsers200ResponseMeta {
 	if o == nil || IsNil(o.Meta) {
-		var ret GetVideos200ResponseMeta
+		var ret GetUsers200ResponseMeta
 		return ret
 	}
 	return *o.Meta
@@ -120,7 +120,7 @@ func (o *GetVideos200Response) GetMeta() GetVideos200ResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetVideos200Response) GetMetaOk() (*GetVideos200ResponseMeta, bool) {
+func (o *GetVideos200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool) {
 	if o == nil || IsNil(o.Meta) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *GetVideos200Response) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given GetVideos200ResponseMeta and assigns it to the Meta field.
-func (o *GetVideos200Response) SetMeta(v GetVideos200ResponseMeta) {
+// SetMeta gets a reference to the given GetUsers200ResponseMeta and assigns it to the Meta field.
+func (o *GetVideos200Response) SetMeta(v GetUsers200ResponseMeta) {
 	o.Meta = &v
 }
 

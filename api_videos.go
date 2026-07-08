@@ -934,7 +934,7 @@ func (r ApiGetVideoDeviceStatusesRequest) Page(page int32) ApiGetVideoDeviceStat
 	return r
 }
 
-func (r ApiGetVideoDeviceStatusesRequest) Execute() (*GetVideoDeviceStatuses200Response, *http.Response, error) {
+func (r ApiGetVideoDeviceStatusesRequest) Execute() (*GetFileDeviceStatuses200Response, *http.Response, error) {
 	return r.ApiService.GetVideoDeviceStatusesExecute(r)
 }
 
@@ -956,13 +956,13 @@ func (a *VideosAPIService) GetVideoDeviceStatuses(ctx context.Context, videoId s
 }
 
 // Execute executes the request
-//  @return GetVideoDeviceStatuses200Response
-func (a *VideosAPIService) GetVideoDeviceStatusesExecute(r ApiGetVideoDeviceStatusesRequest) (*GetVideoDeviceStatuses200Response, *http.Response, error) {
+//  @return GetFileDeviceStatuses200Response
+func (a *VideosAPIService) GetVideoDeviceStatusesExecute(r ApiGetVideoDeviceStatusesRequest) (*GetFileDeviceStatuses200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetVideoDeviceStatuses200Response
+		localVarReturnValue  *GetFileDeviceStatuses200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VideosAPIService.GetVideoDeviceStatuses")
@@ -1504,7 +1504,7 @@ type ApiPreSignVideoUploadRequest struct {
 	ApiService *VideosAPIService
 	accept *string
 	videoId string
-	preSignVideoUploadRequest *PreSignVideoUploadRequest
+	preSignAppVersionUploadRequest *PreSignAppVersionUploadRequest
 }
 
 func (r ApiPreSignVideoUploadRequest) Accept(accept string) ApiPreSignVideoUploadRequest {
@@ -1513,8 +1513,8 @@ func (r ApiPreSignVideoUploadRequest) Accept(accept string) ApiPreSignVideoUploa
 }
 
 // The fields to retrieve presigned URLs for video upload.
-func (r ApiPreSignVideoUploadRequest) PreSignVideoUploadRequest(preSignVideoUploadRequest PreSignVideoUploadRequest) ApiPreSignVideoUploadRequest {
-	r.preSignVideoUploadRequest = &preSignVideoUploadRequest
+func (r ApiPreSignVideoUploadRequest) PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest PreSignAppVersionUploadRequest) ApiPreSignVideoUploadRequest {
+	r.preSignAppVersionUploadRequest = &preSignAppVersionUploadRequest
 	return r
 }
 
@@ -1583,7 +1583,7 @@ func (a *VideosAPIService) PreSignVideoUploadExecute(r ApiPreSignVideoUploadRequ
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.preSignVideoUploadRequest
+	localVarPostBody = r.preSignAppVersionUploadRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

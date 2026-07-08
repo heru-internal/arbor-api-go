@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **RemovePoweredByArborXrBranding** | Pointer to **bool** | Whether to remove &#39;Powered by ArborXR&#39; branding (required when isMenuEnabled is true) | [optional] 
 **Shortcuts** | Pointer to **[]string** | Array of shortcuts to enable (present when isMenuEnabled is true) | [optional] 
 **AdminPin** | Pointer to **NullableString** | Numeric admin PIN (4-10 digits, present when isMenuEnabled is true) | [optional] 
-**Background** | Pointer to [**ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground**](ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground.md) |  | [optional] 
+**Background** | Pointer to [**ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground**](ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground.md) |  | [optional] 
 **ThemeId** | Pointer to **string** | UUID of the theme to apply (required when isMenuEnabled is true) | [optional] 
-**SharedModeSettings** | Pointer to [**ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings**](ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings.md) |  | [optional] 
+**SharedModeSettings** | Pointer to [**ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings**](ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings.md) |  | [optional] 
 
 ## Methods
 
@@ -211,20 +211,20 @@ HasAdminPin returns a boolean if a field has been set.
 UnsetAdminPin ensures that no value is present for AdminPin, not even an explicit nil
 ### GetBackground
 
-`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackground() ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground`
+`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackground() ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground`
 
 GetBackground returns the Background field if non-nil, zero value otherwise.
 
 ### GetBackgroundOk
 
-`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackgroundOk() (*ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground, bool)`
+`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackgroundOk() (*ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground, bool)`
 
 GetBackgroundOk returns a tuple with the Background field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBackground
 
-`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetBackground(v ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground)`
+`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetBackground(v ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground)`
 
 SetBackground sets Background field to given value.
 
@@ -261,20 +261,20 @@ HasThemeId returns a boolean if a field has been set.
 
 ### GetSharedModeSettings
 
-`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings`
+`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings`
 
 GetSharedModeSettings returns the SharedModeSettings field if non-nil, zero value otherwise.
 
 ### GetSharedModeSettingsOk
 
-`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings, bool)`
+`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings, bool)`
 
 GetSharedModeSettingsOk returns a tuple with the SharedModeSettings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSharedModeSettings
 
-`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings)`
+`func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings)`
 
 SetSharedModeSettings sets SharedModeSettings field to given value.
 

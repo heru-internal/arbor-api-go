@@ -1794,7 +1794,7 @@ func (r ApiGetDeviceFilesRequest) Page(page int32) ApiGetDeviceFilesRequest {
 	return r
 }
 
-func (r ApiGetDeviceFilesRequest) Execute() (*GetDeviceFiles200Response, *http.Response, error) {
+func (r ApiGetDeviceFilesRequest) Execute() (*GetFiles200Response, *http.Response, error) {
 	return r.ApiService.GetDeviceFilesExecute(r)
 }
 
@@ -1816,13 +1816,13 @@ func (a *DevicesAPIService) GetDeviceFiles(ctx context.Context, deviceId string)
 }
 
 // Execute executes the request
-//  @return GetDeviceFiles200Response
-func (a *DevicesAPIService) GetDeviceFilesExecute(r ApiGetDeviceFilesRequest) (*GetDeviceFiles200Response, *http.Response, error) {
+//  @return GetFiles200Response
+func (a *DevicesAPIService) GetDeviceFilesExecute(r ApiGetDeviceFilesRequest) (*GetFiles200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetDeviceFiles200Response
+		localVarReturnValue  *GetFiles200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesAPIService.GetDeviceFiles")
@@ -2000,7 +2000,7 @@ func (r ApiGetDeviceReleaseChannelsRequest) Page(page int32) ApiGetDeviceRelease
 	return r
 }
 
-func (r ApiGetDeviceReleaseChannelsRequest) Execute() (*GetDeviceReleaseChannels200Response, *http.Response, error) {
+func (r ApiGetDeviceReleaseChannelsRequest) Execute() (*GetAppReleaseChannels200Response, *http.Response, error) {
 	return r.ApiService.GetDeviceReleaseChannelsExecute(r)
 }
 
@@ -2022,13 +2022,13 @@ func (a *DevicesAPIService) GetDeviceReleaseChannels(ctx context.Context, device
 }
 
 // Execute executes the request
-//  @return GetDeviceReleaseChannels200Response
-func (a *DevicesAPIService) GetDeviceReleaseChannelsExecute(r ApiGetDeviceReleaseChannelsRequest) (*GetDeviceReleaseChannels200Response, *http.Response, error) {
+//  @return GetAppReleaseChannels200Response
+func (a *DevicesAPIService) GetDeviceReleaseChannelsExecute(r ApiGetDeviceReleaseChannelsRequest) (*GetAppReleaseChannels200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetDeviceReleaseChannels200Response
+		localVarReturnValue  *GetAppReleaseChannels200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesAPIService.GetDeviceReleaseChannels")
@@ -2206,7 +2206,7 @@ func (r ApiGetDeviceVideosRequest) Page(page int32) ApiGetDeviceVideosRequest {
 	return r
 }
 
-func (r ApiGetDeviceVideosRequest) Execute() (*GetDeviceVideos200Response, *http.Response, error) {
+func (r ApiGetDeviceVideosRequest) Execute() (*GetVideos200Response, *http.Response, error) {
 	return r.ApiService.GetDeviceVideosExecute(r)
 }
 
@@ -2228,13 +2228,13 @@ func (a *DevicesAPIService) GetDeviceVideos(ctx context.Context, deviceId string
 }
 
 // Execute executes the request
-//  @return GetDeviceVideos200Response
-func (a *DevicesAPIService) GetDeviceVideosExecute(r ApiGetDeviceVideosRequest) (*GetDeviceVideos200Response, *http.Response, error) {
+//  @return GetVideos200Response
+func (a *DevicesAPIService) GetDeviceVideosExecute(r ApiGetDeviceVideosRequest) (*GetVideos200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetDeviceVideos200Response
+		localVarReturnValue  *GetVideos200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DevicesAPIService.GetDeviceVideos")

@@ -36,7 +36,7 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	appBundleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of an app bundle.
-	addFilesToAppBundleRequest := *openapiclient.NewAddFilesToAppBundleRequest([]openapiclient.AddFilesToAppBundleRequestFilesInner{*openapiclient.NewAddFilesToAppBundleRequestFilesInner("123e4567-e89b-12d3-a456-426614174000")}) // AddFilesToAppBundleRequest | Files to add to the app bundle (optional)
+	addFilesToAppBundleRequest := *openapiclient.NewAddFilesToAppBundleRequest([]openapiclient.CreateAppBundleRequestFilesInner{*openapiclient.NewCreateAppBundleRequestFilesInner("789e1234-e89b-12d3-a456-426614174000")}) // AddFilesToAppBundleRequest | Files to add to the app bundle (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

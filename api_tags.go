@@ -769,7 +769,7 @@ type ApiUpdateTagRequest struct {
 	ApiService *TagsAPIService
 	accept *string
 	tagId string
-	updateTagRequest *UpdateTagRequest
+	createTagRequest *CreateTagRequest
 }
 
 func (r ApiUpdateTagRequest) Accept(accept string) ApiUpdateTagRequest {
@@ -778,8 +778,8 @@ func (r ApiUpdateTagRequest) Accept(accept string) ApiUpdateTagRequest {
 }
 
 // The tag fields to update.
-func (r ApiUpdateTagRequest) UpdateTagRequest(updateTagRequest UpdateTagRequest) ApiUpdateTagRequest {
-	r.updateTagRequest = &updateTagRequest
+func (r ApiUpdateTagRequest) CreateTagRequest(createTagRequest CreateTagRequest) ApiUpdateTagRequest {
+	r.createTagRequest = &createTagRequest
 	return r
 }
 
@@ -848,7 +848,7 @@ func (a *TagsAPIService) UpdateTagExecute(r ApiUpdateTagRequest) (*GetTags200Res
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.updateTagRequest
+	localVarPostBody = r.createTagRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

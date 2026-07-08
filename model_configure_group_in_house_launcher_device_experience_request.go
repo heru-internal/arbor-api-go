@@ -21,7 +21,7 @@ var _ MappedNullable = &ConfigureGroupInHouseLauncherDeviceExperienceRequest{}
 
 // ConfigureGroupInHouseLauncherDeviceExperienceRequest struct for ConfigureGroupInHouseLauncherDeviceExperienceRequest
 type ConfigureGroupInHouseLauncherDeviceExperienceRequest struct {
-	LauncherContent ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent `json:"launcherContent"`
+	LauncherContent ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner `json:"launcherContent"`
 	// Array of apps visible within the in-house launcher
 	VisibleContents []ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner `json:"visibleContents"`
 	AdditionalProperties map[string]interface{}
@@ -33,7 +33,7 @@ type _ConfigureGroupInHouseLauncherDeviceExperienceRequest ConfigureGroupInHouse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConfigureGroupInHouseLauncherDeviceExperienceRequest(launcherContent ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent, visibleContents []ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner) *ConfigureGroupInHouseLauncherDeviceExperienceRequest {
+func NewConfigureGroupInHouseLauncherDeviceExperienceRequest(launcherContent ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner, visibleContents []ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner) *ConfigureGroupInHouseLauncherDeviceExperienceRequest {
 	this := ConfigureGroupInHouseLauncherDeviceExperienceRequest{}
 	this.LauncherContent = launcherContent
 	this.VisibleContents = visibleContents
@@ -49,9 +49,9 @@ func NewConfigureGroupInHouseLauncherDeviceExperienceRequestWithDefaults() *Conf
 }
 
 // GetLauncherContent returns the LauncherContent field value
-func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContent() ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent {
+func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContent() ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner {
 	if o == nil {
-		var ret ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent
+		var ret ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner
 		return ret
 	}
 
@@ -60,7 +60,7 @@ func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherConten
 
 // GetLauncherContentOk returns a tuple with the LauncherContent field value
 // and a boolean to check if the value has been set.
-func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContentOk() (*ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent, bool) {
+func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContentOk() (*ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherConten
 }
 
 // SetLauncherContent sets field value
-func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) SetLauncherContent(v ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent) {
+func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) SetLauncherContent(v ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner) {
 	o.LauncherContent = v
 }
 

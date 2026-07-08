@@ -1504,7 +1504,7 @@ type ApiPreSignFileUploadRequest struct {
 	ApiService *FilesAPIService
 	accept *string
 	fileId string
-	preSignFileUploadRequest *PreSignFileUploadRequest
+	preSignAppVersionUploadRequest *PreSignAppVersionUploadRequest
 }
 
 func (r ApiPreSignFileUploadRequest) Accept(accept string) ApiPreSignFileUploadRequest {
@@ -1513,8 +1513,8 @@ func (r ApiPreSignFileUploadRequest) Accept(accept string) ApiPreSignFileUploadR
 }
 
 // The fields to retrieve presigned URLs.
-func (r ApiPreSignFileUploadRequest) PreSignFileUploadRequest(preSignFileUploadRequest PreSignFileUploadRequest) ApiPreSignFileUploadRequest {
-	r.preSignFileUploadRequest = &preSignFileUploadRequest
+func (r ApiPreSignFileUploadRequest) PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest PreSignAppVersionUploadRequest) ApiPreSignFileUploadRequest {
+	r.preSignAppVersionUploadRequest = &preSignAppVersionUploadRequest
 	return r
 }
 
@@ -1583,7 +1583,7 @@ func (a *FilesAPIService) PreSignFileUploadExecute(r ApiPreSignFileUploadRequest
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.preSignFileUploadRequest
+	localVarPostBody = r.preSignAppVersionUploadRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

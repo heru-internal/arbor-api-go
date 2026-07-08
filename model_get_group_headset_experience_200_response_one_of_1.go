@@ -29,7 +29,7 @@ type GetGroupHeadsetExperience200ResponseOneOf1 struct {
 	Shortcuts []string `json:"shortcuts,omitempty"`
 	// Present when isMenuEnabled is true
 	AdminPin NullableString `json:"adminPin,omitempty"`
-	Background NullableGetGroupHeadsetExperience200ResponseOneOf1Background `json:"background,omitempty"`
+	Background NullableGetGroupHeadsetExperience200ResponseOneOfBackground `json:"background,omitempty"`
 	// Present when isMenuEnabled is true
 	ThemeId NullableString `json:"themeId,omitempty"`
 	// Present when isMenuEnabled is true
@@ -258,9 +258,9 @@ func (o *GetGroupHeadsetExperience200ResponseOneOf1) UnsetAdminPin() {
 }
 
 // GetBackground returns the Background field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackground() GetGroupHeadsetExperience200ResponseOneOf1Background {
+func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackground() GetGroupHeadsetExperience200ResponseOneOfBackground {
 	if o == nil || IsNil(o.Background.Get()) {
-		var ret GetGroupHeadsetExperience200ResponseOneOf1Background
+		var ret GetGroupHeadsetExperience200ResponseOneOfBackground
 		return ret
 	}
 	return *o.Background.Get()
@@ -269,7 +269,7 @@ func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackground() GetGroupHea
 // GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackgroundOk() (*GetGroupHeadsetExperience200ResponseOneOf1Background, bool) {
+func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackgroundOk() (*GetGroupHeadsetExperience200ResponseOneOfBackground, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -285,8 +285,8 @@ func (o *GetGroupHeadsetExperience200ResponseOneOf1) HasBackground() bool {
 	return false
 }
 
-// SetBackground gets a reference to the given NullableGetGroupHeadsetExperience200ResponseOneOf1Background and assigns it to the Background field.
-func (o *GetGroupHeadsetExperience200ResponseOneOf1) SetBackground(v GetGroupHeadsetExperience200ResponseOneOf1Background) {
+// SetBackground gets a reference to the given NullableGetGroupHeadsetExperience200ResponseOneOfBackground and assigns it to the Background field.
+func (o *GetGroupHeadsetExperience200ResponseOneOf1) SetBackground(v GetGroupHeadsetExperience200ResponseOneOfBackground) {
 	o.Background.Set(&v)
 }
 // SetBackgroundNil sets the value for Background to be an explicit nil

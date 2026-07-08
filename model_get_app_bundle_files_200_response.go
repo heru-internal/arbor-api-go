@@ -21,8 +21,8 @@ var _ MappedNullable = &GetAppBundleFiles200Response{}
 // GetAppBundleFiles200Response struct for GetAppBundleFiles200Response
 type GetAppBundleFiles200Response struct {
 	Data []GetAppBundleFiles200ResponseDataInner `json:"data,omitempty"`
-	Links *GetAppBundleFiles200ResponseLinks `json:"links,omitempty"`
-	Meta *GetAppBundleFiles200ResponseMeta `json:"meta,omitempty"`
+	Links *GetUsers200ResponseLinks `json:"links,omitempty"`
+	Meta *GetUsers200ResponseMeta `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,9 +78,9 @@ func (o *GetAppBundleFiles200Response) SetData(v []GetAppBundleFiles200ResponseD
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GetAppBundleFiles200Response) GetLinks() GetAppBundleFiles200ResponseLinks {
+func (o *GetAppBundleFiles200Response) GetLinks() GetUsers200ResponseLinks {
 	if o == nil || IsNil(o.Links) {
-		var ret GetAppBundleFiles200ResponseLinks
+		var ret GetUsers200ResponseLinks
 		return ret
 	}
 	return *o.Links
@@ -88,7 +88,7 @@ func (o *GetAppBundleFiles200Response) GetLinks() GetAppBundleFiles200ResponseLi
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetAppBundleFiles200Response) GetLinksOk() (*GetAppBundleFiles200ResponseLinks, bool) {
+func (o *GetAppBundleFiles200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *GetAppBundleFiles200Response) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given GetAppBundleFiles200ResponseLinks and assigns it to the Links field.
-func (o *GetAppBundleFiles200Response) SetLinks(v GetAppBundleFiles200ResponseLinks) {
+// SetLinks gets a reference to the given GetUsers200ResponseLinks and assigns it to the Links field.
+func (o *GetAppBundleFiles200Response) SetLinks(v GetUsers200ResponseLinks) {
 	o.Links = &v
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *GetAppBundleFiles200Response) GetMeta() GetAppBundleFiles200ResponseMeta {
+func (o *GetAppBundleFiles200Response) GetMeta() GetUsers200ResponseMeta {
 	if o == nil || IsNil(o.Meta) {
-		var ret GetAppBundleFiles200ResponseMeta
+		var ret GetUsers200ResponseMeta
 		return ret
 	}
 	return *o.Meta
@@ -120,7 +120,7 @@ func (o *GetAppBundleFiles200Response) GetMeta() GetAppBundleFiles200ResponseMet
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetAppBundleFiles200Response) GetMetaOk() (*GetAppBundleFiles200ResponseMeta, bool) {
+func (o *GetAppBundleFiles200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool) {
 	if o == nil || IsNil(o.Meta) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *GetAppBundleFiles200Response) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given GetAppBundleFiles200ResponseMeta and assigns it to the Meta field.
-func (o *GetAppBundleFiles200Response) SetMeta(v GetAppBundleFiles200ResponseMeta) {
+// SetMeta gets a reference to the given GetUsers200ResponseMeta and assigns it to the Meta field.
+func (o *GetAppBundleFiles200Response) SetMeta(v GetUsers200ResponseMeta) {
 	o.Meta = &v
 }
 

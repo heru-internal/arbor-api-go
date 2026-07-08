@@ -34,10 +34,10 @@ type ConfigureGroupArborXrKioskHeadsetExperienceRequest struct {
 	Shortcuts []string `json:"shortcuts,omitempty"`
 	// Numeric admin PIN (4-10 digits, present when isMenuEnabled is true)
 	AdminPin NullableString `json:"adminPin,omitempty" validate:"regexp=^[0-9]{4,10}$"`
-	Background *ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground `json:"background,omitempty"`
+	Background *ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground `json:"background,omitempty"`
 	// UUID of the theme to apply (required when isMenuEnabled is true)
 	ThemeId *string `json:"themeId,omitempty"`
-	SharedModeSettings *ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings `json:"sharedModeSettings,omitempty"`
+	SharedModeSettings *ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings `json:"sharedModeSettings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -281,9 +281,9 @@ func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) UnsetAdminPin() {
 }
 
 // GetBackground returns the Background field value if set, zero value otherwise.
-func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackground() ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground {
+func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackground() ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground {
 	if o == nil || IsNil(o.Background) {
-		var ret ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground
+		var ret ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground
 		return ret
 	}
 	return *o.Background
@@ -291,7 +291,7 @@ func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackground() Con
 
 // GetBackgroundOk returns a tuple with the Background field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackgroundOk() (*ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground, bool) {
+func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetBackgroundOk() (*ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground, bool) {
 	if o == nil || IsNil(o.Background) {
 		return nil, false
 	}
@@ -307,8 +307,8 @@ func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) HasBackground() boo
 	return false
 }
 
-// SetBackground gets a reference to the given ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground and assigns it to the Background field.
-func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetBackground(v ConfigureGroupArborXrKioskHeadsetExperienceRequestBackground) {
+// SetBackground gets a reference to the given ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground and assigns it to the Background field.
+func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetBackground(v ConfigureGroupArborXrHomeHeadsetExperienceRequestBackground) {
 	o.Background = &v
 }
 
@@ -345,9 +345,9 @@ func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetThemeId(v string
 }
 
 // GetSharedModeSettings returns the SharedModeSettings field value if set, zero value otherwise.
-func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings {
+func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings {
 	if o == nil || IsNil(o.SharedModeSettings) {
-		var ret ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings
+		var ret ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings
 		return ret
 	}
 	return *o.SharedModeSettings
@@ -355,7 +355,7 @@ func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettin
 
 // GetSharedModeSettingsOk returns a tuple with the SharedModeSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings, bool) {
+func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings, bool) {
 	if o == nil || IsNil(o.SharedModeSettings) {
 		return nil, false
 	}
@@ -371,8 +371,8 @@ func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) HasSharedModeSettin
 	return false
 }
 
-// SetSharedModeSettings gets a reference to the given ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings and assigns it to the SharedModeSettings field.
-func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings) {
+// SetSharedModeSettings gets a reference to the given ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings and assigns it to the SharedModeSettings field.
+func (o *ConfigureGroupArborXrKioskHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings) {
 	o.SharedModeSettings = &v
 }
 

@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## GetDeviceSessions
 
-> GetDeviceSessions200Response GetDeviceSessions(ctx, deviceId).Accept(accept).StartDate(startDate).EndDate(endDate).PerPage(perPage).Page(page).Execute()
+> GetAppSessions200Response GetDeviceSessions(ctx, deviceId).Accept(accept).StartDate(startDate).EndDate(endDate).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -204,7 +204,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AnalyticsAPI.GetDeviceSessions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetDeviceSessions`: GetDeviceSessions200Response
+	// response from `GetDeviceSessions`: GetAppSessions200Response
 	fmt.Fprintf(os.Stdout, "Response from `AnalyticsAPI.GetDeviceSessions`: %v\n", resp)
 }
 ```
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetDeviceSessions200Response**](GetDeviceSessions200Response.md)
+[**GetAppSessions200Response**](GetAppSessions200Response.md)
 
 ### Authorization
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## GetSharedAppUsages
 
-> GetSharedAppUsages200Response GetSharedAppUsages(ctx).Accept(accept).StartDate(startDate).EndDate(endDate).PerPage(perPage).Page(page).Execute()
+> GetAppUsage200Response GetSharedAppUsages(ctx).Accept(accept).StartDate(startDate).EndDate(endDate).PerPage(perPage).Page(page).Execute()
 
 
 
@@ -361,7 +361,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AnalyticsAPI.GetSharedAppUsages``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetSharedAppUsages`: GetSharedAppUsages200Response
+	// response from `GetSharedAppUsages`: GetAppUsage200Response
 	fmt.Fprintf(os.Stdout, "Response from `AnalyticsAPI.GetSharedAppUsages`: %v\n", resp)
 }
 ```
@@ -385,7 +385,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSharedAppUsages200Response**](GetSharedAppUsages200Response.md)
+[**GetAppUsage200Response**](GetAppUsage200Response.md)
 
 ### Authorization
 

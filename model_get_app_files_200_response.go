@@ -22,7 +22,7 @@ var _ MappedNullable = &GetAppFiles200Response{}
 // GetAppFiles200Response struct for GetAppFiles200Response
 type GetAppFiles200Response struct {
 	Data []GetAppFiles200ResponseDataInner `json:"data"`
-	Links GetAppBundles200ResponseLinks `json:"links"`
+	Links GetUsers200ResponseLinks `json:"links"`
 	Meta GetAppBundles200ResponseMeta `json:"meta"`
 	AdditionalProperties map[string]interface{}
 }
@@ -33,7 +33,7 @@ type _GetAppFiles200Response GetAppFiles200Response
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetAppFiles200Response(data []GetAppFiles200ResponseDataInner, links GetAppBundles200ResponseLinks, meta GetAppBundles200ResponseMeta) *GetAppFiles200Response {
+func NewGetAppFiles200Response(data []GetAppFiles200ResponseDataInner, links GetUsers200ResponseLinks, meta GetAppBundles200ResponseMeta) *GetAppFiles200Response {
 	this := GetAppFiles200Response{}
 	this.Data = data
 	this.Links = links
@@ -74,9 +74,9 @@ func (o *GetAppFiles200Response) SetData(v []GetAppFiles200ResponseDataInner) {
 }
 
 // GetLinks returns the Links field value
-func (o *GetAppFiles200Response) GetLinks() GetAppBundles200ResponseLinks {
+func (o *GetAppFiles200Response) GetLinks() GetUsers200ResponseLinks {
 	if o == nil {
-		var ret GetAppBundles200ResponseLinks
+		var ret GetUsers200ResponseLinks
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *GetAppFiles200Response) GetLinks() GetAppBundles200ResponseLinks {
 
 // GetLinksOk returns a tuple with the Links field value
 // and a boolean to check if the value has been set.
-func (o *GetAppFiles200Response) GetLinksOk() (*GetAppBundles200ResponseLinks, bool) {
+func (o *GetAppFiles200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *GetAppFiles200Response) GetLinksOk() (*GetAppBundles200ResponseLinks, b
 }
 
 // SetLinks sets field value
-func (o *GetAppFiles200Response) SetLinks(v GetAppBundles200ResponseLinks) {
+func (o *GetAppFiles200Response) SetLinks(v GetUsers200ResponseLinks) {
 	o.Links = v
 }
 

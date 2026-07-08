@@ -29,7 +29,7 @@ type ApiCompleteCustom3DEnvironmentUploadRequest struct {
 	ApiService *Custom3DEnvironmentsAPIService
 	accept *string
 	custom3DEnvironmentId string
-	completeCustom3DEnvironmentUploadRequest *CompleteCustom3DEnvironmentUploadRequest
+	completeImageUploadRequest *CompleteImageUploadRequest
 }
 
 func (r ApiCompleteCustom3DEnvironmentUploadRequest) Accept(accept string) ApiCompleteCustom3DEnvironmentUploadRequest {
@@ -38,8 +38,8 @@ func (r ApiCompleteCustom3DEnvironmentUploadRequest) Accept(accept string) ApiCo
 }
 
 // Complete a multipart upload for a custom 3D environment.
-func (r ApiCompleteCustom3DEnvironmentUploadRequest) CompleteCustom3DEnvironmentUploadRequest(completeCustom3DEnvironmentUploadRequest CompleteCustom3DEnvironmentUploadRequest) ApiCompleteCustom3DEnvironmentUploadRequest {
-	r.completeCustom3DEnvironmentUploadRequest = &completeCustom3DEnvironmentUploadRequest
+func (r ApiCompleteCustom3DEnvironmentUploadRequest) CompleteImageUploadRequest(completeImageUploadRequest CompleteImageUploadRequest) ApiCompleteCustom3DEnvironmentUploadRequest {
+	r.completeImageUploadRequest = &completeImageUploadRequest
 	return r
 }
 
@@ -108,7 +108,7 @@ func (a *Custom3DEnvironmentsAPIService) CompleteCustom3DEnvironmentUploadExecut
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.completeCustom3DEnvironmentUploadRequest
+	localVarPostBody = r.completeImageUploadRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -595,7 +595,7 @@ type ApiInitiateCustom3DEnvironmentUploadRequest struct {
 	ctx context.Context
 	ApiService *Custom3DEnvironmentsAPIService
 	accept *string
-	initiateCustom3DEnvironmentUploadRequest *InitiateCustom3DEnvironmentUploadRequest
+	initiateImageUploadRequest *InitiateImageUploadRequest
 }
 
 func (r ApiInitiateCustom3DEnvironmentUploadRequest) Accept(accept string) ApiInitiateCustom3DEnvironmentUploadRequest {
@@ -604,8 +604,8 @@ func (r ApiInitiateCustom3DEnvironmentUploadRequest) Accept(accept string) ApiIn
 }
 
 // Initiate a new custom 3D environment upload.
-func (r ApiInitiateCustom3DEnvironmentUploadRequest) InitiateCustom3DEnvironmentUploadRequest(initiateCustom3DEnvironmentUploadRequest InitiateCustom3DEnvironmentUploadRequest) ApiInitiateCustom3DEnvironmentUploadRequest {
-	r.initiateCustom3DEnvironmentUploadRequest = &initiateCustom3DEnvironmentUploadRequest
+func (r ApiInitiateCustom3DEnvironmentUploadRequest) InitiateImageUploadRequest(initiateImageUploadRequest InitiateImageUploadRequest) ApiInitiateCustom3DEnvironmentUploadRequest {
+	r.initiateImageUploadRequest = &initiateImageUploadRequest
 	return r
 }
 
@@ -671,7 +671,7 @@ func (a *Custom3DEnvironmentsAPIService) InitiateCustom3DEnvironmentUploadExecut
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.initiateCustom3DEnvironmentUploadRequest
+	localVarPostBody = r.initiateImageUploadRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -779,7 +779,7 @@ type ApiPreSignCustom3DEnvironmentUploadRequest struct {
 	ApiService *Custom3DEnvironmentsAPIService
 	accept *string
 	custom3DEnvironmentId string
-	preSignCustom3DEnvironmentUploadRequest *PreSignCustom3DEnvironmentUploadRequest
+	preSignImageUploadRequest *PreSignImageUploadRequest
 }
 
 func (r ApiPreSignCustom3DEnvironmentUploadRequest) Accept(accept string) ApiPreSignCustom3DEnvironmentUploadRequest {
@@ -788,12 +788,12 @@ func (r ApiPreSignCustom3DEnvironmentUploadRequest) Accept(accept string) ApiPre
 }
 
 // Pre-sign URLs for multipart upload parts.
-func (r ApiPreSignCustom3DEnvironmentUploadRequest) PreSignCustom3DEnvironmentUploadRequest(preSignCustom3DEnvironmentUploadRequest PreSignCustom3DEnvironmentUploadRequest) ApiPreSignCustom3DEnvironmentUploadRequest {
-	r.preSignCustom3DEnvironmentUploadRequest = &preSignCustom3DEnvironmentUploadRequest
+func (r ApiPreSignCustom3DEnvironmentUploadRequest) PreSignImageUploadRequest(preSignImageUploadRequest PreSignImageUploadRequest) ApiPreSignCustom3DEnvironmentUploadRequest {
+	r.preSignImageUploadRequest = &preSignImageUploadRequest
 	return r
 }
 
-func (r ApiPreSignCustom3DEnvironmentUploadRequest) Execute() ([]PreSignCustom3DEnvironmentUpload200ResponseInner, *http.Response, error) {
+func (r ApiPreSignCustom3DEnvironmentUploadRequest) Execute() ([]PreSignImageUpload200ResponseInner, *http.Response, error) {
 	return r.ApiService.PreSignCustom3DEnvironmentUploadExecute(r)
 }
 
@@ -815,13 +815,13 @@ func (a *Custom3DEnvironmentsAPIService) PreSignCustom3DEnvironmentUpload(ctx co
 }
 
 // Execute executes the request
-//  @return []PreSignCustom3DEnvironmentUpload200ResponseInner
-func (a *Custom3DEnvironmentsAPIService) PreSignCustom3DEnvironmentUploadExecute(r ApiPreSignCustom3DEnvironmentUploadRequest) ([]PreSignCustom3DEnvironmentUpload200ResponseInner, *http.Response, error) {
+//  @return []PreSignImageUpload200ResponseInner
+func (a *Custom3DEnvironmentsAPIService) PreSignCustom3DEnvironmentUploadExecute(r ApiPreSignCustom3DEnvironmentUploadRequest) ([]PreSignImageUpload200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []PreSignCustom3DEnvironmentUpload200ResponseInner
+		localVarReturnValue  []PreSignImageUpload200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "Custom3DEnvironmentsAPIService.PreSignCustom3DEnvironmentUpload")
@@ -858,7 +858,7 @@ func (a *Custom3DEnvironmentsAPIService) PreSignCustom3DEnvironmentUploadExecute
 	}
 	parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "simple", "")
 	// body params
-	localVarPostBody = r.preSignCustom3DEnvironmentUploadRequest
+	localVarPostBody = r.preSignImageUploadRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

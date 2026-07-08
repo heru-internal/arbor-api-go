@@ -516,7 +516,7 @@ func (r ApiGetDeviceSessionsRequest) Page(page int32) ApiGetDeviceSessionsReques
 	return r
 }
 
-func (r ApiGetDeviceSessionsRequest) Execute() (*GetDeviceSessions200Response, *http.Response, error) {
+func (r ApiGetDeviceSessionsRequest) Execute() (*GetAppSessions200Response, *http.Response, error) {
 	return r.ApiService.GetDeviceSessionsExecute(r)
 }
 
@@ -538,13 +538,13 @@ func (a *AnalyticsAPIService) GetDeviceSessions(ctx context.Context, deviceId st
 }
 
 // Execute executes the request
-//  @return GetDeviceSessions200Response
-func (a *AnalyticsAPIService) GetDeviceSessionsExecute(r ApiGetDeviceSessionsRequest) (*GetDeviceSessions200Response, *http.Response, error) {
+//  @return GetAppSessions200Response
+func (a *AnalyticsAPIService) GetDeviceSessionsExecute(r ApiGetDeviceSessionsRequest) (*GetAppSessions200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetDeviceSessions200Response
+		localVarReturnValue  *GetAppSessions200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnalyticsAPIService.GetDeviceSessions")
@@ -943,7 +943,7 @@ func (r ApiGetSharedAppUsagesRequest) Page(page int32) ApiGetSharedAppUsagesRequ
 	return r
 }
 
-func (r ApiGetSharedAppUsagesRequest) Execute() (*GetSharedAppUsages200Response, *http.Response, error) {
+func (r ApiGetSharedAppUsagesRequest) Execute() (*GetAppUsage200Response, *http.Response, error) {
 	return r.ApiService.GetSharedAppUsagesExecute(r)
 }
 
@@ -963,13 +963,13 @@ func (a *AnalyticsAPIService) GetSharedAppUsages(ctx context.Context) ApiGetShar
 }
 
 // Execute executes the request
-//  @return GetSharedAppUsages200Response
-func (a *AnalyticsAPIService) GetSharedAppUsagesExecute(r ApiGetSharedAppUsagesRequest) (*GetSharedAppUsages200Response, *http.Response, error) {
+//  @return GetAppUsage200Response
+func (a *AnalyticsAPIService) GetSharedAppUsagesExecute(r ApiGetSharedAppUsagesRequest) (*GetAppUsage200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetSharedAppUsages200Response
+		localVarReturnValue  *GetAppUsage200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnalyticsAPIService.GetSharedAppUsages")

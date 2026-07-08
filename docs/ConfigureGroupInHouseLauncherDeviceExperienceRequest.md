@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LauncherContent** | [**ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent**](ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent.md) |  | 
+**LauncherContent** | [**ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner**](ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner.md) |  | 
 **VisibleContents** | [**[]ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner**](ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner.md) | Array of apps visible within the in-house launcher | 
 
 ## Methods
 
 ### NewConfigureGroupInHouseLauncherDeviceExperienceRequest
 
-`func NewConfigureGroupInHouseLauncherDeviceExperienceRequest(launcherContent ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent, visibleContents []ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner, ) *ConfigureGroupInHouseLauncherDeviceExperienceRequest`
+`func NewConfigureGroupInHouseLauncherDeviceExperienceRequest(launcherContent ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner, visibleContents []ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner, ) *ConfigureGroupInHouseLauncherDeviceExperienceRequest`
 
 NewConfigureGroupInHouseLauncherDeviceExperienceRequest instantiates a new ConfigureGroupInHouseLauncherDeviceExperienceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLauncherContent
 
-`func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContent() ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent`
+`func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContent() ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner`
 
 GetLauncherContent returns the LauncherContent field if non-nil, zero value otherwise.
 
 ### GetLauncherContentOk
 
-`func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContentOk() (*ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent, bool)`
+`func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) GetLauncherContentOk() (*ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner, bool)`
 
 GetLauncherContentOk returns a tuple with the LauncherContent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLauncherContent
 
-`func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) SetLauncherContent(v ConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent)`
+`func (o *ConfigureGroupInHouseLauncherDeviceExperienceRequest) SetLauncherContent(v ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner)`
 
 SetLauncherContent sets LauncherContent field to given value.
 

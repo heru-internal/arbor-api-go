@@ -23,7 +23,7 @@ var _ MappedNullable = &GetGroupHeadsetExperience200ResponseOneOf2{}
 type GetGroupHeadsetExperience200ResponseOneOf2 struct {
 	Id NullableString `json:"id"`
 	Mode string `json:"mode"`
-	MetaHmsSettings GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings `json:"metaHmsSettings"`
+	MetaHmsSettings ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings `json:"metaHmsSettings"`
 	CreatedAt NullableTime `json:"createdAt"`
 	UpdatedAt NullableTime `json:"updatedAt"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _GetGroupHeadsetExperience200ResponseOneOf2 GetGroupHeadsetExperience200Res
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetGroupHeadsetExperience200ResponseOneOf2(id NullableString, mode string, metaHmsSettings GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings, createdAt NullableTime, updatedAt NullableTime) *GetGroupHeadsetExperience200ResponseOneOf2 {
+func NewGetGroupHeadsetExperience200ResponseOneOf2(id NullableString, mode string, metaHmsSettings ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings, createdAt NullableTime, updatedAt NullableTime) *GetGroupHeadsetExperience200ResponseOneOf2 {
 	this := GetGroupHeadsetExperience200ResponseOneOf2{}
 	this.Id = id
 	this.Mode = mode
@@ -104,9 +104,9 @@ func (o *GetGroupHeadsetExperience200ResponseOneOf2) SetMode(v string) {
 }
 
 // GetMetaHmsSettings returns the MetaHmsSettings field value
-func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettings() GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings {
+func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettings() ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings {
 	if o == nil {
-		var ret GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings
+		var ret ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettings() GetGro
 
 // GetMetaHmsSettingsOk returns a tuple with the MetaHmsSettings field value
 // and a boolean to check if the value has been set.
-func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettingsOk() (*GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings, bool) {
+func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettingsOk() (*ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *GetGroupHeadsetExperience200ResponseOneOf2) GetMetaHmsSettingsOk() (*Ge
 }
 
 // SetMetaHmsSettings sets field value
-func (o *GetGroupHeadsetExperience200ResponseOneOf2) SetMetaHmsSettings(v GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings) {
+func (o *GetGroupHeadsetExperience200ResponseOneOf2) SetMetaHmsSettings(v ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings) {
 	o.MetaHmsSettings = v
 }
 

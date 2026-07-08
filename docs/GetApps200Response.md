@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to [**[]GetApps200ResponseDataInner**](GetApps200ResponseDataInner.md) |  | [optional] 
-**Links** | Pointer to [**GetApps200ResponseLinks**](GetApps200ResponseLinks.md) |  | [optional] 
-**Meta** | Pointer to [**GetApps200ResponseMeta**](GetApps200ResponseMeta.md) |  | [optional] 
+**Links** | Pointer to [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | [optional] 
+**Meta** | Pointer to [**GetUsers200ResponseMeta**](GetUsers200ResponseMeta.md) |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *GetApps200Response) GetLinks() GetApps200ResponseLinks`
+`func (o *GetApps200Response) GetLinks() GetUsers200ResponseLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GetApps200Response) GetLinksOk() (*GetApps200ResponseLinks, bool)`
+`func (o *GetApps200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GetApps200Response) SetLinks(v GetApps200ResponseLinks)`
+`func (o *GetApps200Response) SetLinks(v GetUsers200ResponseLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -79,20 +79,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *GetApps200Response) GetMeta() GetApps200ResponseMeta`
+`func (o *GetApps200Response) GetMeta() GetUsers200ResponseMeta`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *GetApps200Response) GetMetaOk() (*GetApps200ResponseMeta, bool)`
+`func (o *GetApps200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *GetApps200Response) SetMeta(v GetApps200ResponseMeta)`
+`func (o *GetApps200Response) SetMeta(v GetUsers200ResponseMeta)`
 
 SetMeta sets Meta field to given value.
 

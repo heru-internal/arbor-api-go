@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IsMenuEnabled** | **bool** |  | 
 **Shortcuts** | Pointer to **[]string** | Present when isMenuEnabled is true | [optional] 
 **AdminPin** | Pointer to **NullableString** | Present when isMenuEnabled is true | [optional] 
-**Background** | Pointer to [**NullableGetGroupHeadsetExperience200ResponseOneOf1Background**](GetGroupHeadsetExperience200ResponseOneOf1Background.md) |  | [optional] 
+**Background** | Pointer to [**NullableGetGroupHeadsetExperience200ResponseOneOfBackground**](GetGroupHeadsetExperience200ResponseOneOfBackground.md) |  | [optional] 
 **ThemeId** | Pointer to **NullableString** | Present when isMenuEnabled is true | [optional] 
 **Language** | Pointer to **NullableString** | Present when isMenuEnabled is true | [optional] 
 **MenuIconImageId** | Pointer to **NullableString** | Present when isMenuEnabled is true | [optional] 
@@ -195,20 +195,20 @@ HasAdminPin returns a boolean if a field has been set.
 UnsetAdminPin ensures that no value is present for AdminPin, not even an explicit nil
 ### GetBackground
 
-`func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackground() GetGroupHeadsetExperience200ResponseOneOf1Background`
+`func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackground() GetGroupHeadsetExperience200ResponseOneOfBackground`
 
 GetBackground returns the Background field if non-nil, zero value otherwise.
 
 ### GetBackgroundOk
 
-`func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackgroundOk() (*GetGroupHeadsetExperience200ResponseOneOf1Background, bool)`
+`func (o *GetGroupHeadsetExperience200ResponseOneOf1) GetBackgroundOk() (*GetGroupHeadsetExperience200ResponseOneOfBackground, bool)`
 
 GetBackgroundOk returns a tuple with the Background field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBackground
 
-`func (o *GetGroupHeadsetExperience200ResponseOneOf1) SetBackground(v GetGroupHeadsetExperience200ResponseOneOf1Background)`
+`func (o *GetGroupHeadsetExperience200ResponseOneOf1) SetBackground(v GetGroupHeadsetExperience200ResponseOneOfBackground)`
 
 SetBackground sets Background field to given value.
 

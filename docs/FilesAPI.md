@@ -592,7 +592,7 @@ Name | Type | Description  | Notes
 
 ## PreSignFileUpload
 
-> []PreSignFileUpload200ResponseInner PreSignFileUpload(ctx, fileId).Accept(accept).PreSignFileUploadRequest(preSignFileUploadRequest).Execute()
+> []PreSignFileUpload200ResponseInner PreSignFileUpload(ctx, fileId).Accept(accept).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
 
 
 
@@ -613,11 +613,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	fileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a file.
-	preSignFileUploadRequest := *openapiclient.NewPreSignFileUploadRequest("xrdm-016da47e-4c49-48ad-9c61-94904e06a226/files/2f5d24ec-be98-49d3-ac42-cdecbeea40f0/f40d390d-94fc-47a9-952c-8b7321f3eefc/my-file.txt", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []int32{int32(1)}) // PreSignFileUploadRequest | The fields to retrieve presigned URLs. (optional)
+	preSignAppVersionUploadRequest := *openapiclient.NewPreSignAppVersionUploadRequest("xrdm-016da47e-4c49-48ad-9c61-94904e06a226/apps/2f5d24ec-be98-49d3-ac42-cdecbeea40f0/f40d390d-94fc-47a9-952c-8b7321f3eefc/my-app.apk", "OGRhZDQ5NTMtOTQxYS00ZDI3LWE0MzUtOGUyNzEzZWZiYTlmLmY1YmE5NTkyLWIzZDMtNDE1ZS1iOWIxLWM1YWJjYjAxMmY5OQ", []int32{int32(1)}) // PreSignAppVersionUploadRequest | The fields to retrieve presigned URLs. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FilesAPI.PreSignFileUpload(context.Background(), fileId).Accept(accept).PreSignFileUploadRequest(preSignFileUploadRequest).Execute()
+	resp, r, err := apiClient.FilesAPI.PreSignFileUpload(context.Background(), fileId).Accept(accept).PreSignAppVersionUploadRequest(preSignAppVersionUploadRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FilesAPI.PreSignFileUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -644,7 +644,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **preSignFileUploadRequest** | [**PreSignFileUploadRequest**](PreSignFileUploadRequest.md) | The fields to retrieve presigned URLs. | 
+ **preSignAppVersionUploadRequest** | [**PreSignAppVersionUploadRequest**](PreSignAppVersionUploadRequest.md) | The fields to retrieve presigned URLs. | 
 
 ### Return type
 

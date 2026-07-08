@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **LauncherContent** | [**ConfigureGroupInHouseLauncherHeadsetExperienceRequestLauncherContent**](ConfigureGroupInHouseLauncherHeadsetExperienceRequestLauncherContent.md) |  | 
 **VisibleContents** | [**[]ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner**](ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner.md) | Array of apps visible in the custom launcher | 
 **ReturnToLauncherViaHomeButton** | **bool** | Whether pressing the home button returns to the custom launcher | 
-**SharedModeSettings** | Pointer to [**ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings**](ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings.md) |  | [optional] 
+**SharedModeSettings** | Pointer to [**ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings**](ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings.md) |  | [optional] 
 
 ## Methods
 
@@ -90,20 +90,20 @@ SetReturnToLauncherViaHomeButton sets ReturnToLauncherViaHomeButton field to giv
 
 ### GetSharedModeSettings
 
-`func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings`
+`func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings`
 
 GetSharedModeSettings returns the SharedModeSettings field if non-nil, zero value otherwise.
 
 ### GetSharedModeSettingsOk
 
-`func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings, bool)`
+`func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings, bool)`
 
 GetSharedModeSettingsOk returns a tuple with the SharedModeSettings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSharedModeSettings
 
-`func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings)`
+`func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings)`
 
 SetSharedModeSettings sets SharedModeSettings field to given value.
 

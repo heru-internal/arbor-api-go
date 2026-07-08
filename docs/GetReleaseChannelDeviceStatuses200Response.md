@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to [**[]GetReleaseChannelDeviceStatuses200ResponseDataInner**](GetReleaseChannelDeviceStatuses200ResponseDataInner.md) |  | [optional] 
-**Links** | Pointer to [**GetReleaseChannelDeviceStatuses200ResponseLinks**](GetReleaseChannelDeviceStatuses200ResponseLinks.md) |  | [optional] 
-**Meta** | Pointer to [**GetReleaseChannelDeviceStatuses200ResponseMeta**](GetReleaseChannelDeviceStatuses200ResponseMeta.md) |  | [optional] 
+**Links** | Pointer to [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | [optional] 
+**Meta** | Pointer to [**GetUsers200ResponseMeta**](GetUsers200ResponseMeta.md) |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *GetReleaseChannelDeviceStatuses200Response) GetLinks() GetReleaseChannelDeviceStatuses200ResponseLinks`
+`func (o *GetReleaseChannelDeviceStatuses200Response) GetLinks() GetUsers200ResponseLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GetReleaseChannelDeviceStatuses200Response) GetLinksOk() (*GetReleaseChannelDeviceStatuses200ResponseLinks, bool)`
+`func (o *GetReleaseChannelDeviceStatuses200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GetReleaseChannelDeviceStatuses200Response) SetLinks(v GetReleaseChannelDeviceStatuses200ResponseLinks)`
+`func (o *GetReleaseChannelDeviceStatuses200Response) SetLinks(v GetUsers200ResponseLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -79,20 +79,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *GetReleaseChannelDeviceStatuses200Response) GetMeta() GetReleaseChannelDeviceStatuses200ResponseMeta`
+`func (o *GetReleaseChannelDeviceStatuses200Response) GetMeta() GetUsers200ResponseMeta`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *GetReleaseChannelDeviceStatuses200Response) GetMetaOk() (*GetReleaseChannelDeviceStatuses200ResponseMeta, bool)`
+`func (o *GetReleaseChannelDeviceStatuses200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *GetReleaseChannelDeviceStatuses200Response) SetMeta(v GetReleaseChannelDeviceStatuses200ResponseMeta)`
+`func (o *GetReleaseChannelDeviceStatuses200Response) SetMeta(v GetUsers200ResponseMeta)`
 
 SetMeta sets Meta field to given value.
 

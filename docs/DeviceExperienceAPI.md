@@ -110,7 +110,7 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	deviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a device.
-	configureGroupInHouseLauncherDeviceExperienceRequest := *openapiclient.NewConfigureGroupInHouseLauncherDeviceExperienceRequest(*openapiclient.NewConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent("Id_example", "Type_example"), []openapiclient.ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner{*openapiclient.NewConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner("Id_example", "Type_example")}) // ConfigureGroupInHouseLauncherDeviceExperienceRequest | Request body for configuring the In-House Launcher device experience. (optional)
+	configureGroupInHouseLauncherDeviceExperienceRequest := *openapiclient.NewConfigureGroupInHouseLauncherDeviceExperienceRequest(*openapiclient.NewConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner("Id_example", "Type_example"), []openapiclient.ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner{*openapiclient.NewConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner("Id_example", "Type_example")}) // ConfigureGroupInHouseLauncherDeviceExperienceRequest | Request body for configuring the In-House Launcher device experience. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -326,7 +326,7 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	groupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a group.
-	configureGroupInHouseLauncherDeviceExperienceRequest := *openapiclient.NewConfigureGroupInHouseLauncherDeviceExperienceRequest(*openapiclient.NewConfigureGroupInHouseLauncherDeviceExperienceRequestLauncherContent("Id_example", "Type_example"), []openapiclient.ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner{*openapiclient.NewConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner("Id_example", "Type_example")}) // ConfigureGroupInHouseLauncherDeviceExperienceRequest | Request body for configuring the In-House Launcher device experience. (optional)
+	configureGroupInHouseLauncherDeviceExperienceRequest := *openapiclient.NewConfigureGroupInHouseLauncherDeviceExperienceRequest(*openapiclient.NewConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner("Id_example", "Type_example"), []openapiclient.ConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner{*openapiclient.NewConfigureGroupLockTaskDeviceExperienceRequestVisibleContentsInner("Id_example", "Type_example")}) // ConfigureGroupInHouseLauncherDeviceExperienceRequest | Request body for configuring the In-House Launcher device experience. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

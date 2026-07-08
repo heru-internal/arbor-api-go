@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTag
 
-> GetTags200ResponseDataInner UpdateTag(ctx, tagId).Accept(accept).UpdateTagRequest(updateTagRequest).Execute()
+> GetTags200ResponseDataInner UpdateTag(ctx, tagId).Accept(accept).CreateTagRequest(createTagRequest).Execute()
 
 
 
@@ -317,11 +317,11 @@ import (
 func main() {
 	accept := "accept_example" // string |  (default to "application/json")
 	tagId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of a tag.
-	updateTagRequest := *openapiclient.NewUpdateTagRequest("alpha") // UpdateTagRequest | The tag fields to update. (optional)
+	createTagRequest := *openapiclient.NewCreateTagRequest("beta") // CreateTagRequest | The tag fields to update. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TagsAPI.UpdateTag(context.Background(), tagId).Accept(accept).UpdateTagRequest(updateTagRequest).Execute()
+	resp, r, err := apiClient.TagsAPI.UpdateTag(context.Background(), tagId).Accept(accept).CreateTagRequest(createTagRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.UpdateTag``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accept** | **string** |  | [default to &quot;application/json&quot;]
 
- **updateTagRequest** | [**UpdateTagRequest**](UpdateTagRequest.md) | The tag fields to update. | 
+ **createTagRequest** | [**CreateTagRequest**](CreateTagRequest.md) | The tag fields to update. | 
 
 ### Return type
 

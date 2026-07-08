@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Files** | [**[]AddFilesToAppBundleRequestFilesInner**](AddFilesToAppBundleRequestFilesInner.md) |  | 
+**Files** | [**[]CreateAppBundleRequestFilesInner**](CreateAppBundleRequestFilesInner.md) |  | 
 
 ## Methods
 
 ### NewAddFilesToAppBundleRequest
 
-`func NewAddFilesToAppBundleRequest(files []AddFilesToAppBundleRequestFilesInner, ) *AddFilesToAppBundleRequest`
+`func NewAddFilesToAppBundleRequest(files []CreateAppBundleRequestFilesInner, ) *AddFilesToAppBundleRequest`
 
 NewAddFilesToAppBundleRequest instantiates a new AddFilesToAppBundleRequest object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFiles
 
-`func (o *AddFilesToAppBundleRequest) GetFiles() []AddFilesToAppBundleRequestFilesInner`
+`func (o *AddFilesToAppBundleRequest) GetFiles() []CreateAppBundleRequestFilesInner`
 
 GetFiles returns the Files field if non-nil, zero value otherwise.
 
 ### GetFilesOk
 
-`func (o *AddFilesToAppBundleRequest) GetFilesOk() (*[]AddFilesToAppBundleRequestFilesInner, bool)`
+`func (o *AddFilesToAppBundleRequest) GetFilesOk() (*[]CreateAppBundleRequestFilesInner, bool)`
 
 GetFilesOk returns a tuple with the Files field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFiles
 
-`func (o *AddFilesToAppBundleRequest) SetFiles(v []AddFilesToAppBundleRequestFilesInner)`
+`func (o *AddFilesToAppBundleRequest) SetFiles(v []CreateAppBundleRequestFilesInner)`
 
 SetFiles sets Files field to given value.
 

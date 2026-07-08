@@ -1146,7 +1146,7 @@ Name | Type | Description  | Notes
 
 ## UnshareReleaseChannel
 
-> UnshareReleaseChannel200Response UnshareReleaseChannel(ctx, appId, releaseChannelId).Accept(accept).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
+> ShareReleaseChannel200Response UnshareReleaseChannel(ctx, appId, releaseChannelId).Accept(accept).ShareReleaseChannelRequest(shareReleaseChannelRequest).Execute()
 
 
 
@@ -1177,7 +1177,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AppsAPI.UnshareReleaseChannel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UnshareReleaseChannel`: UnshareReleaseChannel200Response
+	// response from `UnshareReleaseChannel`: ShareReleaseChannel200Response
 	fmt.Fprintf(os.Stdout, "Response from `AppsAPI.UnshareReleaseChannel`: %v\n", resp)
 }
 ```
@@ -1205,7 +1205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UnshareReleaseChannel200Response**](UnshareReleaseChannel200Response.md)
+[**ShareReleaseChannel200Response**](ShareReleaseChannel200Response.md)
 
 ### Authorization
 

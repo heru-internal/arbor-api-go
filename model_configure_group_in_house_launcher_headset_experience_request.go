@@ -26,7 +26,7 @@ type ConfigureGroupInHouseLauncherHeadsetExperienceRequest struct {
 	VisibleContents []ConfigureGroupInHouseLauncherHeadsetExperienceRequestVisibleContentsInner `json:"visibleContents"`
 	// Whether pressing the home button returns to the custom launcher
 	ReturnToLauncherViaHomeButton bool `json:"returnToLauncherViaHomeButton"`
-	SharedModeSettings *ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings `json:"sharedModeSettings,omitempty"`
+	SharedModeSettings *ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings `json:"sharedModeSettings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -125,9 +125,9 @@ func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) SetReturnToLaunc
 }
 
 // GetSharedModeSettings returns the SharedModeSettings field value if set, zero value otherwise.
-func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings {
+func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettings() ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings {
 	if o == nil || IsNil(o.SharedModeSettings) {
-		var ret ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings
+		var ret ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings
 		return ret
 	}
 	return *o.SharedModeSettings
@@ -135,7 +135,7 @@ func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSet
 
 // GetSharedModeSettingsOk returns a tuple with the SharedModeSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings, bool) {
+func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) GetSharedModeSettingsOk() (*ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings, bool) {
 	if o == nil || IsNil(o.SharedModeSettings) {
 		return nil, false
 	}
@@ -151,8 +151,8 @@ func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) HasSharedModeSet
 	return false
 }
 
-// SetSharedModeSettings gets a reference to the given ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings and assigns it to the SharedModeSettings field.
-func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrKioskHeadsetExperienceRequestSharedModeSettings) {
+// SetSharedModeSettings gets a reference to the given ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings and assigns it to the SharedModeSettings field.
+func (o *ConfigureGroupInHouseLauncherHeadsetExperienceRequest) SetSharedModeSettings(v ConfigureGroupArborXrHomeHeadsetExperienceRequestSharedModeSettings) {
 	o.SharedModeSettings = &v
 }
 

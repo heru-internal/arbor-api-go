@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Shortcuts** | **[]string** | Present when isMenuEnabled is true | 
 **AdminPin** | Pointer to **NullableString** | Present when isMenuEnabled is true | [optional] 
 **CategorizationTags** | **[]string** |  | 
-**Background** | Pointer to [**NullableGetGroupHeadsetExperience200ResponseOneOf1Background**](GetGroupHeadsetExperience200ResponseOneOf1Background.md) |  | [optional] 
+**Background** | Pointer to [**NullableGetGroupHeadsetExperience200ResponseOneOfBackground**](GetGroupHeadsetExperience200ResponseOneOfBackground.md) |  | [optional] 
 **ThemeId** | Pointer to **NullableString** | Present when isMenuEnabled is true | [optional] 
 **Language** | Pointer to **NullableString** | Present when isMenuEnabled is true | [optional] 
 **MenuTitle** | Pointer to **NullableString** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | **Time** |  | 
 **KioskContent** | Pointer to [**NullableGetGroupHeadsetExperience200ResponseOneOf1KioskContent**](GetGroupHeadsetExperience200ResponseOneOf1KioskContent.md) |  | [optional] 
 **IsMenuEnabled** | **bool** |  | 
-**MetaHmsSettings** | [**GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings**](GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings.md) |  | 
+**MetaHmsSettings** | [**ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings**](ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings.md) |  | 
 **LauncherContent** | Pointer to [**NullableGetGroupHeadsetExperience200ResponseOneOf3LauncherContent**](GetGroupHeadsetExperience200ResponseOneOf3LauncherContent.md) |  | [optional] 
 **ReturnToLauncherViaHomeButton** | **bool** |  | 
 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewGetGroupHeadsetExperience200Response
 
-`func NewGetGroupHeadsetExperience200Response(id string, mode string, visibleContents []GetGroupHeadsetExperience200ResponseOneOfVisibleContentsInner, shortcuts []string, categorizationTags []string, removePoweredByArborXrBranding bool, sharedModeSettings GetGroupHeadsetExperience200ResponseOneOfSharedModeSettings, createdAt Time, updatedAt Time, isMenuEnabled bool, metaHmsSettings GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings, returnToLauncherViaHomeButton bool, ) *GetGroupHeadsetExperience200Response`
+`func NewGetGroupHeadsetExperience200Response(id string, mode string, visibleContents []GetGroupHeadsetExperience200ResponseOneOfVisibleContentsInner, shortcuts []string, categorizationTags []string, removePoweredByArborXrBranding bool, sharedModeSettings GetGroupHeadsetExperience200ResponseOneOfSharedModeSettings, createdAt Time, updatedAt Time, isMenuEnabled bool, metaHmsSettings ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings, returnToLauncherViaHomeButton bool, ) *GetGroupHeadsetExperience200Response`
 
 NewGetGroupHeadsetExperience200Response instantiates a new GetGroupHeadsetExperience200Response object
 This constructor will assign default values to properties that have it defined,
@@ -181,20 +181,20 @@ SetCategorizationTags sets CategorizationTags field to given value.
 
 ### GetBackground
 
-`func (o *GetGroupHeadsetExperience200Response) GetBackground() GetGroupHeadsetExperience200ResponseOneOf1Background`
+`func (o *GetGroupHeadsetExperience200Response) GetBackground() GetGroupHeadsetExperience200ResponseOneOfBackground`
 
 GetBackground returns the Background field if non-nil, zero value otherwise.
 
 ### GetBackgroundOk
 
-`func (o *GetGroupHeadsetExperience200Response) GetBackgroundOk() (*GetGroupHeadsetExperience200ResponseOneOf1Background, bool)`
+`func (o *GetGroupHeadsetExperience200Response) GetBackgroundOk() (*GetGroupHeadsetExperience200ResponseOneOfBackground, bool)`
 
 GetBackgroundOk returns a tuple with the Background field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBackground
 
-`func (o *GetGroupHeadsetExperience200Response) SetBackground(v GetGroupHeadsetExperience200ResponseOneOf1Background)`
+`func (o *GetGroupHeadsetExperience200Response) SetBackground(v GetGroupHeadsetExperience200ResponseOneOfBackground)`
 
 SetBackground sets Background field to given value.
 
@@ -491,20 +491,20 @@ SetIsMenuEnabled sets IsMenuEnabled field to given value.
 
 ### GetMetaHmsSettings
 
-`func (o *GetGroupHeadsetExperience200Response) GetMetaHmsSettings() GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings`
+`func (o *GetGroupHeadsetExperience200Response) GetMetaHmsSettings() ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings`
 
 GetMetaHmsSettings returns the MetaHmsSettings field if non-nil, zero value otherwise.
 
 ### GetMetaHmsSettingsOk
 
-`func (o *GetGroupHeadsetExperience200Response) GetMetaHmsSettingsOk() (*GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings, bool)`
+`func (o *GetGroupHeadsetExperience200Response) GetMetaHmsSettingsOk() (*ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings, bool)`
 
 GetMetaHmsSettingsOk returns a tuple with the MetaHmsSettings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetaHmsSettings
 
-`func (o *GetGroupHeadsetExperience200Response) SetMetaHmsSettings(v GetGroupHeadsetExperience200ResponseOneOf2MetaHmsSettings)`
+`func (o *GetGroupHeadsetExperience200Response) SetMetaHmsSettings(v ConfigureGroupDefaultHomeHeadsetExperienceRequestMetaHmsSettings)`
 
 SetMetaHmsSettings sets MetaHmsSettings field to given value.
 

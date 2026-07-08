@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | Pointer to [**[]GetCustom3DEnvironments200ResponseDataInner**](GetCustom3DEnvironments200ResponseDataInner.md) |  | [optional] 
-**Links** | Pointer to [**GetCustom3DEnvironments200ResponseLinks**](GetCustom3DEnvironments200ResponseLinks.md) |  | [optional] 
-**Meta** | Pointer to [**GetCustom3DEnvironments200ResponseMeta**](GetCustom3DEnvironments200ResponseMeta.md) |  | [optional] 
+**Links** | Pointer to [**GetUsers200ResponseLinks**](GetUsers200ResponseLinks.md) |  | [optional] 
+**Meta** | Pointer to [**GetUsers200ResponseMeta**](GetUsers200ResponseMeta.md) |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasData returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *GetCustom3DEnvironments200Response) GetLinks() GetCustom3DEnvironments200ResponseLinks`
+`func (o *GetCustom3DEnvironments200Response) GetLinks() GetUsers200ResponseLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GetCustom3DEnvironments200Response) GetLinksOk() (*GetCustom3DEnvironments200ResponseLinks, bool)`
+`func (o *GetCustom3DEnvironments200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GetCustom3DEnvironments200Response) SetLinks(v GetCustom3DEnvironments200ResponseLinks)`
+`func (o *GetCustom3DEnvironments200Response) SetLinks(v GetUsers200ResponseLinks)`
 
 SetLinks sets Links field to given value.
 
@@ -79,20 +79,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetMeta
 
-`func (o *GetCustom3DEnvironments200Response) GetMeta() GetCustom3DEnvironments200ResponseMeta`
+`func (o *GetCustom3DEnvironments200Response) GetMeta() GetUsers200ResponseMeta`
 
 GetMeta returns the Meta field if non-nil, zero value otherwise.
 
 ### GetMetaOk
 
-`func (o *GetCustom3DEnvironments200Response) GetMetaOk() (*GetCustom3DEnvironments200ResponseMeta, bool)`
+`func (o *GetCustom3DEnvironments200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool)`
 
 GetMetaOk returns a tuple with the Meta field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeta
 
-`func (o *GetCustom3DEnvironments200Response) SetMeta(v GetCustom3DEnvironments200ResponseMeta)`
+`func (o *GetCustom3DEnvironments200Response) SetMeta(v GetUsers200ResponseMeta)`
 
 SetMeta sets Meta field to given value.
 

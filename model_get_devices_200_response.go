@@ -21,8 +21,8 @@ var _ MappedNullable = &GetDevices200Response{}
 // GetDevices200Response Get a paginated list of devices.
 type GetDevices200Response struct {
 	Data []GetDevices200ResponseDataInner `json:"data,omitempty"`
-	Links *GetDevices200ResponseLinks `json:"links,omitempty"`
-	Meta *GetDevices200ResponseMeta `json:"meta,omitempty"`
+	Links *GetUsers200ResponseLinks `json:"links,omitempty"`
+	Meta *GetUsers200ResponseMeta `json:"meta,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,9 +78,9 @@ func (o *GetDevices200Response) SetData(v []GetDevices200ResponseDataInner) {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GetDevices200Response) GetLinks() GetDevices200ResponseLinks {
+func (o *GetDevices200Response) GetLinks() GetUsers200ResponseLinks {
 	if o == nil || IsNil(o.Links) {
-		var ret GetDevices200ResponseLinks
+		var ret GetUsers200ResponseLinks
 		return ret
 	}
 	return *o.Links
@@ -88,7 +88,7 @@ func (o *GetDevices200Response) GetLinks() GetDevices200ResponseLinks {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDevices200Response) GetLinksOk() (*GetDevices200ResponseLinks, bool) {
+func (o *GetDevices200Response) GetLinksOk() (*GetUsers200ResponseLinks, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *GetDevices200Response) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given GetDevices200ResponseLinks and assigns it to the Links field.
-func (o *GetDevices200Response) SetLinks(v GetDevices200ResponseLinks) {
+// SetLinks gets a reference to the given GetUsers200ResponseLinks and assigns it to the Links field.
+func (o *GetDevices200Response) SetLinks(v GetUsers200ResponseLinks) {
 	o.Links = &v
 }
 
 // GetMeta returns the Meta field value if set, zero value otherwise.
-func (o *GetDevices200Response) GetMeta() GetDevices200ResponseMeta {
+func (o *GetDevices200Response) GetMeta() GetUsers200ResponseMeta {
 	if o == nil || IsNil(o.Meta) {
-		var ret GetDevices200ResponseMeta
+		var ret GetUsers200ResponseMeta
 		return ret
 	}
 	return *o.Meta
@@ -120,7 +120,7 @@ func (o *GetDevices200Response) GetMeta() GetDevices200ResponseMeta {
 
 // GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDevices200Response) GetMetaOk() (*GetDevices200ResponseMeta, bool) {
+func (o *GetDevices200Response) GetMetaOk() (*GetUsers200ResponseMeta, bool) {
 	if o == nil || IsNil(o.Meta) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *GetDevices200Response) HasMeta() bool {
 	return false
 }
 
-// SetMeta gets a reference to the given GetDevices200ResponseMeta and assigns it to the Meta field.
-func (o *GetDevices200Response) SetMeta(v GetDevices200ResponseMeta) {
+// SetMeta gets a reference to the given GetUsers200ResponseMeta and assigns it to the Meta field.
+func (o *GetDevices200Response) SetMeta(v GetUsers200ResponseMeta) {
 	o.Meta = &v
 }
 
